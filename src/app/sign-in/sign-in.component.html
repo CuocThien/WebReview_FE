@@ -1,0 +1,30 @@
+
+<body>
+    <div class="container">
+        <h3>Đăng nhập tài khoản</h3>
+        <button id="btn-cancel" routerLink="/index"><img src="https://img.icons8.com/ios/30/000000/cancel.png" /></button>
+        <hr>
+        <form (ngSubmit)="onSubmit(formSignIn)" #formSignIn="ngForm" class="form">
+            <img src="../../assets/img/logo5.png" alt="logo-web" id="logo">
+            <input type="text" placeholder="Tên tài khoản hoặc Email" ngModel name="username" required>
+            <input type="password" placeholder="Mật khẩu" ngModel name="password" id="password"  required>
+            <span id="forgot-password">Quên mật khẩu?</span>
+            <button id="btn-signIn">ĐĂNG NHẬP</button>
+        </form>
+        <div class="strike">
+            <span>Hoặc</span>
+        </div>
+        <button class="btn-socialMedia" id="btn-google"><img id="logo-btn"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2048px-Google_%22G%22_Logo.svg.png"
+                alt="">
+            <span>Đăng nhập bằng Google</span>
+        </button>
+        <button class="btn-socialMedia" id="btn-facebook"><img id="logo-btn"
+                src="https://cdn.pixabay.com/photo/2015/05/17/10/51/facebook-770688_960_720.png" alt="">
+            <span>Đăng nhập bằng Facebook</span>
+        </button>
+        <div class="register">
+            <span>Chưa có tài khoản?</span> <a routerLink="/signup">Đăng kí</a>
+        </div>
+    </div>
+</body>

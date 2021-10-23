@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppRoutingModule } from './app-routing.module';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'web-review';
+  public isHome=true;
+  constructor(private router:AppRoutingModule){}
+  signin(){
+    this.router.signin();
+    this.isHome=false;
+  }
+  signup(){
+    this.router.signup();
+    this.isHome=false;
+  }
 }
