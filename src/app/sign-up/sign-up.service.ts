@@ -3,12 +3,12 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 @Injectable()
 
-export class SignInService {
+export class SignUpService {
     constructor(private http: HttpClient) {
 
     }
-    sendPost(value: any) {
-        const url = 'http://localhost:3000/account/signin';
+    signUp(value: any) {
+        const url = 'http://localhost:3000/account/signup';
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' })
         const body = JSON.stringify(value);
         return this.http.post(url, body, { headers })
