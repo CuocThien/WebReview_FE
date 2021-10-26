@@ -8,7 +8,7 @@
             <img src="../../assets/img/logo5.png" alt="logo-web" id="logo">
             <input type="text" placeholder="Tên tài khoản hoặc Email" ngModel name="UserName" required>
             <input type="password" placeholder="Mật khẩu" ngModel name="PassWord" id="password"  required>
-            <span id="forgot-password">Quên mật khẩu?</span>
+            <span id="forgot-password" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">Quên mật khẩu?</span>
             <button id="btn-signIn">ĐĂNG NHẬP</button>
         </form>
         <div class="strike">
@@ -27,4 +27,35 @@
             <span>Chưa có tài khoản?</span> <a routerLink="/signup">Đăng kí</a>
         </div>
     </div>
+  
+  <!-- The Modal -->
+  <div class="modal fade" id="forgotPasswordModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <form (ngSubmit)="getNewPassword(formForgotPassword)" #formForgotPassword="ngForm" class="form">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Quên mật khẩu</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          Nhập email đã đăng ký cho tài khoản để nhận mật khẩu mới!!!
+          <br><br>
+          
+
+          <input type="text" placeholder="Nhập email" ngModel name="Email" required>
+         
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Đóng</button>
+          <button type="submit" class="btn btn-success" data-bs-dismiss="modal">Xác nhận</button>
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>
 </body>

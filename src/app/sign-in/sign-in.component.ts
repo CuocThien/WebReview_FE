@@ -15,9 +15,15 @@ export class SignInComponent implements OnInit {
   onSubmit(formSignIn:any){
     console.log(formSignIn.value)
     console.log(JSON.stringify(formSignIn.value))
-    this.service.sendPost(formSignIn.value)
+    this.service.signIn(formSignIn.value)
     .then(result=>console.log(result))
     .catch(err=>console.log(err));
     // console.log(formSignIn.value);
+  }
+  getNewPassword(formForgotPassword:any){
+    console.log(JSON.stringify(formForgotPassword.value))
+    this.service.forgotPassword(formForgotPassword.value)
+    .then(result=>console.log(result))
+    .catch(err=>console.log(err));
   }
 }
