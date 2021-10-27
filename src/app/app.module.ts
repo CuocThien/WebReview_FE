@@ -10,13 +10,15 @@ import { AppComponent } from './app.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { IndexComponent } from './index/index.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignInComponent,
     SignUpComponent,
-    IndexComponent
+    IndexComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

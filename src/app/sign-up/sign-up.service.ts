@@ -8,7 +8,7 @@ export class SignUpService {
 
     }
     signUp(value: any) {
-        const url = 'http://localhost:3000/account/signup';
+        const url = 'https://oggy-webreview.herokuapp.com/account/signup';
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' })
         const body = JSON.stringify(value);
         return this.http.post(url, body, { headers })
