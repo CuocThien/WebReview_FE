@@ -8,7 +8,7 @@
 .share-experience{
     padding-top: 20px;
 }
-a,h5 { display: inline;}
+a,h5 { display: inline;cursor: pointer;}
 .share-experience > .intro > a{
     float: right;
 }
@@ -26,9 +26,9 @@ a,h5 { display: inline;}
 }
 .content-share-experience>div:first-child > img{
     max-width: 100%;
-  max-height: 200px;
+  max-height: 250px;
   width: 100%;
-  height: auto;
+  height: 250px;
   border-radius: 10px;
 }
 
@@ -40,9 +40,9 @@ a,h5 { display: inline;}
 }
 .content-share-experience>div:nth-child(2) > img{
     max-width: 100%;
-  max-height: 150px;
+  max-height: 170px;
   width: 100%;
-  height: 150px;
+  height: 170px;
   border-radius: 10px;
 }
 .content-share-experience>div:nth-child(3),
@@ -59,9 +59,9 @@ a,h5 { display: inline;}
 .content-share-experience>div:nth-child(4)> img,
 .content-share-experience>div:nth-child(5) > img{
     max-width: 100%;
-  max-height: 100px;
+  max-height: 130px;
   width: 100%;
-  height: auto;
+  height: 130px;
   border-radius: 10px;
 }
 .content-share-experience>div:nth-child(3)> p,
@@ -91,6 +91,7 @@ padding-top: 20px!important;
     height: 30px;
     padding: 2px 0;
     margin-bottom: 10px;
+    cursor: pointer;
 }
 .forums > input{
     width: 100%;
@@ -143,6 +144,7 @@ padding-top: 20px!important;
     top: -15;
     padding: 10px 20px;
     border-radius: 5px;
+    cursor: pointer;
 }
 .review > input{
     color: #9B4DFF;
@@ -203,24 +205,6 @@ color: white;
 .review-post:hover{
     transform: scale(1.04);
 }
-/* .review-post{
-    cursor: pointer;
-border: 2px solid transparent;
-border-radius: 10px;
--webkit-transition: border-color 0.01s ease;
--moz-transition: border-color 0.01s ease;
-  -o-transition: border-color 0.01s ease;
- -ms-transition: border-color 0.01s ease;
-     transition: border-color 0.01s ease;    
-}
-.review-post:hover{
-     /* border: 2px solid linear-gradient(to right, #CB9EF6,#0FC6E3);  
-     border-width: 3px;
-     border-style: solid;
-     border-image: linear-gradient(to right, #CB9EF6,#0FC6E3) 1;
-
-    border-radius: 10px;
-} */
 .review-post > img{
     display: inline;
     max-width: 100%;
@@ -249,6 +233,7 @@ border-radius: 10px;
     border-radius: 50%;
     margin: 3px 2px;
     background: #6454F0;
+    padding: 3px 2px;
   }
 
   .pagination /deep/ .ngx-pagination li {
