@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
+import { HeaderComponent } from './header/header.component';
 
 @Component({
   selector: 'app-root',
@@ -7,15 +8,10 @@ import { AppRoutingModule } from './app-routing.module';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
   title = 'web-review';
-  public isHome=true;
-  constructor(private router:AppRoutingModule){}
-  signin(){
-    this.router.signin();
-    this.isHome=false;
+  constructor(){
   }
-  signup(){
-    this.router.signup();
-    this.isHome=false;
-  }
+
+  
 }

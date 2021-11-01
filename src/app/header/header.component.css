@@ -53,7 +53,7 @@ form {
   margin: auto;
 }
 
-.account-control>input {
+.account-control>div>input {
   background-color: #fff;
   height: 35px;
   width: 100px;
@@ -63,7 +63,88 @@ form {
   color: #76E2FB;
 }
 
-.account-control>input:hover {
+.account-control>div>input:hover {
   border: 2px solid #62c1d6;
   color: #62c1d6;
+}
+
+.animated-border-button {
+  background-color: #263059;
+  border: none;
+  color: #ffffff;
+  outline: none;
+  padding: 3px 20px 3px;
+  position: relative;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.animated-border-button:before,
+.animated-border-button:after {
+  border: 0 solid transparent;
+  transition: all 0.3s;
+  content: '';
+  height: 0;
+  position: absolute;
+  width: 24px;
+}
+
+.animated-border-button:before {
+  border-top: 2px solid #263059;
+  right: 0;
+  top: -4px;
+}
+
+.animated-border-button:after {
+  border-bottom: 2px solid #263059;
+  bottom: -4px;
+  left: 0;
+}
+
+.animated-border-button:hover:before,
+.animated-border-button:hover:after {
+  width: 100%;
+}
+ul{
+  padding: 0;
+  list-style: none;
+}
+ul li{
+  display: inline-block;
+  position: relative;
+  line-height: 21px;
+  text-align: left;
+}
+ul li a{
+  display: block;
+  padding: 8px 20px;
+  font-size: 14px;
+  color: #FFF;
+  text-decoration: none;
+}
+ul li a:last-child:hover{
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+ul li a:hover{
+  color: #fff;
+  background-image: linear-gradient(to right, #5be0f5,#5d4cf0);
+}
+ul li ul.dropdown{
+  width: 100%;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  margin-top: 4px;
+  min-width: 160px; /* Set width of the dropdown */
+  background-image: linear-gradient(to right, #6EE2F5,#6454F0);
+  display: none;
+  position: absolute;
+  z-index: 999;
+  left: 0;
+}
+ul li:hover ul.dropdown{
+  display: block;	/* Display the dropdown */
+}
+ul li ul.dropdown li{
+  display: block;
 }

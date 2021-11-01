@@ -9,7 +9,22 @@
 
   </div>
   <div class="account-control col-4">
-    <input type="button" routerLink="/signin" value="Đăng nhập">
-    <input type="button" routerLink="/signup" value="Đăng ký">
+    <div *ngIf="!isLogin()">
+      <input type="button" (click)="signIn()" value="Đăng nhập">
+      <input type="button" (click)="signUp()" value="Đăng ký">
+    </div>
+    <div *ngIf="isLogin();">
+      <ul>
+        <li>
+          <button class="animated-border-button">{{userFullName}}</button>
+          <ul class="dropdown">
+            <li><a href="#">Thông tin cá nhân</a></li>
+            <li><a href="#">Quản lý bài viết</a></li>
+            <li><a href="#">Đổi mật khẩu</a></li>
+            <li><a href="#" (click)="signOut()">Đăng xuất</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
