@@ -27,8 +27,12 @@ export class HeaderComponent implements OnInit {
   profile(){
     this.router.profile();
   }
+  changepassword(){
+    this.router.changepassword();
+  }
   signOut(){
     this.cookieService.deleteAll();
+    this.router.index();
   }
   isLogin(){
     if(this.cookieService.get("authToken")==""){

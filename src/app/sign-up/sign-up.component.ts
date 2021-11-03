@@ -28,7 +28,6 @@ export class SignUpComponent implements OnInit {
       this.service.signUp(formSignUp.value)
       .then(result=>console.log(result))
       .catch(err=>this.toastr.error(err.error.msg));
-      console.log(JSON.stringify(formSignUp.value));
   }
   }
 }

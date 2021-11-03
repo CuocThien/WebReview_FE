@@ -14,6 +14,7 @@ import { IndexComponent } from './index/index.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HeaderComponent } from './header/header.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ProfileComponent } from './profile/profile.component';
     IndexComponent,
     PageNotFoundComponent,
     HeaderComponent,
-    ProfileComponent
+    ProfileComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,

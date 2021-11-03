@@ -7,6 +7,7 @@ import { IndexComponent } from './index/index.component';
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 const routes: Routes = [
 
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'signin', component: SignInComponent, pathMatch: 'full' },
   { path: 'signup', component: SignUpComponent, pathMatch: 'full' },
   { path: 'profile', component: ProfileComponent, pathMatch: 'full'},
+  { path: 'change-password', component: ChangePasswordComponent, pathMatch: 'full'},
 
   { path: '', redirectTo: '/index', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent},
@@ -39,5 +41,8 @@ export class AppRoutingModule {
   }
   index(){
     this.router.navigate(['/index'])
+  }
+  changepassword(){
+    this.router.navigate(['/change-password'])
   }
 }
