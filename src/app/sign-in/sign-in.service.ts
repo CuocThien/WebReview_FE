@@ -26,20 +26,20 @@ export class SignInService {
                 this.router.navigate(["/index"]);
                 this.cookieService.set('authToken', result.data.Token);
                 this.getUser(this.cookieService.get("authToken"))
-                    .then(resU=>{user=resU
-                        this.cookieService.set("fullName", user.data.FullName);
-                    })
-                    .catch(err=>console.log(err));
-                
+
+        .then(resU=>{user=resU;
+            this.cookieService.set("fullName", user.data.FullName);
+        })
             })
             .catch(err=>this.toastr.error(err.error.msg));
     }
 
   getUser(value: any) {
+    
     const urlGetUser = 'https://oggy-webreview.herokuapp.com/account/getUser';
     const headers = new HttpHeaders({ 'Content-Type': 'application/json','Authorization':'Bearer '+value })
     return this.http.get(urlGetUser, { headers })
-        .toPromise();
+        .toPromise()
 }
     forgotPassword(value: any) {
         const urlForgotPassword = 'https://oggy-webreview.herokuapp.com/account/forgotPassword';

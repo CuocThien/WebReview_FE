@@ -6,12 +6,14 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { IndexComponent } from './index/index.component';
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
 
   { path: 'index', component: IndexComponent },
   { path: 'signin', component: SignInComponent, pathMatch: 'full' },
   { path: 'signup', component: SignUpComponent, pathMatch: 'full' },
+  { path: 'profile', component: ProfileComponent, pathMatch: 'full'},
 
   { path: '', redirectTo: '/index', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent},
@@ -31,6 +33,9 @@ export class AppRoutingModule {
   }
   signup(){
     this.router.navigate(['/signup'])
+  }
+  profile(){
+    this.router.navigate(['/profile'])
   }
   index(){
     this.router.navigate(['/index'])

@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit {
   constructor(public header:HeaderService,private router:AppRoutingModule,
     private cookieService: CookieService,private service:SignInService) { }
     userFullName:any;
+    user:any=[];
   ngOnInit(): void {
   }
   signIn(){
@@ -22,6 +23,9 @@ export class HeaderComponent implements OnInit {
   }
   signUp(){
     this.router.signup();
+  }
+  profile(){
+    this.router.profile();
   }
   signOut(){
     this.cookieService.deleteAll();
@@ -31,7 +35,10 @@ export class HeaderComponent implements OnInit {
       return false;
     }
     else{
+      // console.log(this.cookieService.get("User"))
+      // this.user=JSON.parse(this.cookieService.get("User"));
       this.userFullName=this.cookieService.get("fullName");
+      // console.log(this.user.DOB);
       return true;
   }}
 }
