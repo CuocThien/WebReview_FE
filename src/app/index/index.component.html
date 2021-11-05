@@ -2,68 +2,25 @@
   <div class="row">
     <div class="share-experience col-9">
       <div class="intro">
-        <h5>Chia sẻ kinh nghiệm</h5>
-        <a href="">Xem tất cả</a>
+        <h5 (click)="shareExp()">Chia sẻ kinh nghiệm</h5>
+        <a (click)="shareExp()">Xem tất cả</a>
       </div>
       <div class="content-share-experience">
-        <div class="share-post">
-          <img src="https://dochoixecung.com/wp-content/uploads/2018/07/Hinhf-anhr-fortuner.jpg" alt="">
-          <p>Những điều cần lưu ý khi mua và sử dụng sạc dự phòng...</p>
-        </div>
-        <div class="share-post">
-          <img src="https://dochoixecung.com/wp-content/uploads/2018/07/Hinhf-anhr-fortuner.jpg" alt="">
-          <p>Những điều cần lưu ý khi mua và sử dụng sạc dự phòng...</p>
-        </div>
-        <div class="share-post">
-          <img src="https://dochoixecung.com/wp-content/uploads/2018/07/Hinhf-anhr-fortuner.jpg" alt="">
-          <p>Những điều cần lưu ý khi mua và sử dụng sạc dự phòng...</p>
-        </div>
-        <div class="share-post">
-          <img src="https://dochoixecung.com/wp-content/uploads/2018/07/Hinhf-anhr-fortuner.jpg" alt="">
-          <p>Những điều cần lưu ý khi mua và sử dụng sạc dự phòng...</p>
-        </div>
-        <div class="share-post">
-          <img src="https://dochoixecung.com/wp-content/uploads/2018/07/Hinhf-anhr-fortuner.jpg" alt="">
-          <p>Những điều cần lưu ý khi mua và sử dụng sạc dự phòng...</p>
+        <div class="share-post" *ngFor="let itemS of listShareExpPost" id="{{itemS.Id}}">
+          <img [src]="itemS.Image || 'https://4.bp.blogspot.com/-OCutvC4wPps/XfNnRz5PvhI/AAAAAAAAEfo/qJ8P1sqLWesMdOSiEoUH85s3hs_vn97HACLcBGAsYHQ/s1600/no-image-found-360x260.png'" alt="">
+          <p>{{itemS.Title}}</p>
         </div>
       </div>
     </div>
     <div class="forums col-3">
       <h5>Forums</h5>
-      <div class="forum-post">
+      <div class="forum-post" *ngFor="let itemF of listForumPost" id="{{itemF.Id}}">
         <img
-          src="https://cdn.tgdd.vn/Files/2021/03/05/1332649/6-dieu-dang-mong-doi-o-sieu-pham-iphone-13-iphone-13-760x367.jpg"
+          [src]="itemF.Image || 'https://4.bp.blogspot.com/-OCutvC4wPps/XfNnRz5PvhI/AAAAAAAAEfo/qJ8P1sqLWesMdOSiEoUH85s3hs_vn97HACLcBGAsYHQ/s1600/no-image-found-360x260.png'"
           alt="">
         <div class="forum-post-content">
-          <h6>Iphone</h6>
-          <p>#Iphone</p>
-        </div>
-      </div>
-      <div class="forum-post">
-        <img
-          src="https://cdn.tgdd.vn/Files/2021/03/05/1332649/6-dieu-dang-mong-doi-o-sieu-pham-iphone-13-iphone-13-760x367.jpg"
-          alt="">
-        <div class="forum-post-content">
-          <h6>Iphone</h6>
-          <p>#Iphone</p>
-        </div>
-      </div>
-      <div class="forum-post">
-        <img
-          src="https://cdn.tgdd.vn/Files/2021/03/05/1332649/6-dieu-dang-mong-doi-o-sieu-pham-iphone-13-iphone-13-760x367.jpg"
-          alt="">
-        <div class="forum-post-content">
-          <h6>Iphone</h6>
-          <p>#Iphone</p>
-        </div>
-      </div>
-      <div class="forum-post">
-        <img
-          src="https://cdn.tgdd.vn/Files/2021/03/05/1332649/6-dieu-dang-mong-doi-o-sieu-pham-iphone-13-iphone-13-760x367.jpg"
-          alt="">
-        <div class="forum-post-content">
-          <h6>Iphone</h6>
-          <p>#Iphone</p>
+          <h6>{{itemF.Title}}</h6>
+          <p>{{itemF.Overview}}</p>
         </div>
       </div>
       <input type="button" value="Xem tất cả">
@@ -81,10 +38,10 @@
 
     </div>
     <div class="review-content2 row">
-      <div class="review-post meet col-3" *ngFor="let item of list | paginate: {itemsPerPage: 4, currentPage:p}">
-        <img src="{{item.img}}" alt="">
-        <h6>{{item.title}}</h6>
-        <p>{{item.content}}</p>
+      <div class="review-post meet col-3" *ngFor="let itemR of listReviewPost | paginate: {itemsPerPage: 4, currentPage:p}" id="{{itemR.Id}}">
+        <img [src]="itemR.Image||'https://4.bp.blogspot.com/-OCutvC4wPps/XfNnRz5PvhI/AAAAAAAAEfo/qJ8P1sqLWesMdOSiEoUH85s3hs_vn97HACLcBGAsYHQ/s1600/no-image-found-360x260.png'" alt="">
+        <h6>{{itemR.Title}}</h6>
+        <p>{{itemR.Overview}}</p>
       </div>
 
     </div>

@@ -15,6 +15,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { HeaderComponent } from './header/header.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { ShareExperienceComponent } from './share-experience/share-experience.component';
+import { StarComponent } from './star/star.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     PageNotFoundComponent,
     HeaderComponent,
     ProfileComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    ShareExperienceComponent,
+    StarComponent
   ],
   imports: [
     BrowserModule,

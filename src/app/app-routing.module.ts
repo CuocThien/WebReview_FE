@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { ShareExperienceComponent } from './share-experience/share-experience.component';
 
 const routes: Routes = [
 
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'signup', component: SignUpComponent, pathMatch: 'full' },
   { path: 'profile', component: ProfileComponent, pathMatch: 'full'},
   { path: 'change-password', component: ChangePasswordComponent, pathMatch: 'full'},
+  { path: 'share-experience', component: ShareExperienceComponent, pathMatch: 'full'},
 
   { path: '', redirectTo: '/index', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent},
@@ -44,5 +46,8 @@ export class AppRoutingModule {
   }
   changepassword(){
     this.router.navigate(['/change-password'])
+  }
+  shareExp(){
+    this.router.navigate(['/share-experience'])
   }
 }

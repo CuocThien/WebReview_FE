@@ -1,0 +1,107 @@
+.header{
+    background-color: #05152D;
+    height: 120px;
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+}
+h4{
+    color: #FFF;
+}
+button{
+    border-radius: 5px;
+    border: none;
+    padding: 5px 40px;
+    margin-top: 10px;
+}
+.container{
+    margin: auto;
+}
+.navbar{
+    display: block;
+    background-color: #F6F6F6;
+    padding: 0;
+}
+.navbar h5{
+    margin-top: 10px;
+    margin-left: 10px;
+    font-weight: 700;
+}
+.navbar ul{
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+.navbar ul li{
+    padding: 5px 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #AFAFAF;
+}
+.navbar ul li:first-child{
+    border-top: 1px solid #AFAFAF;
+}
+.navbar ul li:hover{
+    background-color: #87C0F3;
+    color: #FFF;
+}
+.active{
+    background-color: #87C0F3;
+    color: #FFF;
+}
+.listPost{
+    padding-top: 52px;
+    margin-left: 5px;
+}
+.post{
+    position: relative;
+    width: 100%;
+    height: 152px;
+    border: 1px solid #AFAFAF;
+    margin-bottom: 15px;
+}
+.post div img{
+    max-width: 100%;
+    max-height: 150px;
+    width: auto;
+    height: auto;
+    display: inline;
+}
+.post .col-3{
+    padding: 0;
+    margin: auto;
+}
+.post h5{
+    display: inline-block;
+}
+.author{
+    margin: 0;
+    position: absolute;
+    float: left;
+    bottom: 0;
+}
+app-star{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.listHotPost{
+    margin-top: 20px;
+}
+.container .col-3{
+    width: 24%;
+}
+.hotpost{
+    width: 100%;
+    height: 77px;
+    border-bottom: 1px solid #AFAFAF;
+    margin-bottom: 15px;
+}
+.hotpost div img{
+    max-width: 100%;
+    max-height: 77px;
+    width: auto;
+    height: auto;
+    display: inline;
+    border-radius: 5px;
+}
