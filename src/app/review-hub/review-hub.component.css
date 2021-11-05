@@ -21,15 +21,51 @@ button{
     margin-top: 10px;
 }
 .container{
-    margin: 20px auto;
-    width: 80%;
+    margin: 0 auto;
+}
+.navbar{
+    display: block;
+    background-color: #F6F6F6;
+    padding: 0;
+}
+.navbar h5{
+    margin-top: 10px;
+    margin-left: 10px;
+    font-weight: 700;
+}
+.navbar ul{
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+.navbar ul li{
+    padding: 5px 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #AFAFAF;
+}
+.navbar ul li:first-child{
+    border-top: 1px solid #AFAFAF;
+}
+.navbar ul li:hover{
+    background-color: #87C0F3;
+    color: #FFF;
+}
+.active{
+    background-color: #87C0F3;
+    color: #FFF;
+}
+.listPost{
+    padding-top: 52px;
 }
 .post{
     position: relative;
-    width: 100%;
+    width: 95%;
     height: 152px;
     border-bottom: 2px solid #AFAFAF;
     margin-bottom: 20px;
+    margin-left: 10px;
+    cursor: pointer;
 }
 .post div img{
     max-width: 100%;
@@ -56,4 +92,10 @@ app-star{
     position: absolute;
     bottom: 0;
     right: 0;
+}
+.pagination{
+    margin: auto;
+    text-align: center;
+    width: 100%;
+    display: inline;
 }

@@ -6,98 +6,35 @@
   <div class="navbar col-2">
     <h5>CHỦ ĐỀ</h5>
     <ul class="dropdown">
-      <li class="active"><a>Mẹo vặt cuộc sống</a></li>
-      <li><a>Bí quyết làm đẹp</a></li>
-      <li><a>Vào bếp</a></li>
-      <li><a>Mẹo hay công nghệ</a></li>
+      <li class="item" *ngFor="let category of categories" id="{{category.id}}" (click)="active($event);getPostByCategory($event)"><a>{{category.Name}}</a></li>
     </ul>
   </div>
   <div class="listPost col-7">
-    <div class="post row">
+    <div class="post row" *ngFor="let post of listPost | paginate: {itemsPerPage: 3, currentPage:p}" id="{{post.Id}}">
       <div class="col-3">
-        <img src="https://photo-cms-plo.zadn.vn/w800/Uploaded/2021/xqeioxmrke/2020_04_26/xoaigiupgiamcan_rqlj.jpg"
+        <img [src]="post.Image || 'https://4.bp.blogspot.com/-OCutvC4wPps/XfNnRz5PvhI/AAAAAAAAEfo/qJ8P1sqLWesMdOSiEoUH85s3hs_vn97HACLcBGAsYHQ/s1600/no-image-found-360x260.png'"
           alt="">
       </div>
       <div class="content col-9">
-        <h5>Mẹo bảo quản thực phẩm đúng cách</h5>
-        <p>Bảo quản thực phẩm trong tủ lạnh là cần thiết, tuy nhiên bạn đã bảo quản đúng cách chưa?</p>
-        <p class="author">nhuquynh123 - 16/10/2021</p>
-        <app-star id="SHAREPOST01" rate="4"></app-star>
+        <h5>{{post.Title}}</h5>
+        <p>{{post.Overview}}</p>
+        <p class="author">{{post.AccountId}} - {{post.CreateAt}}</p>
+        <app-star id="{{post.Id}}" rate="4"></app-star>
       </div>
     </div>
-    <div class="post row">
-      <div class="col-3">
-        <img src="https://photo-cms-plo.zadn.vn/w800/Uploaded/2021/xqeioxmrke/2020_04_26/xoaigiupgiamcan_rqlj.jpg"
-          alt="">
-      </div>
-      <div class="content col-9">
-        <h5>Mẹo bảo quản thực phẩm đúng cách</h5>
-        <p>Bảo quản thực phẩm trong tủ lạnh là cần thiết, tuy nhiên bạn đã bảo quản đúng cách chưa?</p>
-        <p class="author">nhuquynh123 - 16/10/2021</p>
-        <app-star id="SHAREPOST02" rate="1"></app-star>
-      </div>
-    </div>
-    <div class="post row">
-      <div class="col-3">
-        <img src="https://photo-cms-plo.zadn.vn/w800/Uploaded/2021/xqeioxmrke/2020_04_26/xoaigiupgiamcan_rqlj.jpg"
-          alt="">
-      </div>
-      <div class="content col-9">
-        <h5>Mẹo bảo quản thực phẩm đúng cách</h5>
-        <p>Bảo quản thực phẩm trong tủ lạnh là cần thiết, tuy nhiên bạn đã bảo quản đúng cách chưa?</p>
-        <p class="author">nhuquynh123 - 16/10/2021</p>
-        <app-star id="SHAREPOST03" rate="1"></app-star>
-      </div>
-    </div>
-    <div class="post row">
-      <div class="col-3">
-        <img src="https://photo-cms-plo.zadn.vn/w800/Uploaded/2021/xqeioxmrke/2020_04_26/xoaigiupgiamcan_rqlj.jpg"
-          alt="">
-      </div>
-      <div class="content col-9">
-        <h5>Mẹo bảo quản thực phẩm đúng cách</h5>
-        <p>Bảo quản thực phẩm trong tủ lạnh là cần thiết, tuy nhiên bạn đã bảo quản đúng cách chưa?</p>
-        <p class="author">nhuquynh123 - 16/10/2021</p>
-        <app-star id="SHAREPOST04"></app-star>
-      </div>
-    </div>
+    <pagination-controls class="pagination"
+    previousLabel="" 
+    nextLabel="" (pageChange)="p=$event"></pagination-controls>
   </div>
   <div class="listHotPost col-3">
     <h5>Top bài viết hay nhất</h5>
-    <div class="hotpost row">
+    <div class="hotpost row" *ngFor="let hotpost of listHotPost" id="{{hotpost.Id}}">
       <div class="col-5">
-        <img src="https://photo-cms-plo.zadn.vn/w800/Uploaded/2021/xqeioxmrke/2020_04_26/xoaigiupgiamcan_rqlj.jpg"
+        <img [src]="hotpost.Image || 'https://4.bp.blogspot.com/-OCutvC4wPps/XfNnRz5PvhI/AAAAAAAAEfo/qJ8P1sqLWesMdOSiEoUH85s3hs_vn97HACLcBGAsYHQ/s1600/no-image-found-360x260.png'"
           alt="">
       </div>
       <div class="hotpostcontent col-7">
-        <p>Mẹo bảo quản thực phẩm đúng cách</p>
-      </div>
-    </div>
-    <div class="hotpost row">
-      <div class="col-5">
-        <img src="https://photo-cms-plo.zadn.vn/w800/Uploaded/2021/xqeioxmrke/2020_04_26/xoaigiupgiamcan_rqlj.jpg"
-          alt="">
-      </div>
-      <div class="hotpostcontent col-7">
-        <p>Mẹo bảo quản thực phẩm đúng cách</p>
-      </div>
-    </div>
-    <div class="hotpost row">
-      <div class="col-5">
-        <img src="https://photo-cms-plo.zadn.vn/w800/Uploaded/2021/xqeioxmrke/2020_04_26/xoaigiupgiamcan_rqlj.jpg"
-          alt="">
-      </div>
-      <div class="hotpostcontent col-7">
-        <p>Mẹo bảo quản thực phẩm đúng cách</p>
-      </div>
-    </div>
-    <div class="hotpost row">
-      <div class="col-5">
-        <img src="https://photo-cms-plo.zadn.vn/w800/Uploaded/2021/xqeioxmrke/2020_04_26/xoaigiupgiamcan_rqlj.jpg"
-          alt="">
-      </div>
-      <div class="hotpostcontent col-7">
-        <p>Mẹo bảo quản thực phẩm đúng cách</p>
+        <p>{{hotpost.Title}}</p>
       </div>
     </div>
   </div>

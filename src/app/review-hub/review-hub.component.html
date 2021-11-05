@@ -5,41 +5,31 @@
     Đừng quên chia sẻ review của bạn khi đã trải nghiệm xong món đồ nhé!!!</h5>
   <button>+ Viết những chia sẻ của bạn</button>
 </div>
-<div class="container">
-  <div class="post row">
+<div class="container row">
+    <div class="navbar col-2">
+        <h5>CHỦ ĐỀ</h5>
+    <ul class="dropdown">
+      <li class="item" *ngFor="let category of categories" id="{{category.id}}" (click)="active($event);getPostByCategory($event)" ><a>{{category.Name}}</a></li>
+    </ul>
+    </div>
+    <div class="listPost col-10">
+  <div class="post row" *ngFor="let post of listPost | paginate: {itemsPerPage: 3, currentPage:p}" id="{{post.Id}}">
     <div class="col-3">
-      <img src="https://i.ytimg.com/vi/QrLaCaa2k80/maxresdefault.jpg" alt="">
+      <img [src]="post.Image || 'https://4.bp.blogspot.com/-OCutvC4wPps/XfNnRz5PvhI/AAAAAAAAEfo/qJ8P1sqLWesMdOSiEoUH85s3hs_vn97HACLcBGAsYHQ/s1600/no-image-found-360x260.png'" alt="">
     </div>
     <div class="content col-9">
-      <h5>Trên tay đèn cảnh báo nguy hiểm đa năng, khá hữu ích cho các tài xế hay chạy đêm</h5>
-      <p>Một cái đèn cảnh báo nguy hiểm hình tam giác với rất nhiều tính năng hữu ích dành cho các bạn chạy xe, nhất là
-        những lúc gặp sự cố hay cần ánh sáng kiểm tra xe vào ban đêm</p>
-      <p class="author">nhuquynh123 - 16/10/2021</p>
-      <app-star id="REVIEWPOST01" rate="4"></app-star>
+      <h5>{{post.Title}}</h5>
+      <p>{{post.Overview}}</p>
+      <p class="author">{{post.AccountId}} - {{post.CreateAt}}</p>
+      <app-star id="{{post.Id}}" rate="4"></app-star>
     </div>
   </div>
-  <div class="post row">
-    <div class="col-3">
-      <img src="https://i.ytimg.com/vi/QrLaCaa2k80/maxresdefault.jpg" alt="">
-    </div>
-    <div class="content col-9">
-      <h5>Trên tay đèn cảnh báo nguy hiểm đa năng, khá hữu ích cho các tài xế hay chạy đêm</h5>
-      <p>Một cái đèn cảnh báo nguy hiểm hình tam giác với rất nhiều tính năng hữu ích dành cho các bạn chạy xe, nhất là
-        những lúc gặp sự cố hay cần ánh sáng kiểm tra xe vào ban đêm</p>
-      <p class="author">nhuquynh123 - 16/10/2021</p>
-      <app-star id="REVIEWPOST02" rate="5"></app-star>
-    </div>
-  </div>
-  <div class="post row">
-    <div class="col-3">
-      <img src="https://i.ytimg.com/vi/QrLaCaa2k80/maxresdefault.jpg" alt="">
-    </div>
-    <div class="content col-9">
-      <h5>Trên tay đèn cảnh báo nguy hiểm đa năng, khá hữu ích cho các tài xế hay chạy đêm</h5>
-      <p>Một cái đèn cảnh báo nguy hiểm hình tam giác với rất nhiều tính năng hữu ích dành cho các bạn chạy xe, nhất là
-        những lúc gặp sự cố hay cần ánh sáng kiểm tra xe vào ban đêm</p>
-      <p class="author">nhuquynh123 - 16/10/2021</p>
-      <app-star id="REVIEWPOST03" rate="3"></app-star>
-    </div>
-  </div>
+  <pagination-controls class="pagination"
+    previousLabel="" 
+    nextLabel="" (pageChange)="p=$event"></pagination-controls>
 </div>
+</div>
+<script>
+
+$('.dropdown li:first').addClass('active');
+</script>

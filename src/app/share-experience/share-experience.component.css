@@ -51,14 +51,17 @@ button{
 }
 .listPost{
     padding-top: 52px;
-    margin-left: 5px;
+    margin: auto;
 }
 .post{
     position: relative;
     width: 100%;
     height: 152px;
     border: 1px solid #AFAFAF;
+    margin: auto;
     margin-bottom: 15px;
+    cursor: pointer;
+    
 }
 .post div img{
     max-width: 100%;
@@ -96,6 +99,7 @@ app-star{
     height: 77px;
     border-bottom: 1px solid #AFAFAF;
     margin-bottom: 15px;
+    cursor: pointer;
 }
 .hotpost div img{
     max-width: 100%;
@@ -104,4 +108,11 @@ app-star{
     height: auto;
     display: inline;
     border-radius: 5px;
+}
+
+.pagination{
+    margin: auto;
+    text-align: center;
+    width: 100%;
+    display: inline;
 }

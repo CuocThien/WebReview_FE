@@ -11,6 +11,7 @@
 a,h5 { display: inline;cursor: pointer;}
 .share-experience > .intro > a{
     float: right;
+    color: #198CF6;
 }
 .intro{
     margin-bottom: 10px;

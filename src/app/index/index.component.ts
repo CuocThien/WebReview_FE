@@ -20,19 +20,16 @@ export class IndexComponent implements OnInit {
     this.service.getReviewPost()
     .then(res=>{this.listReviewPost=res;
       this.listReviewPost=this.listReviewPost.data.topreview;
-      console.log(this.listReviewPost);
     });
 
     this.service.getShareExpPost()
     .then(res=>{this.listShareExpPost=res;
       this.listShareExpPost = this.listShareExpPost.data.topexp;
-      console.log(this.listShareExpPost);
     })
 
     this.service.getForumPost()
     .then(res=>{this.listForumPost=res;
       this.listForumPost = this.listForumPost.data.topfrm;
-      console.log(this.listForumPost)
     })
   }
   shareExp(){
