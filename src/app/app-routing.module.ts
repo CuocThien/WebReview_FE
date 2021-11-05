@@ -9,6 +9,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ProfileComponent } from './profile/profile.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { ShareExperienceComponent } from './share-experience/share-experience.component';
+import { ReviewHubComponent } from './review-hub/review-hub.component';
 
 const routes: Routes = [
 
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent, pathMatch: 'full'},
   { path: 'change-password', component: ChangePasswordComponent, pathMatch: 'full'},
   { path: 'share-experience', component: ShareExperienceComponent, pathMatch: 'full'},
+  { path: 'review-hub', component: ReviewHubComponent, pathMatch: 'full'},
 
   { path: '', redirectTo: '/index', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent},
@@ -49,5 +51,8 @@ export class AppRoutingModule {
   }
   shareExp(){
     this.router.navigate(['/share-experience'])
+  }
+  reviewHub(){
+    this.router.navigate(['/review-hub'])
   }
 }

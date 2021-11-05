@@ -38,4 +38,7 @@ export class IndexComponent implements OnInit {
   shareExp(){
     this.router.shareExp();
   }
+  reviewHub(){
+    this.router.reviewHub();
+  }
 }

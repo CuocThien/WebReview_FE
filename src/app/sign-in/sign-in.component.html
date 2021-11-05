@@ -1,60 +1,59 @@
-
 <body>
-    <div class="container">
-        <h3>Đăng nhập tài khoản</h3>
-        <button id="btn-cancel" routerLink="/index"><img src="https://img.icons8.com/ios/30/000000/cancel.png" /></button>
-        <hr>
-        <form (ngSubmit)="onSubmit(formSignIn);" #formSignIn="ngForm" class="form">
-            <img src="../../assets/img/logo5.png" alt="logo-web" id="logo">
-            <input type="text" placeholder="Tên tài khoản hoặc Email" ngModel name="UserName" required>
-            <input type="password" placeholder="Mật khẩu" ngModel name="PassWord" id="password"  required>
-            <span id="forgot-password" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">Quên mật khẩu?</span>
-            <button id="btn-signIn">ĐĂNG NHẬP</button>
-        </form>
-        <div class="strike">
-            <span>Hoặc</span>
-        </div>
-        <button class="btn-socialMedia" id="btn-google"><img id="logo-btn"
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2048px-Google_%22G%22_Logo.svg.png"
-                alt="">
-            <span>Đăng nhập bằng Google</span>
-        </button>
-        <button class="btn-socialMedia" id="btn-facebook"><img id="logo-btn"
-                src="https://cdn.pixabay.com/photo/2015/05/17/10/51/facebook-770688_960_720.png" alt="">
-            <span>Đăng nhập bằng Facebook</span>
-        </button>
-        <div class="register">
-            <span>Chưa có tài khoản?</span> <a routerLink="/signup">Đăng kí</a>
-        </div>
+  <div class="container">
+    <h3>Đăng nhập tài khoản</h3>
+    <button id="btn-cancel" routerLink="/index"><img src="https://img.icons8.com/ios/30/000000/cancel.png" /></button>
+    <hr>
+    <form (ngSubmit)="onSubmit(formSignIn);" #formSignIn="ngForm" class="form">
+      <img src="../../assets/img/logo5.png" alt="logo-web" id="logo">
+      <input type="text" placeholder="Tên tài khoản hoặc Email" ngModel name="UserName" required>
+      <input type="password" placeholder="Mật khẩu" ngModel name="PassWord" id="password" required>
+      <span id="forgot-password" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">Quên mật khẩu?</span>
+      <button id="btn-signIn">ĐĂNG NHẬP</button>
+    </form>
+    <div class="strike">
+      <span>Hoặc</span>
     </div>
-  
+    <button class="btn-socialMedia" id="btn-google"><img id="logo-btn"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2048px-Google_%22G%22_Logo.svg.png"
+        alt="">
+      <span>Đăng nhập bằng Google</span>
+    </button>
+    <button class="btn-socialMedia" id="btn-facebook"><img id="logo-btn"
+        src="https://cdn.pixabay.com/photo/2015/05/17/10/51/facebook-770688_960_720.png" alt="">
+      <span>Đăng nhập bằng Facebook</span>
+    </button>
+    <div class="register">
+      <span>Chưa có tài khoản?</span> <a routerLink="/signup">Đăng kí</a>
+    </div>
+  </div>
+
   <!-- The Modal -->
   <div class="modal fade" id="forgotPasswordModal">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <form (ngSubmit)="getNewPassword(formForgotPassword)" #formForgotPassword="ngForm" class="form">
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Quên mật khẩu</h4>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-        
-        <!-- Modal body -->
-        <div class="modal-body">
-          Nhập email đã đăng ký cho tài khoản để nhận mật khẩu mới!!!
-          <br><br>
-          
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Quên mật khẩu</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
 
-          <input type="text" placeholder="Nhập email" ngModel name="Email" required>
-         
-        </div>
-  
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Đóng</button>
-          <button type="submit" class="btn btn-success" data-bs-dismiss="modal">Xác nhận</button>
-        </div>
-      </form>
+          <!-- Modal body -->
+          <div class="modal-body">
+            Nhập email đã đăng ký cho tài khoản để nhận mật khẩu mới!!!
+            <br><br>
+
+
+            <input type="text" placeholder="Nhập email" ngModel name="Email" required>
+
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Đóng</button>
+            <button type="submit" class="btn btn-success" data-bs-dismiss="modal">Xác nhận</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>

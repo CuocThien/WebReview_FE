@@ -17,6 +17,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { ShareExperienceComponent } from './share-experience/share-experience.component';
 import { StarComponent } from './star/star.component';
+import { ReviewHubComponent } from './review-hub/review-hub.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { StarComponent } from './star/star.component';
     ProfileComponent,
     ChangePasswordComponent,
     ShareExperienceComponent,
-    StarComponent
+    StarComponent,
+    ReviewHubComponent
   ],
   imports: [
     BrowserModule,
