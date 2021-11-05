@@ -18,6 +18,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { ShareExperienceComponent } from './share-experience/share-experience.component';
 import { StarComponent } from './star/star.component';
 import { ReviewHubComponent } from './review-hub/review-hub.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ReviewHubComponent } from './review-hub/review-hub.component';
     ChangePasswordComponent,
     ShareExperienceComponent,
     StarComponent,
-    ReviewHubComponent
+    ReviewHubComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

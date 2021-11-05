@@ -1,0 +1,57 @@
+.container-fluid{
+    background-color: #202126;
+    height: 200px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.member {
+    padding: 18px 0;
+    padding-left: 150px;
+}
+.member h5{
+    margin-bottom: 15px;
+}
+.contact{
+    padding: 18px 0;
+}
+h5{
+    color: #FFF;
+    margin: 10px 0;
+    font-family: "Poppins", sans-serif;
+}
+p{
+    color: #888888;
+    font-family: "Source Serif Pro", serif;
+    padding: 0;
+    
+    margin: 5px 0;
+}
+.phone a{
+    display: block;
+    margin: 5px 0;
+    text-decoration: none;
+    color: #888888;
+    font-family: "Poppins", sans-serif;
+}
+.phone a img{
+    margin-right: 5px;
+}
+.contact a{
+    display: block;
+    margin: 5px 0;
+    text-decoration: none;
+    color: #888888;
+    font-family: "Poppins", sans-serif;
+}
+.contact a img{
+    margin-right: 5px;
+}
+.avatar{
+    padding-left: 75px;
+}
+.avatar img{
+    width: 90px;
+    height: 90px;
+    margin: 4px;
+}
