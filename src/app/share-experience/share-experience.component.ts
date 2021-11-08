@@ -21,17 +21,16 @@ export class ShareExperienceComponent implements OnInit {
       this.categories=this.categories.data;
     })
 
-    this.indexService.getShareExpPost().then(res=>{
+    this.service.getShareExpPost().then(res=>{
       this.listPost=res;
-      this.listPost=this.listPost.data.experience
+      this.listPost=this.listPost.data
       console.log(this.listPost)
     })
     .catch(err=>console.log(err))
 
-    this.indexService.getShareExpPost().then(res=>{
+    this.indexService.getPost().then(res=>{
       this.listHotPost=res;
       this.listHotPost=this.listHotPost.data.topexp
-      console.log(this.listHotPost)
     })
     .catch(err=>console.log(err))
 

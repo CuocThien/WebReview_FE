@@ -9,7 +9,7 @@ import { ReviewService } from './review-hub.service';
   providers: [ReviewService, IndexService]
 })
 export class ReviewHubComponent implements OnInit {
-  constructor(private service:ReviewService, private renderer:Renderer2,private indexService:IndexService) { }
+  constructor(private service:ReviewService, private renderer:Renderer2) { }
   categories:any;
   listPost:any;
   p:number = 1;
@@ -19,10 +19,10 @@ export class ReviewHubComponent implements OnInit {
       this.categories=this.categories.data;
       
     })
-    this.indexService.getReviewPost()
+    this.service.getReviewPost()
     .then(res=>{
       this.listPost=res;
-      this.listPost=this.listPost.data.review
+      this.listPost=this.listPost.data
       console.log(this.listPost)
     })
     .catch(err=>console.log(err))

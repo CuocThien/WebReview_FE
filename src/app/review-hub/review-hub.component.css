@@ -87,11 +87,20 @@ button{
     position: absolute;
     float: left;
     bottom: 0;
+    font-style: italic;
 }
 app-star{
     position: absolute;
     bottom: 0;
     right: 0;
+}
+.avg-star{
+    max-height: 20px;
+    text-align: center;
+    color: gold;
+}
+.star{
+color: gold;
 }
 .pagination{
     margin: auto;

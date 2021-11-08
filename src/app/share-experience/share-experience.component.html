@@ -10,16 +10,17 @@
     </ul>
   </div>
   <div class="listPost col-7">
-    <div class="post row" *ngFor="let post of listPost | paginate: {itemsPerPage: 3, currentPage:p}" id="{{post.Id}}">
+    <div class="post row" *ngFor="let post of listPost | paginate: {itemsPerPage: 3, currentPage:p}" id="{{post.dataPost.Id}}">
       <div class="col-3">
-        <img [src]="post.Image || 'https://4.bp.blogspot.com/-OCutvC4wPps/XfNnRz5PvhI/AAAAAAAAEfo/qJ8P1sqLWesMdOSiEoUH85s3hs_vn97HACLcBGAsYHQ/s1600/no-image-found-360x260.png'"
+        <img [src]="post.dataPost.Image || 'https://4.bp.blogspot.com/-OCutvC4wPps/XfNnRz5PvhI/AAAAAAAAEfo/qJ8P1sqLWesMdOSiEoUH85s3hs_vn97HACLcBGAsYHQ/s1600/no-image-found-360x260.png'"
           alt="">
+          <p class="avg-star">{{post.Rating.AvgRate}}<span class="star">★</span></p>
       </div>
       <div class="content col-9">
-        <h5>{{post.Title}}</h5>
-        <p>{{post.Overview}}</p>
-        <p class="author">{{post.AccountId}} - {{post.CreateAt}}</p>
-        <app-star id="{{post.Id}}" rate="4"></app-star>
+        <h5>{{post.dataPost.Title}}</h5>
+        <p>{{post.dataPost.Overview}}</p>
+        <p class="author">{{post.dataPost.AccountId}} - {{post.dataPost.CreateAt|date:'HH:mm dd/MM/yyyy'}}</p>
+        <app-star id="{{post.dataPost.Id}}" [rate]="post.RatingbyAcc.Rate || 0"></app-star>
       </div>
     </div>
     <pagination-controls class="pagination"
@@ -28,13 +29,13 @@
   </div>
   <div class="listHotPost col-3">
     <h5>Top bài viết hay nhất</h5>
-    <div class="hotpost row" *ngFor="let hotpost of listHotPost" id="{{hotpost.Id}}">
+    <div class="hotpost row" *ngFor="let hotpost of listHotPost" id="{{hotpost.dataPost.Id}}">
       <div class="col-5">
-        <img [src]="hotpost.Image || 'https://4.bp.blogspot.com/-OCutvC4wPps/XfNnRz5PvhI/AAAAAAAAEfo/qJ8P1sqLWesMdOSiEoUH85s3hs_vn97HACLcBGAsYHQ/s1600/no-image-found-360x260.png'"
+        <img [src]="hotpost.dataPost.Image || 'https://4.bp.blogspot.com/-OCutvC4wPps/XfNnRz5PvhI/AAAAAAAAEfo/qJ8P1sqLWesMdOSiEoUH85s3hs_vn97HACLcBGAsYHQ/s1600/no-image-found-360x260.png'"
           alt="">
       </div>
       <div class="hotpostcontent col-7">
-        <p>{{hotpost.Title}}</p>
+        <p>{{hotpost.dataPost.Title}}</p>
       </div>
     </div>
   </div>

@@ -10,22 +10,28 @@ export class IndexService {
 
     }
     result:any;
-    getReviewPost() {
-        const url = 'https://oggy-webreview.herokuapp.com/post/review/getPost';
-        const headers = new HttpHeaders({ 'Content-Type': 'application/json'})
-        return this.http.get(url, { headers })
-            .toPromise();
-    }
-    getShareExpPost() {
-        const url = 'https://oggy-webreview.herokuapp.com/post/experience/getPost';
-        const headers = new HttpHeaders({ 'Content-Type': 'application/json'})
-        return this.http.get(url, { headers })
-            .toPromise();
-    }
     getForumPost() {
         const url = 'https://oggy-webreview.herokuapp.com/post/forum/getPost';
-        const headers = new HttpHeaders({ 'Content-Type': 'application/json'})
-        return this.http.get(url, { headers })
+        if(this.cookieService.get("authToken")==null){
+            const headers = new HttpHeaders({ 'Content-Type': 'application/json'})
+            return this.http.get(url, { headers })
             .toPromise();
+        }else{
+            const headers = new HttpHeaders({ 'Content-Type': 'application/json','Authorization':'Bearer '+this.cookieService.get("authToken")})
+            return this.http.get(url, { headers })
+            .toPromise();
+        }
     }
+    getPost() {
+            const url = 'https://oggy-webreview.herokuapp.com/post/getPost';
+            if(this.cookieService.get("authToken")==""){
+                const headers = new HttpHeaders({ 'Content-Type': 'application/json'})
+                return this.http.get(url, { headers })
+                .toPromise();
+            }else{
+                const headers = new HttpHeaders({ 'Content-Type': 'application/json','Authorization':'Bearer '+this.cookieService.get("authToken")})
+                return this.http.get(url, { headers })
+                .toPromise();
+            }
+        }
 }

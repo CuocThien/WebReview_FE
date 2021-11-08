@@ -17,20 +17,16 @@ export class IndexComponent implements OnInit {
   constructor(private service:IndexService, private router:AppRoutingModule) { }
 
   ngOnInit(): void {
-    this.service.getReviewPost()
-    .then(res=>{this.listReviewPost=res;
+    this.service.getPost()
+    .then(res=>{
+      this.listReviewPost=res;
+      this.listShareExpPost=res;
+      this.listForumPost=res;
       this.listReviewPost=this.listReviewPost.data.topreview;
-    });
-
-    this.service.getShareExpPost()
-    .then(res=>{this.listShareExpPost=res;
-      this.listShareExpPost = this.listShareExpPost.data.topexp;
+      this.listShareExpPost=this.listShareExpPost.data.topexp;
+      this.listForumPost=this.listForumPost.data.topfrm;
     })
-
-    this.service.getForumPost()
-    .then(res=>{this.listForumPost=res;
-      this.listForumPost = this.listForumPost.data.topfrm;
-    })
+    .catch(err=>console.log(err))
   }
   shareExp(){
     this.router.shareExp();

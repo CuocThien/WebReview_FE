@@ -9,16 +9,40 @@ export class ShareExperienceService {
     constructor(private http: HttpClient, private toastr:ToastrService, private cookieService:CookieService) {
 
     }
-    getShareExpCategory() {
-        const url = 'https://oggy-webreview.herokuapp.com/post/experience/getCategory';
-        const headers = new HttpHeaders({ 'Content-Type': 'application/json'})
-        return this.http.get(url, { headers })
+    getShareExpPost() {
+        const url = 'https://oggy-webreview.herokuapp.com/post/getPost/Experience';
+        if(this.cookieService.get("authToken")==""){
+            const headers = new HttpHeaders({ 'Content-Type': 'application/json'})
+            return this.http.get(url, { headers })
             .toPromise();
+        }else{
+            const headers = new HttpHeaders({ 'Content-Type': 'application/json','Authorization':'Bearer '+this.cookieService.get("authToken")})
+            return this.http.get(url, { headers })
+            .toPromise();
+        }
+    }
+    getShareExpCategory() {
+        const url = 'https://oggy-webreview.herokuapp.com/post/getCategory/EXP';
+        if(this.cookieService.get("authToken")==""){
+            const headers = new HttpHeaders({ 'Content-Type': 'application/json'})
+            return this.http.get(url, { headers })
+            .toPromise();
+        }else{
+            const headers = new HttpHeaders({ 'Content-Type': 'application/json','Authorization':'Bearer '+this.cookieService.get("authToken")})
+            return this.http.get(url, { headers })
+            .toPromise();
+        }
     }
     getPostByCategory(id:any){
-        const url = 'https://oggy-webreview.herokuapp.com/post/experience/getPost/'+id;
-        const headers = new HttpHeaders({ 'Content-Type': 'application/json'})
-        return this.http.get(url, { headers })
+        const url = 'https://oggy-webreview.herokuapp.com/post/getPost/Experience/'+id;
+        if(this.cookieService.get("authToken")==""){
+            const headers = new HttpHeaders({ 'Content-Type': 'application/json'})
+            return this.http.get(url, { headers })
             .toPromise();
+        }else{
+            const headers = new HttpHeaders({ 'Content-Type': 'application/json','Authorization':'Bearer '+this.cookieService.get("authToken")})
+            return this.http.get(url, { headers })
+            .toPromise();
+        }
     }
 }
