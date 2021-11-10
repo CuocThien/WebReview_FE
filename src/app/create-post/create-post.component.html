@@ -1,0 +1,15 @@
+<form (ngSubmit)="onSubmit(form);" #form="ngForm" style="height: 700px;">
+      <ckeditor
+        #editor
+        [config]="ckeConfig"
+        [(ngModel)]="model.description"
+        id="description"
+        name="description">
+      </ckeditor>
+  
+    <button type="submit">Submit</button>
+</form>
+<img style="width: 100px;height: 100px;" src="https://ckeditor.com/apps/ckfinder/userfiles/images/background-%C4%91e%CC%A3p-3-1.jpg" alt="">
+<img style="width: 100px;height: 100px;" src="https://ckeditor.com/apps/ckfinder/userfiles/images/icon.png" alt="">
+<img style="width: 100px;height: 100px;" src="https://ckeditor.com/apps/ckfinder/userfiles/images/cbc22ca5a3d7568a742262639a9f6b3f.jpg" alt="">
+<img style="width: 100px;height: 100px;" src="https://ckeditor.com/apps/ckfinder/userfiles/images/Thien/me.jpg" alt="">

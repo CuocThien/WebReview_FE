@@ -10,6 +10,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { ShareExperienceComponent } from './share-experience/share-experience.component';
 import { ReviewHubComponent } from './review-hub/review-hub.component';
+import { CreatePostComponent } from './create-post/create-post.component';
 
 const routes: Routes = [
 
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'change-password', component: ChangePasswordComponent, pathMatch: 'full'},
   { path: 'share-experience', component: ShareExperienceComponent, pathMatch: 'full'},
   { path: 'review-hub', component: ReviewHubComponent, pathMatch: 'full'},
+  { path: 'create-post', component: CreatePostComponent, pathMatch: 'full'},
 
   { path: '', redirectTo: '/index', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent},

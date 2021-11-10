@@ -19,6 +19,8 @@ import { ShareExperienceComponent } from './share-experience/share-experience.co
 import { StarComponent } from './star/star.component';
 import { ReviewHubComponent } from './review-hub/review-hub.component';
 import { FooterComponent } from './footer/footer.component';
+import { CreatePostComponent } from './create-post/create-post.component';
+import { CKEditorModule } from 'ckeditor4-angular';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { FooterComponent } from './footer/footer.component';
     ShareExperienceComponent,
     StarComponent,
     ReviewHubComponent,
-    FooterComponent
+    FooterComponent,
+    CreatePostComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +52,8 @@ import { FooterComponent } from './footer/footer.component';
       
     }),
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    CKEditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
