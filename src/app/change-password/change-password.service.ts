@@ -2,11 +2,12 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { CookieService } from "ngx-cookie-service";
 import { ToastrService } from "ngx-toastr";
+import { AppRoutingModule } from "../app-routing.module";
 
 @Injectable()
 
 export class ChangePasswordService {
-    constructor(private http: HttpClient, private toastr:ToastrService, private cookieService:CookieService) {
+    constructor(private http: HttpClient, private toastr:ToastrService, private cookieService:CookieService, private router:AppRoutingModule) {
 
     }
     result:any;
@@ -16,7 +17,11 @@ export class ChangePasswordService {
         const body = JSON.stringify(value);
         return this.http.post(url, body, { headers })
             .toPromise()
-            .then(res=>{this.result=res;this.toastr.success(this.result.msg)})
+            .then(res=>{
+                this.result=res;
+                this.toastr.success(this.result.msg);
+                this.cookieService.deleteAll();
+                this.router.signin();})
             .catch(err=>this.toastr.error(err.error.msg));
     }
 }

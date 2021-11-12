@@ -33,7 +33,6 @@ export class ProfileComponent implements OnInit {
   onSubmit(formUpdateProfile:any){
     this.data=formUpdateProfile.value;
     this.data["Avatar"]=this.imageSrc;
-    console.log(this.data)
     this.service.updateUser(this.data);
   }
   readURL(event: any): void {

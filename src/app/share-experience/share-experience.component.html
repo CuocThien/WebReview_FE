@@ -14,13 +14,13 @@
       <div class="col-3">
         <img [src]="post.dataPost.Image || 'https://4.bp.blogspot.com/-OCutvC4wPps/XfNnRz5PvhI/AAAAAAAAEfo/qJ8P1sqLWesMdOSiEoUH85s3hs_vn97HACLcBGAsYHQ/s1600/no-image-found-360x260.png'"
           alt="">
-          <p class="avg-star">{{post.Rating.AvgRate}}<span class="star">★</span></p>
+          <p class="avg-star">{{post.Rating.AvgRate}}<span class="star">★</span> | {{post.Rating.count || 0}} bài đánh giá</p>
       </div>
       <div class="content col-9">
         <h5>{{post.dataPost.Title}}</h5>
         <p>{{post.dataPost.Overview}}</p>
         <p class="author">{{post.dataPost.AccountId}} - {{post.dataPost.CreateAt|date:'HH:mm dd/MM/yyyy'}}</p>
-        <app-star id="{{post.dataPost.Id}}" [rate]="post.RatingbyAcc.Rate || 0"></app-star>
+        <app-star id="{{post.dataPost.Id}}" [rate]="post.RatingbyAcc || 0"></app-star>
       </div>
     </div>
     <pagination-controls class="pagination"

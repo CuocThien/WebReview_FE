@@ -11,6 +11,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { ShareExperienceComponent } from './share-experience/share-experience.component';
 import { ReviewHubComponent } from './review-hub/review-hub.component';
 import { CreatePostComponent } from './create-post/create-post.component';
+import { ForumsComponent } from './forums/forums.component';
 
 const routes: Routes = [
 
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'change-password', component: ChangePasswordComponent, pathMatch: 'full'},
   { path: 'share-experience', component: ShareExperienceComponent, pathMatch: 'full'},
   { path: 'review-hub', component: ReviewHubComponent, pathMatch: 'full'},
+  { path: 'forums', component: ForumsComponent, pathMatch: 'full'},
   { path: 'create-post', component: CreatePostComponent, pathMatch: 'full'},
 
   { path: '', redirectTo: '/index', pathMatch: 'full' },
@@ -56,5 +58,8 @@ export class AppRoutingModule {
   }
   reviewHub(){
     this.router.navigate(['/review-hub'])
+  }
+  forums(){
+    this.router.navigate(['/forums'])
   }
 }

@@ -22,7 +22,7 @@ export class ReviewService {
         }
     }
     getReviewCategory() {
-        const url = 'https://oggy-webreview.herokuapp.com/post/getCategory/RV';
+        const url = 'https://oggy-webreview.herokuapp.com/post/getCategory/Review';
         if(this.cookieService.get("authToken")==""){
             const headers = new HttpHeaders({ 'Content-Type': 'application/json'})
             return this.http.get(url, { headers })

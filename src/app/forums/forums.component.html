@@ -1,0 +1,91 @@
+<div class="container-fluid row">
+    <div class="navbar col-3">
+        <h5>CHỦ ĐỀ</h5>
+        <ul class="dropdown">
+          <!-- <li class="item" *ngFor="let category of categories" id="{{category.id}}" (click)="active($event);getPostByCategory($event)" ><a>{{category.Name}}</a></li> -->
+          <li class="item" id="Windows" (click)="active($event)"><a>Windows</a></li>
+          <li class="item" id="IP" (click)="active($event)"><a>Iphone</a></li>
+          <li class="item" id="x" (click)="active($event)"><a>Phụ kiện</a></li>
+          <li class="item" id="y" (click)="active($event)"><a>Sức khoẻ</a></li>
+        </ul>
+    </div>
+    <div class="body col-6">
+        <div class="create-post">
+            <h4>Tạo thảo luận</h4><hr>
+            <form>
+                <img src="../../assets/img/me.jpg" alt="">
+                <input type="text" placeholder="Viết những gì bạn muốn hỏi hoặc chia sẻ...">
+            </form>
+        </div>
+        <div class="post">
+            <div class="author row">
+                <div class="col-1">
+                    <img src="../../assets/img/me.jpg" alt="">
+                </div>
+                
+                <div class="col-10">
+                    <h6>cuocthien2210</h6><br>
+                    <span><i>16:20 16/10/2021</i></span>
+                </div>
+            </div>
+            <div class="content">
+                <p>Chào mọi người. Mình có một con lap có tpm 2.0 nhưng chạy intel gen 6th nên không được hỗ trợ cập nhật lên Windows 11 chính thức thông qua Windows update. Mình là một đứa mù công nghệ và mong muốn được trải nghiện phiên bản Windows mới nhất. Tìm hiểu trên mạng thì có cách nâng cấp qua file iso và khi tải về phải xóa cái file gì gì đó rồi mới bắt đầu cài. Cho mình hỏi việc nâng cấp như vậy có mất dữ liệu, ứng dụng cũ và có phát sinh lỗi nặng, ảnh hưởng đến quá trình sử dụng nhiều không vì mình dùng máy cho công việc.</p>
+            </div>
+            <div class="rating">
+                <h6>Đánh giá bài viết</h6>
+                <app-star></app-star>
+            </div>
+            <hr>
+            <p>2 bình luận</p>
+            <hr>
+            <div class="comment">
+                <div class="create-comment row">
+                    <div class="col-1">
+                        <img src="../../assets/img/me.jpg" alt="">
+                    </div>
+                    <div class="col-11">
+                        <textarea name="" id="" placeholder="Viết bình luận..." rows="4" class="col-10"></textarea>
+                    </div>
+                </div>
+                <div class="list-comment">
+                    <div class="user-comment row">
+                        <div class="col-1">
+                            <img src="../../assets/img/nu.jpg" alt="">
+                        </div>
+                        <div class="user-cmt-content col-11">
+                            <h6>nhuquynh123</h6>
+                            <p>Hình như gen 6 vẫn đc hổ trợ nâng cấp lên W11 đc bạn ạ ... Xem lại ổ cứng phải còn trống ít nhất là 65 Gb nhé ...</p>
+                            <a (click)="turnOnReply()">Trả lời</a>
+                        </div>
+                        <div class="create-reply row">
+                            <div class="line col-1"></div>
+                            <div class="col-1">
+                                <img src="../../assets/img/me.jpg" alt="">
+                            </div>
+                            <div class="col-10">
+                                <textarea name="" id="" placeholder="Viết bình luận..." rows="4" class="col-10"></textarea>
+                            </div>
+                        </div>
+                        <div class="reply row">
+                            <div class="line col-1"></div>
+                            <div class="user-comment-reply col-11 row">
+                                <div class="col-1">
+                                    <img src="../../assets/img/me.jpg" alt="">
+                                </div>
+                                <div class="user-reply-cmt-content col-11">
+                                    <h6>cuocthien2210</h6>
+                                    <p>CỦM ƠN</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="category col-3">
+        <img src="https://genk.mediacdn.vn/139269124445442048/2021/8/30/windows-111920herolatest-1630314295703675177718.jpg" alt="">
+        <h5>Windows</h5>
+        <p>100 bài viết</p>
+    </div>
+</div>

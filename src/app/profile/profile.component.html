@@ -9,7 +9,7 @@
             <input type="text" placeholder="Họ và Tên" ngModel name="FullName" [(ngModel)]="user.FullName" required>
             <input type="date" [(ngModel)]="DOB" name="DOB" required>
             <input type="text" placeholder="Địa chỉ"  [(ngModel)]="user.Address" name="Address" required>
-            <input type="text" value="{{user.Email}}"  name="Email" disabled>
+            <input type="text" [(ngModel)]="user.Email" name="Email" required>
             <button class="btn-update">CẬP NHẬT</button>
         </form>
     </div>
