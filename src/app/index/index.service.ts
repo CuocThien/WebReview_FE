@@ -10,18 +10,6 @@ export class IndexService {
 
     }
     result:any;
-    getForumPost() {
-        const url = 'https://oggy-webreview.herokuapp.com/post/forum/getPost';
-        if(this.cookieService.get("authToken")==null){
-            const headers = new HttpHeaders({ 'Content-Type': 'application/json'})
-            return this.http.get(url, { headers })
-            .toPromise();
-        }else{
-            const headers = new HttpHeaders({ 'Content-Type': 'application/json','Authorization':'Bearer '+this.cookieService.get("authToken")})
-            return this.http.get(url, { headers })
-            .toPromise();
-        }
-    }
     getPost() {
             const url = 'https://oggy-webreview.herokuapp.com/post/getPost';
             if(this.cookieService.get("authToken")==""){

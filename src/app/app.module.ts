@@ -22,6 +22,8 @@ import { FooterComponent } from './footer/footer.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { CKEditorModule } from 'ckeditor4-angular';
 import { ForumsComponent } from './forums/forums.component';
+import { CommentComponent } from './comment/comment.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { ForumsComponent } from './forums/forums.component';
     ReviewHubComponent,
     FooterComponent,
     CreatePostComponent,
-    ForumsComponent
+    ForumsComponent,
+    CommentComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

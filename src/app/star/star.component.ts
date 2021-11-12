@@ -16,15 +16,13 @@ export class StarComponent implements OnInit {
   constructor(private renderer:Renderer2) { }
 
   ngOnInit(): void {
-    // console.log(this.rate)
-    let name=this.id+"_"+this.rate;
-    this.rate=4;
-    this.star()
   }
-  
-  star(){
-    console.log("aaa")
-    
+  ngAfterViewInit(){
+    if(this.rate!=0){
+    let name=this.id+"_"+this.rate;
+    this.x = document.getElementById(name);
+    this.x.checked=true;
+    }
   }
 
   rating(event:any){

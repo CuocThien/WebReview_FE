@@ -1,19 +1,44 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
+import { SignInService } from '../sign-in/sign-in.service';
+import { ForumsService } from './forums.service';
 
 @Component({
   selector: 'app-forums',
   templateUrl: './forums.component.html',
-  styleUrls: ['./forums.component.css']
+  styleUrls: ['./forums.component.css'],
+  providers: [ForumsService,SignInService]
 })
 export class ForumsComponent implements OnInit {
 
-  isDisplay:boolean=false;
-  constructor(private renderer:Renderer2) { }
+  listPost:any;
+  user:any;
+  myAvatar: any;
+  constructor(private renderer:Renderer2, private service:ForumsService, 
+    private signInService:SignInService, private cookieService:CookieService) { }
 
   ngOnInit(): void {
     var items = document.getElementsByClassName("item");
     this.renderer.addClass(items[0],"active") 
+
+    //Lấy danh sách bài viết trang Forums
+    this.service.getPost().then(res=>{
+      this.listPost = res;
+      this.listPost = this.listPost.data;
+      console.log(this.listPost)
+    })
+    .catch(err=>console.log(err))
+
+    //Lấy user
+    this.signInService.getUser(this.cookieService.get("authToken")).then(res=>{
+      this.user = res;
+      this.user = this.user.data;
+      this.myAvatar = this.user.Avatar
+    })
+    .catch(err=>console.log(err))
   }
+
+
   active(event:any){
     if(document.getElementsByClassName('active').length>0){
       var items = document.getElementsByClassName("item");
@@ -23,13 +48,5 @@ export class ForumsComponent implements OnInit {
     }
     this.renderer.addClass(document.getElementById(event.target.id),"active")
   }
-  turnOnReply(){
-    this.isDisplay=!this.isDisplay;
-    if(this.isDisplay==true)
-    {
-      this.renderer.setStyle(document.getElementsByClassName("create-reply")[0],"display","flex")
-    }else{
-      this.renderer.setStyle(document.getElementsByClassName("create-reply")[0],"display","none")
-    }
-  }
+  
 }

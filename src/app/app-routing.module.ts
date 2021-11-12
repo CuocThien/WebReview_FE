@@ -12,6 +12,7 @@ import { ShareExperienceComponent } from './share-experience/share-experience.co
 import { ReviewHubComponent } from './review-hub/review-hub.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { ForumsComponent } from './forums/forums.component';
+import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
 
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'share-experience', component: ShareExperienceComponent, pathMatch: 'full'},
   { path: 'review-hub', component: ReviewHubComponent, pathMatch: 'full'},
   { path: 'forums', component: ForumsComponent, pathMatch: 'full'},
+  { path: 'search', component: SearchComponent, pathMatch: 'full'},
   { path: 'create-post', component: CreatePostComponent, pathMatch: 'full'},
 
   { path: '', redirectTo: '/index', pathMatch: 'full' },
@@ -61,5 +63,8 @@ export class AppRoutingModule {
   }
   forums(){
     this.router.navigate(['/forums'])
+  }
+  search(query:any){
+    this.router.navigate(['/search'], { queryParams: { q: query } })
   }
 }

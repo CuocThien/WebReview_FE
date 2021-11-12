@@ -3,8 +3,8 @@
   <div class="page-control col-8">
     <img src="../../assets/img/logo5.png" routerLink="/index" alt="logo">
     <form>
-      <input type="text" placeholder="Nhập gì đó để tìm kiếm...">
-      <button type="submit"><i class="fa fa-search"></i></button>
+      <input type="text" [(ngModel)]="querySearch" name="search" placeholder="Nhập gì đó để tìm kiếm...">
+      <button type="submit" (click)="search()"><i class="fa fa-search"></i></button>
     </form>
 
   </div>

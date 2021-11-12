@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
     private cookieService: CookieService,private service:SignInService) { }
     userFullName:any;
     user:any=[];
+    querySearch:string="";
   ngOnInit(): void {
   }
   signIn(){
@@ -45,4 +46,7 @@ export class HeaderComponent implements OnInit {
       // console.log(this.user.DOB);
       return true;
   }}
+  search(){
+    this.router.search(this.querySearch);
+  }
 }

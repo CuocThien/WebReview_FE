@@ -1,0 +1,53 @@
+<hr>
+<p>2 bình luận</p>
+<hr>
+<div class="comment">
+  <div class="create-comment row">
+    <div class="col-1">
+      <img [src]="myAvatar||'https://thelifetank.com/wp-content/uploads/2018/08/avatar-default-icon.png'" alt="">
+    </div>
+    <div class="col-11">
+      <textarea name="" id="" placeholder="Viết bình luận..." rows="4" class="col-10"></textarea>
+      <!-- <button><i class="bi bi-send"></i></button> -->
+    </div>
+  </div>
+  <div class="list-comment">
+    <div class="user-comment row" *ngFor="let comment of listCmt">
+      <div class="col-1">
+        <img [src]="comment.Avatar" alt="">
+      </div>
+      <div class="user-cmt-content col-11">
+        <h6>{{comment.Email}}</h6>
+        <span>{{comment.Content}}</span><br>
+        <a name="{{comment._id}}" (click)="turnOnReply($event)" >Trả lời</a>
+        <span aria-hidden="true" class="_6cok">&nbsp;·&nbsp;</span>
+        <a >Chỉnh sửa</a>
+        <span aria-hidden="true" class="_6cok">&nbsp;·&nbsp;</span>
+        <a >Xoá</a>
+      </div>
+      <div class="create-reply row" id="{{comment._id}}">
+        <div class="line col-1"></div>
+        <div class="col-1">
+          <img [src]="myAvatar||'https://thelifetank.com/wp-content/uploads/2018/08/avatar-default-icon.png'" alt="">
+        </div>
+        <div class="col-10">
+          <textarea name="" id="" placeholder="Viết bình luận..." rows="4" class="col-10"></textarea>
+        </div>
+      </div>
+      <div class="reply row" *ngFor="let reply of comment.Reply">
+        <div class="line col-1"></div>
+        <div class="user-comment-reply col-11 row">
+          <div class="col-1">
+            <img [src]="reply.Avatar" alt="">
+          </div>
+          <div class="user-reply-cmt-content col-11">
+            <h6>{{reply.Email}}</h6>
+            <span>{{reply.Content}}</span><br>
+            <a >Chỉnh sửa</a><span aria-hidden="true" class="_6cok">&nbsp;·&nbsp;</span>
+            <a >Xoá</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
