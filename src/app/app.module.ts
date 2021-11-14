@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr'
 import { AppRoutingModule } from './app-routing.module';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { SignInComponent } from './sign-in/sign-in.component';
@@ -24,6 +25,7 @@ import { CKEditorModule } from 'ckeditor4-angular';
 import { ForumsComponent } from './forums/forums.component';
 import { CommentComponent } from './comment/comment.component';
 import { SearchComponent } from './search/search.component';
+import { MyBootstrapModalComponent } from './modals/my-bootstrap-modal/my-bootstrap-modal.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { SearchComponent } from './search/search.component';
     CreatePostComponent,
     ForumsComponent,
     CommentComponent,
-    SearchComponent
+    SearchComponent,
+    MyBootstrapModalComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +62,8 @@ import { SearchComponent } from './search/search.component';
     }),
     HttpClientModule,
     NgxPaginationModule,
-    CKEditorModule
+    CKEditorModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

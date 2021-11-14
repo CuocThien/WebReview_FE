@@ -2,11 +2,7 @@
     <div class="navbar col-3">
         <h5>CHỦ ĐỀ</h5>
         <ul class="dropdown">
-          <!-- <li class="item" *ngFor="let category of categories" id="{{category.id}}" (click)="active($event);getPostByCategory($event)" ><a>{{category.Name}}</a></li> -->
-          <li class="item" id="Windows" (click)="active($event)"><a>Windows</a></li>
-          <li class="item" id="IP" (click)="active($event)"><a>Iphone</a></li>
-          <li class="item" id="x" (click)="active($event)"><a>Phụ kiện</a></li>
-          <li class="item" id="y" (click)="active($event)"><a>Sức khoẻ</a></li>
+          <li class="item" *ngFor="let category of listCategories" id="{{category.id}}" (click)="active($event);getPostByCategory($event)" ><a>{{category.Name}}</a></li>
         </ul>
     </div>
     <div class="body col-6">
@@ -24,7 +20,7 @@
                 </div>
                 
                 <div class="col-10">
-                    <h6>{{post.dataPost.AccountId}}</h6><br>
+                    <h6>{{post.FullName}}</h6><br>
                     <span><i>{{post.dataPost.CreateAt|date:'HH:mm dd/MM/yyyy'}}</i></span>
                 </div>
             </div>
@@ -35,7 +31,7 @@
                 <h6>Đánh giá bài viết</h6>
                 <app-star id="{{post.dataPost.Id}}" rate="{{post.RatingByAcc||0}}"></app-star>
             </div>
-            <app-comment [listCmt]="post.Comment"></app-comment>
+            <app-comment [countCmt]="post.CommentCount" [postId]="post.dataPost.Id" [listCmt]="post.Comment"></app-comment>
         </div>
     </div>
     <div class="category col-3">
