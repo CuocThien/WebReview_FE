@@ -24,7 +24,7 @@ export class CreatePostComponent implements OnInit {
       // filebrowserUploadUrl:
       //   'https://ckeditor.com/apps/ckfinder/3.4.5/core/connector/php/connector.php?command=QuickUpload&type=Files',
       filebrowserImageUploadUrl:
-        'https://ckeditor.com/apps/ckfinder/3.4.5/core/connector/php/connector.php?command=QuickUpload&type=Images',
+        'https://oggy-webreview.herokuapp.com/image/upload',
         width:'100%',
         height:'80%',
     };

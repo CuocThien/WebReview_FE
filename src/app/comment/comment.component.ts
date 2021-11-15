@@ -62,7 +62,7 @@ export class CommentComponent implements OnInit {
       this.toastr.success(this.resPostCmt.msg);
       this.txtCmt.value = '';
 
-      this.refreshCmt();
+      this.refreshCmt()
     })
   }
 
@@ -96,9 +96,13 @@ export class CommentComponent implements OnInit {
       this.resultDelCmt = res;
       this.toastr.success(this.resultDelCmt.msg);
 
-      this.refreshCmt()
+      if(this.countCmt==1){
+        this.countCmt=0;
+        this.listCmt=[];
+      }else{
+        this.refreshCmt()}
     })
-    .catch(err=>console.log(err))
+    .catch(err=>{this.toastr.error(err.error.msg)})
   }
 
   setIdDelReply(event:any){
@@ -109,7 +113,6 @@ export class CommentComponent implements OnInit {
   resultDelReply:any;
   deleteReply(event:any){
     var id = event.target.id.split('&');
-    console.log(id[0]+"/"+id[1])
     this.dataDeleteReply={}
     this.dataDeleteReply["_id"]=id[0];
     this.dataDeleteReply["idComment"]=id[1];
@@ -119,7 +122,7 @@ export class CommentComponent implements OnInit {
 
       this.refreshCmt()
     })
-    .catch(err=>console.log(err))
+    .catch(err=>this.toastr.error(err.error.msg))
   }
   closeModal: any;
   openModal(event:any) {
@@ -143,7 +146,7 @@ export class CommentComponent implements OnInit {
     }
     modalRef.result.then(res=>{ setTimeout(()=>{ 
       this.refreshCmt()
-  }, 2000);})
+  }, 1000);})
   }
   
   refreshCmt(){

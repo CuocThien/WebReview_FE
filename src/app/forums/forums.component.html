@@ -31,7 +31,7 @@
                 <h6>Đánh giá bài viết</h6>
                 <app-star id="{{post.dataPost.Id}}" rate="{{post.RatingByAcc||0}}"></app-star>
             </div>
-            <app-comment [countCmt]="post.CommentCount" [postId]="post.dataPost.Id" [listCmt]="post.Comment"></app-comment>
+            <app-comment [countCmt]="post.CommentCount" [postId]="post.dataPost.Id" [listCmt]="post.Comment||{}"></app-comment>
         </div>
     </div>
     <div class="category col-3">

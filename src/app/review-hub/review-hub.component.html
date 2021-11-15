@@ -21,7 +21,7 @@
     <div class="content col-9">
       <h5>{{post.dataPost.Title}}</h5>
       <p>{{post.dataPost.Overview}}</p>
-      <p class="author">{{post.dataPost.AccountId}} - {{post.dataPost.CreateAt|date:'HH:mm dd/MM/yyyy'}}</p>
+      <p class="author">{{post.FullName}} - {{post.dataPost.CreateAt|date:'HH:mm dd/MM/yyyy'}}</p>
       <app-star id="{{post.dataPost.Id}}" rate="{{post.RatingbyAcc || 0}}"></app-star>
     </div>
   </div>

@@ -13,7 +13,7 @@
       </svg></button>
     </div>
   </div>
-  <div class="list-comment">
+  <div class="list-comment" *ngIf="countCmt!=0">
     <div class="user-comment row" *ngFor="let comment of listCmt">
       <div class="col-1">
         <img [src]="comment.Avatar" alt="">

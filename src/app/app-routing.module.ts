@@ -13,6 +13,7 @@ import { ReviewHubComponent } from './review-hub/review-hub.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { ForumsComponent } from './forums/forums.component';
 import { SearchComponent } from './search/search.component';
+import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
 
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'forums', component: ForumsComponent, pathMatch: 'full'},
   { path: 'search', component: SearchComponent, pathMatch: 'full'},
   { path: 'create-post', component: CreatePostComponent, pathMatch: 'full'},
+  { path: 'admin', component: AdminComponent, pathMatch: 'full'},
 
   { path: '', redirectTo: '/index', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent},

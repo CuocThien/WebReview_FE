@@ -26,6 +26,9 @@ import { ForumsComponent } from './forums/forums.component';
 import { CommentComponent } from './comment/comment.component';
 import { SearchComponent } from './search/search.component';
 import { MyBootstrapModalComponent } from './modals/my-bootstrap-modal/my-bootstrap-modal.component';
+import { AdminComponent } from './admin/admin.component';
+import { ManagePostsComponent } from './admin/manage-posts/manage-posts.component';
+import { ManageUsersComponent } from './admin/manage-users/manage-users.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +48,10 @@ import { MyBootstrapModalComponent } from './modals/my-bootstrap-modal/my-bootst
     ForumsComponent,
     CommentComponent,
     SearchComponent,
-    MyBootstrapModalComponent
+    MyBootstrapModalComponent,
+    AdminComponent,
+    ManagePostsComponent,
+    ManageUsersComponent
   ],
   imports: [
     BrowserModule,
