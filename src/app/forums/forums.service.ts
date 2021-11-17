@@ -24,7 +24,7 @@ export class ForumsService {
         }
     }
     getForumsCategory() {
-        const url = 'https://oggy-webreview.herokuapp.com/post/getCategory/Forum';
+        const url = 'https://oggy-webreview.herokuapp.com/category/getCategory/Forum';
         if(this.cookieService.get("authToken")==""){
             const headers = new HttpHeaders({ 'Content-Type': 'application/json'})
             return this.http.get(url, { headers })

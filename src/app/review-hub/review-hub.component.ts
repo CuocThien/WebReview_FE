@@ -16,14 +16,14 @@ export class ReviewHubComponent implements OnInit {
   ngOnInit(): void {
     this.service.getReviewCategory().then(res=>{
       this.categories=res;
-      this.categories=this.categories.data;
+      this.categories=this.categories.data.Category;
       
     })
     this.service.getReviewPost()
     .then(res=>{
       this.listPost=res;
       this.listPost=this.listPost.data
-      console.log(this.listPost)
+      // console.log(this.listPost)
     })
     .catch(err=>console.log(err))
   }

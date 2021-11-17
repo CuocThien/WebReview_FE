@@ -1,0 +1,83 @@
+<div class="container">
+  <h2>Quản lý danh mục</h2>
+    <div class="addCategory">
+      <hr>
+      <h4>Thêm danh mục cho trang web</h4>
+        <span>Chọn nhóm: </span>
+        <form (ngSubmit)="onSubmit(formAddCategory);" #formAddCategory="ngForm">
+        <select [ngModel]="selectedValue" (ngModelChange)="onChange($event)" name="GroupId">
+            <option *ngFor="let group of listGroup" [value]="group.id">{{group.Name}}</option>
+        </select>
+        <input type="text" placeholder="Nhập tên danh mục" ngModel name="CateName">
+        <button class="btn btn-primary">Thêm</button>
+      </form>
+        <hr>
+    </div>
+    <div class="my-custom-scrollbar table-wrapper-scroll-y">
+    <table class="table table-hover">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">Nhóm</th>
+            <th scope="col">ID</th>
+            <th scope="col">Tên loại</th>
+            <th scope="col" style="width: 25%;">Thao tác</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let group of listGroup">
+          <tr *ngFor="let cate of group.Category">
+            <td>{{group.Name}}</td>
+            <td>{{cate.id}}</td>
+            <td>{{cate.Name}}</td>
+            <td>
+              <button data-bs-toggle="modal" data-bs-target="#updateCategory" class="btn btn-warning" id="{{group.id}}&{{cate.id}}" name="{{cate.Name}}" (click)="setValue($event)">Chỉnh sửa</button>
+              <button data-bs-toggle="modal" data-bs-target="#deleteCategory" class="btn btn-danger" id="{{group.id}}&{{cate.id}}"  name="{{cate.Name}}" (click)="setValue($event)">Xoá</button></td>
+          </tr>
+        </tbody>
+        
+      </table>
+    </div>
+    </div>
+
+
+
+<!-- Update Category -->
+<div class="modal fade" id="updateCategory" tabindex="-1" aria-labelledby="updateCategoryLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updateCategoryLabel">Chỉnh sửa danh mục</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <span>ID:</span> <input type="text" [(ngModel)]="cateId" disabled><br>
+          <span>Tên:</span> <input type="text" [(ngModel)]="cateName">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ bỏ</button>
+        <button type="button" class="btn btn-warning" data-bs-dismiss="modal" (click)="updateCategory()">Chỉnh sửa</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Delete Category -->
+<div class="modal fade" id="deleteCategory" tabindex="-1" aria-labelledby="deleteCategoryLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteCategoryLabel">Xoá nhóm</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          Bạn có chắc chắn muốn xoá Nhóm này không?<br>
+          <span>ID:</span> <input type="text" [(ngModel)]="cateId" disabled><br>
+          <span>Tên:</span> <input type="text" [(ngModel)]="cateName" disabled>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ bỏ</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="deleteCategory()">Xoá</button>
+      </div>
+    </div>
+  </div>
+</div>

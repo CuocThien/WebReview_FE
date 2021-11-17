@@ -1,0 +1,84 @@
+<div class="container">
+  <h2>Quản lý trang web</h2>
+  <div class="addGroup">
+    <hr>
+    <h4>Thêm nhóm cho trang web</h4>
+    <form (ngSubmit)="onSubmit(formAddGroup);" #formAddGroup="ngForm">
+        <input type="text" placeholder="Nhập ID nhóm" ngModel name="Id" required>
+      <input type="text" placeholder="Nhập tên nhóm" ngModel name="Name" required>
+      <button class="btn btn-primary">Thêm</button>
+    </form>
+    <hr>
+  </div>
+
+  <table class="table table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">ID</th>
+        <th scope="col">Tên loại</th>
+        <th scope="col" style="width: 25%;">Thao tác</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let group of listGroup | paginate: {itemsPerPage: 5, currentPage:p}; let i = index">
+        <th scope="row" *ngIf="p!=1">{{(p-1)*5+i+1}}</th>
+        <th scope="row" *ngIf="p==1">{{i+1}}</th>
+        <td>{{group._id}}</td>
+        <td>{{group.Name}}</td>
+        <td>
+            <button id="{{group._id}}" name="{{group.Name}}" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateGroup" (click)="update($event)">Chỉnh sửa</button>
+            <button id="{{group._id}}" name="{{group.Name}}" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteGroup" (click)="update($event)" >Xoá</button>
+        </td>
+      </tr>
+    </tbody>
+    
+  </table>
+  <pagination-controls class="pagination"
+    previousLabel="" 
+    nextLabel="" (pageChange)="p=$event"></pagination-controls>
+</div>
+
+
+
+<!-- Update Group -->
+<div class="modal fade" id="updateGroup" tabindex="-1" aria-labelledby="updateGroupLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="updateGroupLabel">Chỉnh sửa nhóm</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <span>ID:</span> <input type="text" [(ngModel)]="Id" disabled><br>
+            <span>Tên:</span> <input type="text" [(ngModel)]="Name">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ bỏ</button>
+          <button type="button" class="btn btn-warning" data-bs-dismiss="modal" (click)="updateGroup()">Chỉnh sửa</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Delete Group -->
+<div class="modal fade" id="deleteGroup" tabindex="-1" aria-labelledby="deleteGroupLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteGroupLabel">Xoá nhóm</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            Bạn có chắc chắn muốn xoá Nhóm này không?<br>
+            <span>ID:</span> <input type="text" [(ngModel)]="Id" disabled><br>
+            <span>Tên:</span> <input type="text" [(ngModel)]="Name" disabled>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ bỏ</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="deleteGroup()">Xoá</button>
+        </div>
+      </div>
+    </div>
+  </div>

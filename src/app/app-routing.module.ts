@@ -69,4 +69,7 @@ export class AppRoutingModule {
   search(query:any){
     this.router.navigate(['/search'], { queryParams: { q: query } })
   }
+  admin(){
+    this.router.navigate(['/admin'])
+  }
 }

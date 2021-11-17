@@ -26,10 +26,11 @@ export class SignInService {
                 this.router.navigate(["/index"]);
                 this.cookieService.set('authToken', result.data.Token);
                 this.getUser(this.cookieService.get("authToken"))
-
-        .then(resU=>{user=resU;
-            this.cookieService.set("fullName", user.data.FullName);
-        })
+                    .then(resU=>{user=resU;
+                        this.cookieService.set("fullName", user.data.FullName);
+                        this.cookieService.set("isAdmin", user.data.isAdmin);
+                        // console.log(user)
+                    })
             })
             .catch(err=>this.toastr.error(err.error.msg));
     }

@@ -22,7 +22,7 @@ export class ShareExperienceService {
         }
     }
     getShareExpCategory() {
-        const url = 'https://oggy-webreview.herokuapp.com/post/getCategory/Experience';
+        const url = 'https://oggy-webreview.herokuapp.com/category/getCategory/Experience';
         if(this.cookieService.get("authToken")==""){
             const headers = new HttpHeaders({ 'Content-Type': 'application/json'})
             return this.http.get(url, { headers })

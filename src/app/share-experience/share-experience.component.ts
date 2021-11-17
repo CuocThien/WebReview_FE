@@ -18,13 +18,13 @@ export class ShareExperienceComponent implements OnInit {
   ngOnInit(): void {
     this.service.getShareExpCategory().then(res=>{
       this.categories=res;
-      this.categories=this.categories.data;
+      this.categories=this.categories.data.Category;
     })
 
     this.service.getShareExpPost().then(res=>{
       this.listPost=res;
       this.listPost=this.listPost.data
-      console.log(this.listPost)
+      // console.log(this.listPost)
     })
     .catch(err=>console.log(err))
 

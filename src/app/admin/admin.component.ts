@@ -8,8 +8,10 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 export class AdminComponent implements OnInit {
 
   constructor(private renderer:Renderer2) { }
-  toUsers:boolean=true;
-  toPosts:boolean=false;
+  toUsers:boolean=false;
+  toPosts:boolean=true;
+  toCategories:boolean=false;
+  toGroup:boolean=false;
   ngOnInit(): void {
   }
   redirect(event:any){
@@ -17,9 +19,23 @@ export class AdminComponent implements OnInit {
     if(id==="users"){
       this.toUsers=true;
       this.toPosts=false;
-    }else{
+      this.toCategories=false;
+      this.toGroup=false;
+    }else if (id==="posts"){
       this.toUsers=false;
       this.toPosts=true;
+      this.toCategories=false;
+      this.toGroup=false;
+    }else if (id==="group"){
+      this.toUsers=false;
+      this.toPosts=false;
+      this.toCategories=false;
+      this.toGroup=true;
+    }else{
+      this.toUsers=false;
+      this.toPosts=false;
+      this.toCategories=true;
+      this.toGroup=false;
     }
   }
   active(event:any){

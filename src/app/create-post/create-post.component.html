@@ -1,11 +1,39 @@
-<form (ngSubmit)="onSubmit(form);" #form="ngForm" style="height: 700px;">
-      <ckeditor
-        #editor
-        [config]="ckeConfig"
-        [(ngModel)]="model.description"
-        id="description"
-        name="description">
+<div class="background">
+  <div class="container">
+    <h2>Tạo bài viết</h2>
+    <form (ngSubmit)="onSubmit(form);" #form="ngForm">
+      <h5>Chọn nhóm và loại bài viết</h5>
+      <div class="option">
+        <select [ngModel]="selectedValueGroupId" (ngModelChange)="onChangeGroup($event)" name="GroupId">
+          <option *ngFor="let group of listGroup" [value]="group.id">{{group.Name}}</option>
+        </select>
+
+        <select [ngModel]="selectedValueCateId" (ngModelChange)="onChangeCate($event)" name="CategoryId">
+          <option *ngFor="let cate of listCate" [value]="cate.id">{{cate.Name}}</option>
+        </select>
+      </div>
+      <textarea rows="2" type="text" name="Title" ngModel id="title" placeholder="Nhập tiêu đề vào đây..."
+        maxlength="100" (ngModelChange)="checkLength($event)"></textarea>
+      <p class="error-msg" *ngIf="isOverMaxLength">Tiêu đề không dài quá 100 kí tự...</p>
+      <div class="row">
+        <div class="col-8">
+          <img
+            [src]="imageSrc || 'https://4.bp.blogspot.com/-OCutvC4wPps/XfNnRz5PvhI/AAAAAAAAEfo/qJ8P1sqLWesMdOSiEoUH85s3hs_vn97HACLcBGAsYHQ/s1600/no-image-found-360x260.png'"
+            alt="your image" require name="Avatar" />
+        </div>
+        <div class="col-4">
+          <p class="annoucement-msg">Chọn ảnh giới thiệu cho bài viết</p>
+          <input type='file' (change)="readURL($event);" accept="image/*" />
+        </div>
+      </div>
+      <textarea ngModel name="Overview" id="overview" rows="4" placeholder="Nhập mô tả ngắn gọn cho bài viết..."
+        maxlength="300" (ngModelChange)="checkLengthOverview($event)"></textarea>
+      <p class="error-msg" *ngIf="isOverMaxLengthOverview">Mô tả không dài quá 300 kí tự...</p>
+      <h5>Nội dung bài viết</h5>
+      <ckeditor #editor [config]="ckeConfig" id="description" ngModel name="Content">
       </ckeditor>
-  
-    <button type="submit">Submit</button>
-</form>
+
+      <button class="btn btn-primary" type="submit">Đăng bài</button>
+    </form>
+  </div>
+</div>

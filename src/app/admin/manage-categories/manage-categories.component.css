@@ -1,0 +1,60 @@
+.container{
+    margin-top: 3px;
+}
+h2{
+    text-align: center;
+    color: red;
+}
+h4{
+    color: rgb(4, 0, 253);
+}
+input{
+    width: 30%;
+    margin: 5px 20px;
+    height: 40px;
+    padding: 0 10px;
+    border: 2px solid #4153AF;
+    border-radius: 10px;
+    color: #4153AF;
+}
+.btn-primary{
+    padding: 5px 20px;
+    margin-bottom: 5px;
+    margin-left: 20px;
+}
+.btn-warning{
+    margin-right: 15px;
+}
+.btn-danger{
+    width: 98px;
+}
+.pagination{
+    margin: auto;
+    text-align: center;
+    width: 100%;
+    display: inline;
+}
+table{
+    height: 312px;
+}
+.modal-body input{
+    width: 90%;
+}
+.modal-body span{
+    color:  red;
+    font-weight: bold;
+    font-size: 20px;
+}
+select{
+    height: 40px;
+        border: 2px solid #4153AF;
+        border-radius: 10px;
+}
+.my-custom-scrollbar {
+    position: relative;
+    height: 400px;
+    overflow: auto;
+    }
+    .table-wrapper-scroll-y {
+    display: block;
+    }

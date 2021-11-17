@@ -29,6 +29,8 @@ import { MyBootstrapModalComponent } from './modals/my-bootstrap-modal/my-bootst
 import { AdminComponent } from './admin/admin.component';
 import { ManagePostsComponent } from './admin/manage-posts/manage-posts.component';
 import { ManageUsersComponent } from './admin/manage-users/manage-users.component';
+import { ManageCategoriesComponent } from './admin/manage-categories/manage-categories.component';
+import { ManageGroupComponent } from './admin/manage-group/manage-group.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { ManageUsersComponent } from './admin/manage-users/manage-users.componen
     MyBootstrapModalComponent,
     AdminComponent,
     ManagePostsComponent,
-    ManageUsersComponent
+    ManageUsersComponent,
+    ManageCategoriesComponent,
+    ManageGroupComponent
   ],
   imports: [
     BrowserModule,

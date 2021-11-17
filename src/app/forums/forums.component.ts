@@ -32,7 +32,7 @@ export class ForumsComponent implements OnInit {
     //Lấy categories
     this.service.getForumsCategory().then(res=>{
       this.listCategories = res;
-      this.listCategories = this.listCategories.data;
+      this.listCategories = this.listCategories.data.Category;
     })
 
     //Lấy user
