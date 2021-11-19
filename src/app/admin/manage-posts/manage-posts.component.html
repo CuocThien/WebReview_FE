@@ -1,32 +1,68 @@
 <div class="container">
-    <table class="table table-hover">
-        <thead class="table-dark">
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+  <div class="control-browse-articles">
+    <ul>
+      <li id="approved" class="active-control" (click)="activeControl($event)">Bài viết đã duyệt</li>
+      <li id="unapproved" (click)="activeControl($event)">Bài viết chưa duyệt</li>
+    </ul>
+  </div>
+
+  <select [ngModel]="filterString" class="select-group" (ngModelChange)="filter($event)">
+    <option value="Experience">EXP</option>
+    <option value="Review">Review</option>
+    <option value="Forum">Forum</option>
+  </select>
+  <span class="filter">Lọc bài viết theo nhóm: </span>
+  <table class="table table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col" style="width: 200px;">Tiêu đề</th>
+        <th scope="col" style="width: 200px;">Ảnh đại diện</th>
+        <th scope="col" style="width: 400px;">Mô tả</th>
+        <th scope="col" style="width: 128px;">Ngày đãng</th>
+        <th scope="col" style="width: 200px;">Thao tác</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="filterString=='Experience'">
+      <tr *ngFor="let post of listPostExperience | paginate: {itemsPerPage: 3, currentPage:p}">
+        <td>{{post.Title}}</td>
+        <td><img class="image-post-table" [src]="post.Image" alt=""></td>
+        <td>{{post.Overview}}</td>
+        <td>{{post.CreateAt|date:'dd/MM/yyyy'}}</td>
+        <td>
+          <button class="btn btn-primary" routerLink="/post-detail/{{filterString}}/{{post.Id}}">Xem chi tiết</button><br>
+          <button class="btn btn-success" *ngIf="!isApproved">Duyệt bài viết</button><br>
+          <button class="btn btn-danger">Xoá bài viết</button>
+        </td>      
+      </tr>
+    </tbody>
+    <tbody *ngIf="filterString=='Review'">
+      <tr *ngFor="let post of listPostReview | paginate: {itemsPerPage: 3, currentPage:p}">
+        <td>{{post.Title}}</td>
+        <td><img class="image-post-table" [src]="post.Image" alt=""></td>
+        <td>{{post.Overview}}</td>
+        <td>{{post.CreateAt|date:'dd/MM/yyyy'}}</td>
+        <td>
+          <button class="btn btn-primary" routerLink="/post-detail/{{filterString}}/{{post.Id}}">Xem chi tiết</button><br>
+          <button class="btn btn-success" *ngIf="!isApproved">Duyệt bài viết</button><br>
+          <button class="btn btn-danger">Xoá bài viết</button>
+        </td>
+      </tr>
+    </tbody>
+    <tbody *ngIf="filterString=='Forum'">
+      <tr *ngFor="let post of listPostForums | paginate: {itemsPerPage: 3, currentPage:p}">
+        <td>{{post.Title}}</td>
+        <td><img class="image-post-table" [src]="post.Image" alt=""></td>
+        <td>{{post.Content}}</td>
+        <td>{{post.CreateAt|date:'dd/MM/yyyy'}}</td>
+        <td>
+          <button class="btn btn-primary" routerLink="/post-detail/{{filterString}}/{{post.Id}}">Xem chi tiết</button><br>
+          <button class="btn btn-success" *ngIf="!isApproved">Duyệt bài viết</button><br>
+          <button class="btn btn-danger">Xoá bài viết</button>
+        </td>      </tr>
+    </tbody>
+    
+  </table>
+  <pagination-controls class="pagination"
+    previousLabel="" 
+    nextLabel="" (pageChange)="p=$event"></pagination-controls>
+</div>

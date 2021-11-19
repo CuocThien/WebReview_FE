@@ -1,4 +1,6 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
+import { AppRoutingModule } from '../app-routing.module';
 
 @Component({
   selector: 'app-admin',
@@ -7,12 +9,15 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  constructor(private renderer:Renderer2) { }
+  constructor(private renderer:Renderer2, private router:AppRoutingModule, private cookieService:CookieService) { }
   toUsers:boolean=false;
   toPosts:boolean=true;
   toCategories:boolean=false;
   toGroup:boolean=false;
   ngOnInit(): void {
+    if(this.cookieService.get("isAdmin")=="false"){
+      this.router.pageError()
+    }
   }
   redirect(event:any){
     let id=event.target.id;

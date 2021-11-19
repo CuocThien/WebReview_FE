@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Router, RouterModule, Routes } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { IndexComponent } from './index/index.component';
-import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
@@ -15,6 +15,7 @@ import { ForumsComponent } from './forums/forums.component';
 import { SearchComponent } from './search/search.component';
 import { AdminComponent } from './admin/admin.component';
 import { ReadPostComponent } from './read-post/read-post.component';
+import { UpdatePostComponent } from './update-post/update-post.component';
 
 const routes: Routes = [
 
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'forums', component: ForumsComponent, pathMatch: 'full'},
   { path: 'search', component: SearchComponent, pathMatch: 'full'},
   { path: 'create-post', component: CreatePostComponent, pathMatch: 'full'},
+  { path: 'update-post/:GroupId/:PostId', component: UpdatePostComponent, pathMatch: 'full'},
   { path: 'post-detail/:GroupId/:PostId', component: ReadPostComponent},
   { path: 'admin', component: AdminComponent, pathMatch: 'full'},
 
@@ -36,7 +38,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes),CommonModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { 
@@ -73,5 +75,8 @@ export class AppRoutingModule {
   }
   admin(){
     this.router.navigate(['/admin'])
+  }
+  pageError(){
+    this.router.navigate(['/**'])
   }
 }

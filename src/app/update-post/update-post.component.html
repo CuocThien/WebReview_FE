@@ -1,0 +1,39 @@
+<div class="background">
+    <div class="container">
+      <h2>Chỉnh sửa bài viết</h2>
+      <form (ngSubmit)="onSubmit(form);" #form="ngForm">
+        <h5>Chọn nhóm và loại bài viết</h5>
+        <div class="option">
+          <select [ngModel]="selectedValueGroupId" (ngModelChange)="onChangeGroup($event)" name="GroupId">
+            <option *ngFor="let group of listGroup" [value]="group.id">{{group.Name}}</option>
+          </select>
+  
+          <select [ngModel]="selectedValueCateId" (ngModelChange)="onChangeCate($event)" name="CategoryId">
+            <option *ngFor="let cate of listCate" [value]="cate.id">{{cate.Name}}</option>
+          </select>
+        </div>
+        <textarea rows="2" type="text" name="Title" [(ngModel)]="post.Title" id="title" placeholder="Nhập tiêu đề vào đây..."
+          maxlength="100" (ngModelChange)="checkLength($event)" required></textarea>
+        <p class="error-msg" *ngIf="isOverMaxLength">Tiêu đề không dài quá 100 kí tự...</p>
+        <div class="row">
+          <div class="col-8">
+            <img
+              [src]="imageSrc"
+              alt="your image" require name="Avatar" />
+          </div>
+          <div class="col-4">
+            <p class="annoucement-msg">Chọn ảnh giới thiệu cho bài viết</p>
+            <input type='file' (change)="readURL($event);" accept="image/*" />
+          </div>
+        </div>
+        <textarea [(ngModel)]="post.Overview" name="Overview" id="overview" rows="4" placeholder="Nhập mô tả ngắn gọn cho bài viết..."
+          maxlength="300" (ngModelChange)="checkLengthOverview($event)"></textarea>
+        <p class="error-msg" *ngIf="isOverMaxLengthOverview">Mô tả không dài quá 300 kí tự...</p>
+        <h5>Nội dung bài viết</h5>
+        <ckeditor #editor [config]="ckeConfig"  id="description" [(ngModel)]="post.Content" name="Content">
+        </ckeditor>
+  
+        <button class="btn btn-primary" type="submit">Chỉnh sửa bài viết</button>
+      </form>
+    </div>
+  </div>

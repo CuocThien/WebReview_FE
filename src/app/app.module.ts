@@ -7,6 +7,7 @@ import { ToastrModule } from 'ngx-toastr'
 import { AppRoutingModule } from './app-routing.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { SignInComponent } from './sign-in/sign-in.component';
@@ -32,6 +33,7 @@ import { ManageUsersComponent } from './admin/manage-users/manage-users.componen
 import { ManageCategoriesComponent } from './admin/manage-categories/manage-categories.component';
 import { ManageGroupComponent } from './admin/manage-group/manage-group.component';
 import { ReadPostComponent } from './read-post/read-post.component';
+import { UpdatePostComponent } from './update-post/update-post.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,8 @@ import { ReadPostComponent } from './read-post/read-post.component';
     ManageUsersComponent,
     ManageCategoriesComponent,
     ManageGroupComponent,
-    ReadPostComponent
+    ReadPostComponent,
+    UpdatePostComponent
   ],
   imports: [
     BrowserModule,
@@ -77,7 +80,7 @@ import { ReadPostComponent } from './read-post/read-post.component';
     CKEditorModule,
     NgbModule
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

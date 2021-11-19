@@ -1,5 +1,6 @@
 <div class="background">
   <div class="container-readpost">
+    <button id="btn_updatePost" class="btn btn-warning" routerLink="/update-post/{{groupId}}/{{postId}}">Chỉnh sửa bài viết</button>
     <h2 id="title">{{post.dataPost.Title}}</h2>
     <div class="author">
       <span>{{post.FullName}} - {{post.dataPost.CreateAt|date:'HH:mm dd/MM/yyyy'}}</span>
@@ -15,7 +16,7 @@
     </div>
     <div id="content" [innerHtml]="post.dataPost.Content"></div>
     <h5>Đánh giá bài viết</h5>
-    <app-star id="{{post.dataPost.Id}}" rate="{{post.RatingbyAcc}}"></app-star>
-    <app-comment [countCmt]="post.CommentCount" [postId]="post.dataPost.Id" [listCmt]="post.Comment||{}"></app-comment>
+    <app-star id="star-readpost" id="{{post.dataPost.Id}}" rate="5"></app-star>
+    <app-comment  [countCmt]="post.CommentCount" [postId]="post.dataPost.Id" [listCmt]="post.Comment||{}"></app-comment>
   </div>
 </div>
