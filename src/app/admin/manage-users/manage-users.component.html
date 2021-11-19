@@ -2,30 +2,24 @@
 <table class="table table-hover">
     <thead class="table-dark">
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+        <th scope="col">Username</th>
+        <th scope="col">Ảnh đại diện</th>
+        <th scope="col">Họ và Tên</th>
+        <th scope="col">Email</th>
+        <th scope="col">Ngày Sinh</th>
+        <th scope="col">Địa chỉ</th>
+        <th scope="col">Thao tác</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Thien</td>
-        <td>Nguyen</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Quynh</td>
-        <td>Nguyen</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Vy</td>
-        <td>Tu</td>
-        <td>@twitter</td>
+      <tr *ngFor="let user of listUsers">
+        <td>{{user.UserName}}</td>
+        <td><img class="avatar-user" [src]="user.Avatar" alt=""></td>
+        <td>{{user.FullName}}</td>
+        <td>{{user.Email}}</td>
+        <td>{{user.DOB|date:'dd-MM-yyyy'}}</td>
+        <td>{{user.Address}}</td>
+        <td><button class="btn btn-danger">Xoá</button></td>
       </tr>
     </tbody>
   </table>

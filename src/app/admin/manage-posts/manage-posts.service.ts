@@ -16,4 +16,17 @@ export class ManagePostsService {
             .toPromise();
         
     }
+    updatePostStatus(groupId:any, postId:any) {
+        const urlAdmin = 'https://oggy-webreview.herokuapp.com/admin/update/changeStatus/'+groupId+'/'+postId;
+            const headers = new HttpHeaders({ 'Content-Type': 'application/json'})
+            return this.http.put(urlAdmin, { headers })
+            .toPromise();
+        
+    }
+    deletePost(groupId:any, postId:any){
+        const urlDelPost = 'https://oggy-webreview.herokuapp.com/admin/deletePost/'+groupId+'/'+postId;
+            const headers = new HttpHeaders({ 'Content-Type': 'application/json'})
+            return this.http.delete(urlDelPost, { headers })
+            .toPromise();
+    }
 }

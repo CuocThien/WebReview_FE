@@ -1,5 +1,6 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { AppRoutingModule } from '../app-routing.module';
 import { SignUpService } from './sign-up.service';
 @Component({
   selector: 'app-sign-up',
@@ -9,11 +10,12 @@ import { SignUpService } from './sign-up.service';
 })
 export class SignUpComponent implements OnInit {
 
-  constructor(private toastr:ToastrService,private renderer: Renderer2, private service: SignUpService) { }
+  constructor(private toastr:ToastrService,private renderer: Renderer2, private service: SignUpService,
+    private router:AppRoutingModule) { }
   ngOnInit(): void {
     
   }
-  
+  result:any
   onSubmit(formSignUp:any){
 
     if(formSignUp.value.PassWord != formSignUp.value.Confirm){
@@ -26,7 +28,11 @@ export class SignUpComponent implements OnInit {
     else{
       this.renderer.addClass(document.getElementById("confirm"),"ng-valid");
       this.service.signUp(formSignUp.value)
-      .then(result=>console.log(result))
+      .then(res=>{console.log(res)
+        this.result = res;
+        this.toastr.success(this.result.msg)
+        this.router.signin();
+      })
       .catch(err=>this.toastr.error(err.error.msg));
   }
   }

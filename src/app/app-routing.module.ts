@@ -31,6 +31,7 @@ const routes: Routes = [
   { path: 'create-post', component: CreatePostComponent, pathMatch: 'full'},
   { path: 'update-post/:GroupId/:PostId', component: UpdatePostComponent, pathMatch: 'full'},
   { path: 'post-detail/:GroupId/:PostId', component: ReadPostComponent},
+  { path: 'post-detail/admin/:GroupId/:PostId', component: ReadPostComponent},
   { path: 'admin', component: AdminComponent, pathMatch: 'full'},
 
   { path: '', redirectTo: '/index', pathMatch: 'full' },

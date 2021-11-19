@@ -29,9 +29,10 @@
         <td>{{post.Overview}}</td>
         <td>{{post.CreateAt|date:'dd/MM/yyyy'}}</td>
         <td>
-          <button class="btn btn-primary" routerLink="/post-detail/{{filterString}}/{{post.Id}}">Xem chi tiết</button><br>
-          <button class="btn btn-success" *ngIf="!isApproved">Duyệt bài viết</button><br>
-          <button class="btn btn-danger">Xoá bài viết</button>
+          <button class="btn btn-primary" *ngIf="isApproved" routerLink="/post-detail/{{filterString}}/{{post.Id}}">Xem chi tiết</button><br>
+          <button class="btn btn-primary" *ngIf="!isApproved" routerLink="/post-detail/admin/{{filterString}}/{{post.Id}}">Xem chi tiết</button><br>
+          <button class="btn btn-success" *ngIf="!isApproved" id="{{filterString}}&{{post.Id}}" (click)="updatePostStatus($event)">Duyệt bài viết</button><br>
+          <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletePost" id="{{post.Id}}" (click)="getPostIdDel($event)">Xoá bài viết</button>
         </td>      
       </tr>
     </tbody>
@@ -42,9 +43,10 @@
         <td>{{post.Overview}}</td>
         <td>{{post.CreateAt|date:'dd/MM/yyyy'}}</td>
         <td>
-          <button class="btn btn-primary" routerLink="/post-detail/{{filterString}}/{{post.Id}}">Xem chi tiết</button><br>
-          <button class="btn btn-success" *ngIf="!isApproved">Duyệt bài viết</button><br>
-          <button class="btn btn-danger">Xoá bài viết</button>
+          <button class="btn btn-primary" *ngIf="isApproved" routerLink="/post-detail/{{filterString}}/{{post.Id}}">Xem chi tiết</button><br>
+          <button class="btn btn-primary" *ngIf="!isApproved" routerLink="/post-detail/admin/{{filterString}}/{{post.Id}}">Xem chi tiết</button><br>
+          <button class="btn btn-success" *ngIf="!isApproved" id="{{filterString}}&{{post.Id}}" (click)="updatePostStatus($event)">Duyệt bài viết</button><br>
+          <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletePost" id="{{post.Id}}" (click)="getPostIdDel($event)">Xoá bài viết</button>
         </td>
       </tr>
     </tbody>
@@ -55,14 +57,35 @@
         <td>{{post.Content}}</td>
         <td>{{post.CreateAt|date:'dd/MM/yyyy'}}</td>
         <td>
-          <button class="btn btn-primary" routerLink="/post-detail/{{filterString}}/{{post.Id}}">Xem chi tiết</button><br>
-          <button class="btn btn-success" *ngIf="!isApproved">Duyệt bài viết</button><br>
-          <button class="btn btn-danger">Xoá bài viết</button>
-        </td>      </tr>
+          <button class="btn btn-primary" *ngIf="isApproved" routerLink="/post-detail/{{filterString}}/{{post.Id}}">Xem chi tiết</button><br>
+          <button class="btn btn-primary" *ngIf="!isApproved" routerLink="/post-detail/admin/{{filterString}}/{{post.Id}}">Xem chi tiết</button><br>
+          <button class="btn btn-success" *ngIf="!isApproved" id="{{filterString}}&{{post.Id}}" (click)="updatePostStatus($event)">Duyệt bài viết</button><br>
+          <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletePost" id="{{post.Id}}" (click)="getPostIdDel($event)">Xoá bài viết</button>
+        </td>      
+      </tr>
     </tbody>
     
   </table>
   <pagination-controls class="pagination"
     previousLabel="" 
     nextLabel="" (pageChange)="p=$event"></pagination-controls>
+</div>
+
+<!-- Delete Post -->
+<div class="modal fade" id="deletePost" tabindex="-1" aria-labelledby="deletePostLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deletePostLabel">Xoá bài viết</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          Bạn có chắc chắn muốn xoá bài viết này không?<br>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ bỏ</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="deletePost()">Xoá</button>
+      </div>
+    </div>
+  </div>
 </div>

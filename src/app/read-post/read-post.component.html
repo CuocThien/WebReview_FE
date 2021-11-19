@@ -1,6 +1,10 @@
 <div class="background">
   <div class="container-readpost">
-    <button id="btn_updatePost" class="btn btn-warning" routerLink="/update-post/{{groupId}}/{{postId}}">Chỉnh sửa bài viết</button>
+    <div id="btn_updatePost">
+    <button *ngIf="isOwner" id="btn_control" class="btn btn-warning" routerLink="/update-post/{{groupId}}/{{postId}}">Chỉnh sửa bài viết</button>
+    <button *ngIf="!isApproved" id="btn_control" class="btn btn-success" routerLink="/admin" (click)="updatePostStatus()">Duyệt bài viết</button>
+    <button *ngIf="isOwner||isAdmin" id="btn_control" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletePost">Xoá bài viết</button>
+  </div>
     <h2 id="title">{{post.dataPost.Title}}</h2>
     <div class="author">
       <span>{{post.FullName}} - {{post.dataPost.CreateAt|date:'HH:mm dd/MM/yyyy'}}</span>
@@ -17,6 +21,25 @@
     <div id="content" [innerHtml]="post.dataPost.Content"></div>
     <h5>Đánh giá bài viết</h5>
     <app-star id="star-readpost" id="{{post.dataPost.Id}}" rate="5"></app-star>
-    <app-comment  [countCmt]="post.CommentCount" [postId]="post.dataPost.Id" [listCmt]="post.Comment||{}"></app-comment>
+    <app-comment  [countCmt]="post.CommentCount||0" [postId]="post.dataPost.Id" [listCmt]="post.Comment||{}"></app-comment>
+  </div>
+</div>
+
+<!-- Delete Post -->
+<div class="modal fade" id="deletePost" tabindex="-1" aria-labelledby="deletePostLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deletePostLabel">Xoá bài viết</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          Bạn có chắc chắn muốn xoá bài viết này không?<br>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ bỏ</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal"  routerLink="/admin" (click)="deletePost()">Xoá</button>
+      </div>
+    </div>
   </div>
 </div>

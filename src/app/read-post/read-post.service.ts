@@ -20,4 +20,11 @@ export class ReadPostService {
             .toPromise();
         }
     }
+    getDetailPostAdmin(groupId:any, postId:any) {
+        const urlAdmin = 'https://oggy-webreview.herokuapp.com/admin/getPost/'+groupId+'/'+postId;
+            const headers = new HttpHeaders({ 'Content-Type': 'application/json'})
+            return this.http.get(urlAdmin, { headers })
+            .toPromise();
+        
+    }
 }
