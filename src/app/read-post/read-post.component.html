@@ -1,0 +1,21 @@
+<div class="background">
+  <div class="container-readpost">
+    <h2 id="title">{{post.dataPost.Title}}</h2>
+    <div class="author">
+      <span>{{post.FullName}} - {{post.dataPost.CreateAt|date:'HH:mm dd/MM/yyyy'}}</span>
+    </div>
+    <div class="image">
+      <img
+        [src]="post.dataPost.Image || 'https://4.bp.blogspot.com/-OCutvC4wPps/XfNnRz5PvhI/AAAAAAAAEfo/qJ8P1sqLWesMdOSiEoUH85s3hs_vn97HACLcBGAsYHQ/s1600/no-image-found-360x260.png'"
+        alt="">
+    </div>
+    <div class="description">
+      <h6>{{post.dataPost.Overview}}</h6>
+
+    </div>
+    <div id="content" [innerHtml]="post.dataPost.Content"></div>
+    <h5>Đánh giá bài viết</h5>
+    <app-star id="{{post.dataPost.Id}}" rate="{{post.RatingbyAcc}}"></app-star>
+    <app-comment [countCmt]="post.CommentCount" [postId]="post.dataPost.Id" [listCmt]="post.Comment||{}"></app-comment>
+  </div>
+</div>

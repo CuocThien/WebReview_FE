@@ -38,14 +38,14 @@ export class MyBootstrapModalComponent implements OnInit {
         this.result=res;
         this.toastr.success(this.result.msg)
       })
-      .catch(err=>console.log(err))
+      .catch(err=>this.toastr.error(err.error.msg))
     }else{
       this.dataUpdateCmt["idComment"]=this.idComment;
       this.commentService.updateReply(this.dataUpdateCmt).then(res=>{
         this.result=res;
         this.toastr.success(this.result.msg)
       })
-      .catch(err=>console.log(err))
+      .catch(err=>this.toastr.error(err.error.msg))
     }
     // console.log(this.isReply);
     // console.log(this._id);

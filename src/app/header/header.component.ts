@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
     private cookieService: CookieService,private service:SignInService) { }
     userFullName:any;
     user:any=[];
-    isAdmin:any;
+    isAdmin:boolean=false;
     querySearch:string="";
   ngOnInit(): void {
   }
@@ -44,7 +44,12 @@ export class HeaderComponent implements OnInit {
       // console.log(this.cookieService.get("User"))
       // this.user=JSON.parse(this.cookieService.get("User"));
       this.userFullName=this.cookieService.get("fullName");
-      this.isAdmin = this.cookieService.get("isAdmin");
+      if(this.cookieService.get("isAdmin")=="true"){
+        this.isAdmin = true;
+      }else{
+        this.isAdmin = false;
+      }
+      // console.log(this.isAdmin)
       // console.log(this.user.DOB);
       return true;
   }}

@@ -13,12 +13,12 @@
         </select>
       </div>
       <textarea rows="2" type="text" name="Title" ngModel id="title" placeholder="Nhập tiêu đề vào đây..."
-        maxlength="100" (ngModelChange)="checkLength($event)"></textarea>
+        maxlength="100" (ngModelChange)="checkLength($event)" required></textarea>
       <p class="error-msg" *ngIf="isOverMaxLength">Tiêu đề không dài quá 100 kí tự...</p>
       <div class="row">
         <div class="col-8">
           <img
-            [src]="imageSrc || 'https://4.bp.blogspot.com/-OCutvC4wPps/XfNnRz5PvhI/AAAAAAAAEfo/qJ8P1sqLWesMdOSiEoUH85s3hs_vn97HACLcBGAsYHQ/s1600/no-image-found-360x260.png'"
+            [src]="imageSrc"
             alt="your image" require name="Avatar" />
         </div>
         <div class="col-4">

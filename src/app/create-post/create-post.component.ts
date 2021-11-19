@@ -1,19 +1,23 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { ManageCategoriesService } from '../admin/manage-categories/manage-categories.service';
 import { SignInService } from '../sign-in/sign-in.service';
 import { UploadImageService } from '../upload-image.service';
+import { CreatePostService } from './create-post.service';
 
 
 @Component({
   selector: 'app-create-post',
   templateUrl: './create-post.component.html',
   styleUrls: ['./create-post.component.css'],
-  providers: [SignInService,UploadImageService,ManageCategoriesService]
+  providers: [SignInService,UploadImageService,ManageCategoriesService,CreatePostService]
 })
 export class CreatePostComponent implements OnInit {
 
   constructor(private signInService:SignInService,private uploadImageService:UploadImageService,
-    private service:ManageCategoriesService) { }
+    private service:ManageCategoriesService, private toastr:ToastrService,
+    private createPostService:CreatePostService, private router:Router) { }
   ckeConfig: any;
   listGroup:any;
   listCate:any;
@@ -45,8 +49,24 @@ export class CreatePostComponent implements OnInit {
     })
 
   }
+  data:any
+  resultCreate:any
 onSubmit(form:any) {
-    console.log( form.value );
+  this.data = form.value;
+  if(form.value.Title==""){
+    this.toastr.error("Nhập thông tin tiêu đề cho bài viết")
+  }else if (form.value.Content==""){
+    this.toastr.error("Nhập thông tin nội dung cho bài viết")
+  }else{
+    this.data["Image"]=this.imageSrc;
+    this.createPostService.createPost(this.data).then(res=>{
+      this.resultCreate=res
+      this.toastr.success(this.resultCreate.data.msg)
+      console.log(res)
+    }).catch(err=>console.log(err));
+    console.log( this.data );
+  }
+  
 }
 isOverMaxLength:boolean=false;
 checkLength(event:any){
@@ -65,7 +85,7 @@ checkLengthOverview(event:any){
   }
 }
 result:any;
-imageSrc:any;
+imageSrc:string='https://4.bp.blogspot.com/-OCutvC4wPps/XfNnRz5PvhI/AAAAAAAAEfo/qJ8P1sqLWesMdOSiEoUH85s3hs_vn97HACLcBGAsYHQ/s1600/no-image-found-360x260.png';
 readURL(event: any): void {
   if (event.target.files && event.target.files[0]) {
       const file = event.target.files[0];
@@ -87,7 +107,7 @@ onChangeGroup(event:any){
   for(let i = 0; i< this.listGroup.length;i++){
     if(this.listGroup[i].id==this.selectedValueGroupId){
       this.listCate=this.listGroup[i].Category;
-      console.log(this.listCate)
+      // console.log(this.listCate)
     }
   }
   

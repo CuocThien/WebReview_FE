@@ -28,7 +28,7 @@ export class SignInService {
                 this.getUser(this.cookieService.get("authToken"))
                     .then(resU=>{user=resU;
                         this.cookieService.set("fullName", user.data.FullName);
-                        this.cookieService.set("isAdmin", user.data.isAdmin);
+                        this.cookieService.set("isAdmin", user.data.IsAdmin);
                         // console.log(user)
                     })
             })

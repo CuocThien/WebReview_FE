@@ -1,30 +1,38 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { ManageGroupService } from '../manage-group/manage-group.service';
 import { ManageCategoriesService } from './manage-categories.service';
 
 @Component({
   selector: 'app-manage-categories',
   templateUrl: './manage-categories.component.html',
   styleUrls: ['./manage-categories.component.css'],
-  providers: [ManageCategoriesService]
+  providers: [ManageCategoriesService, ManageGroupService]
 })
 export class ManageCategoriesComponent implements OnInit {
 
-  constructor(private service:ManageCategoriesService, private toastr:ToastrService) { }
+  constructor(private manageCateService:ManageCategoriesService, private toastr:ToastrService,
+    private manageGroupService:ManageGroupService) { }
 
   cateId:any;
   groupId:any;
   cateName:any;
-  listGroup:any;selectedValue:any;
+  listGroup:any;
+  listCate:any;selectedValue:any;
   ngOnInit(): void {
     this.getData()
+    this.manageGroupService.getGroup().then(res=>{
+      this.listGroup = res;
+      this.listGroup = this.listGroup.data;
+      this.selectedValue = this.listGroup[0].id
+      console.log(this.listGroup)
+    }).catch(err=>console.log(err))
   }
   getData(){
-    this.service.getGroup().then(res=>{
-      this.listGroup=res;
-      this.listGroup = this.listGroup.data;
-      this.selectedValue=this.listGroup[0].id;
-    })
+    this.manageCateService.getGroup().then(res=>{
+      this.listCate=res;
+      this.listCate = this.listCate.data;
+    }).catch(err=>console.log(err))
   }
   resultAddCate:any;
   onSubmit(formAddCategory:any){
@@ -32,7 +40,7 @@ export class ManageCategoriesComponent implements OnInit {
     if(formAddCategory.invalid){
       this.toastr.error("Nhập đầy đủ thông tin để thêm!!", "Lỗi!!!")
     }else{
-      this.service.addCategory(formAddCategory.value).then(res=>{
+      this.manageCateService.addCategory(formAddCategory.value).then(res=>{
         this.resultAddCate = res;
         this.toastr.success(this.resultAddCate.msg)
       }).catch(err=>{
@@ -56,7 +64,7 @@ export class ManageCategoriesComponent implements OnInit {
     this.dataUpdate={}
     this.dataUpdate["GroupId"]=this.groupId;
     this.dataUpdate["CateName"]=this.cateName;
-    this.service.updateCategory(this.cateId,this.dataUpdate).then(res=>{
+    this.manageCateService.updateCategory(this.cateId,this.dataUpdate).then(res=>{
       this.resultUpdate = res;
       this.toastr.success(this.resultUpdate.msg);
       this.getData();
@@ -70,7 +78,7 @@ export class ManageCategoriesComponent implements OnInit {
   deleteCategory(){
     this.dataDelete={}
     this.dataDelete["GroupId"]=this.groupId;
-    this.service.deleteCategory(this.cateId,this.dataDelete).then(res=>{
+    this.manageCateService.deleteCategory(this.cateId,this.dataDelete).then(res=>{
       this.resultDelete = res;
       this.toastr.success(this.resultDelete.msg);
       this.getData()

@@ -1,67 +1,24 @@
 <div class="container-fluid">
   <div class="container">
-    <h4>Tìm thấy 10 kết quả cho từ khoá "{{query}}"</h4>
+    <h4>Tìm thấy {{count}} kết quả cho từ khoá "{{query}}"</h4>
     <hr>
     <div class="listPost">
-      <div class="post row">
+      <div class="post row" *ngFor="let post of listSearch | paginate: {itemsPerPage: 3, currentPage:p}" id="{{post.dataPost.Id}}" routerLink="/post-detail/post.GroupId/{{post.dataPost.Id}}">
         <div class="col-3">
           <img
-            src="https://4.bp.blogspot.com/-OCutvC4wPps/XfNnRz5PvhI/AAAAAAAAEfo/qJ8P1sqLWesMdOSiEoUH85s3hs_vn97HACLcBGAsYHQ/s1600/no-image-found-360x260.png"
+            [src]="post.dataPost.Image || 'https://4.bp.blogspot.com/-OCutvC4wPps/XfNnRz5PvhI/AAAAAAAAEfo/qJ8P1sqLWesMdOSiEoUH85s3hs_vn97HACLcBGAsYHQ/s1600/no-image-found-360x260.png'"
             alt="">
-          <p class="avg-star">5<span class="star">★</span> | 1 bài đánh giá</p>
         </div>
         <div class="content col-9">
-          <h5>Iphone 13 mini vừa ra mắt</h5>
-          <p>Iphone 13 mini có thật sự đẹp và hữu dụng?</p>
-          <p class="author">cuocthien2210 - 22:10 01/11/2021</p>
-          <app-star id="RV1" rate="4"></app-star>
+          <h5>{{post.dataPost.Title}}</h5>
+          <p>{{post.dataPost.Overview}}</p>
+          <p class="author">{{post.FullName}} - {{post.dataPost.CreateAt|date:'HH:mm dd/MM/yyyy'}}</p>
         </div>
       </div>
-      <div class="post row">
-        <div class="col-3">
-          <img
-            src="https://4.bp.blogspot.com/-OCutvC4wPps/XfNnRz5PvhI/AAAAAAAAEfo/qJ8P1sqLWesMdOSiEoUH85s3hs_vn97HACLcBGAsYHQ/s1600/no-image-found-360x260.png"
-            alt="">
-          <p class="avg-star">5<span class="star">★</span> | 1 bài đánh giá</p>
-        </div>
-        <div class="content col-9">
-          <h5>Iphone 13 mini vừa ra mắt</h5>
-          <p>Iphone 13 mini có thật sự đẹp và hữu dụng?</p>
-          <p class="author">cuocthien2210 - 22:10 01/11/2021</p>
-          <app-star id="RV2" rate="5"></app-star>
-        </div>
-      </div>
-      <div class="post row">
-        <div class="col-3">
-          <img
-            src="https://4.bp.blogspot.com/-OCutvC4wPps/XfNnRz5PvhI/AAAAAAAAEfo/qJ8P1sqLWesMdOSiEoUH85s3hs_vn97HACLcBGAsYHQ/s1600/no-image-found-360x260.png"
-            alt="">
-          <p class="avg-star">5<span class="star">★</span> | 1 bài đánh giá</p>
-        </div>
-        <div class="content col-9">
-          <h5>Iphone 13 mini vừa ra mắt</h5>
-          <p>Iphone 13 mini có thật sự đẹp và hữu dụng?</p>
-          <p class="author">cuocthien2210 - 22:10 01/11/2021</p>
-          <app-star id="RV3" rate="0"></app-star>
-        </div>
-      </div>
-      <div class="post row">
-        <div class="col-3">
-          <img
-            src="https://4.bp.blogspot.com/-OCutvC4wPps/XfNnRz5PvhI/AAAAAAAAEfo/qJ8P1sqLWesMdOSiEoUH85s3hs_vn97HACLcBGAsYHQ/s1600/no-image-found-360x260.png"
-            alt="">
-          <p class="avg-star">5<span class="star">★</span> | 1 bài đánh giá</p>
-        </div>
-        <div class="content col-9">
-          <h5>Iphone 13 mini vừa ra mắt</h5>
-          <p>Iphone 13 mini có thật sự đẹp và hữu dụng?</p>
-          <p class="author">cuocthien2210 - 22:10 01/11/2021</p>
-          <app-star id="RV4" rate="0"></app-star>
-        </div>
-      </div>
-      <!-- <pagination-controls class="pagination"
+      <pagination-controls class="pagination"
       previousLabel="" 
-      nextLabel="" (pageChange)="p=$event"></pagination-controls> -->
+      nextLabel="" (pageChange)="p=$event"></pagination-controls>
     </div>
+      
   </div>
 </div>

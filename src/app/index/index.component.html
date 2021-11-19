@@ -6,7 +6,7 @@
         <a (click)="shareExp()">Xem tất cả</a>
       </div>
       <div class="content-share-experience">
-        <div class="share-post" *ngFor="let itemS of listShareExpPost" id="{{itemS.dataPost.Id}}">
+        <div class="share-post" *ngFor="let itemS of listShareExpPost" id="{{itemS.dataPost.Id}}" routerLink="/post-detail/Experience/{{itemS.dataPost.Id}}">
           <img [src]="itemS.dataPost.Image || 'https://4.bp.blogspot.com/-OCutvC4wPps/XfNnRz5PvhI/AAAAAAAAEfo/qJ8P1sqLWesMdOSiEoUH85s3hs_vn97HACLcBGAsYHQ/s1600/no-image-found-360x260.png'" alt="">
           <p>{{itemS.dataPost.Title}}</p>
         </div>
@@ -38,10 +38,10 @@
 
     </div>
     <div class="review-content2 row">
-      <div class="review-post meet col-3" *ngFor="let itemR of listReviewPost | paginate: {itemsPerPage: 4, currentPage:p}" id="{{itemR.dataPost.Id}}">
+      <div class="review-post meet col-3" *ngFor="let itemR of listReviewPost | paginate: {itemsPerPage: 4, currentPage:p}" id="{{itemR.dataPost.Id}}" routerLink="/post-detail/Review/{{itemR.dataPost.Id}}">
         <img [src]="itemR.dataPost.Image||'https://4.bp.blogspot.com/-OCutvC4wPps/XfNnRz5PvhI/AAAAAAAAEfo/qJ8P1sqLWesMdOSiEoUH85s3hs_vn97HACLcBGAsYHQ/s1600/no-image-found-360x260.png'" alt="">
         <h6>{{itemR.dataPost.Title}}</h6>
-        <p>{{itemR.dataPost.Overview}}</p>
+        <!-- <p>{{itemR.dataPost.Overview}}</p> -->
       </div>
 
     </div>

@@ -31,6 +31,7 @@ import { ManagePostsComponent } from './admin/manage-posts/manage-posts.componen
 import { ManageUsersComponent } from './admin/manage-users/manage-users.component';
 import { ManageCategoriesComponent } from './admin/manage-categories/manage-categories.component';
 import { ManageGroupComponent } from './admin/manage-group/manage-group.component';
+import { ReadPostComponent } from './read-post/read-post.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { ManageGroupComponent } from './admin/manage-group/manage-group.componen
     ManagePostsComponent,
     ManageUsersComponent,
     ManageCategoriesComponent,
-    ManageGroupComponent
+    ManageGroupComponent,
+    ReadPostComponent
   ],
   imports: [
     BrowserModule,
