@@ -16,4 +16,11 @@ export class ManageUsersService {
             .toPromise();
         
     }
+    deleteAccounts(accountId:any) {
+        const urlDel = 'https://oggy-webreview.herokuapp.com/admin/deleteAccount/'+accountId;
+            const headers = new HttpHeaders({ 'Content-Type': 'application/json'})
+            return this.http.delete(urlDel, { headers })
+            .toPromise();
+        
+    }
 }

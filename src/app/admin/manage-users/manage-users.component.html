@@ -19,8 +19,27 @@
         <td>{{user.Email}}</td>
         <td>{{user.DOB|date:'dd-MM-yyyy'}}</td>
         <td>{{user.Address}}</td>
-        <td><button class="btn btn-danger">Xoá</button></td>
+        <td><button class="btn btn-danger" id="{{user._id}}" name="{{user.UserName}}" data-bs-toggle="modal" data-bs-target="#deleteUser" (click)="setUser($event)">Xoá</button></td>
       </tr>
     </tbody>
   </table>
+</div>
+
+<!-- Delete Post -->
+<div class="modal fade" id="deleteUser" tabindex="-1" aria-labelledby="deleteUserLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteUserLabel">Xoá người dùng</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          Bạn có chắc chắn muốn xoá người dùng {{userName}} không?<br>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ bỏ</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="deleteUser()">Xoá</button>
+      </div>
+    </div>
+  </div>
 </div>

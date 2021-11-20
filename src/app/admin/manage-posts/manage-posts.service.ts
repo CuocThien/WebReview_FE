@@ -9,11 +9,17 @@ export class ManagePostsService {
     constructor(private http: HttpClient, private toastr:ToastrService, private cookieService:CookieService) {
 
     }
-    getPost(approved:boolean) {
+    getPost(approved:boolean,isAdmin:boolean) {
         const url = 'https://oggy-webreview.herokuapp.com/post/manage/getPost/'+approved;
+        if(isAdmin==true){
+            const headers = new HttpHeaders({ 'Content-Type': 'application/json'})
+            return this.http.get(url, { headers })
+            .toPromise();
+        }else{
             const headers = new HttpHeaders({ 'Content-Type': 'application/json','Authorization':'Bearer '+this.cookieService.get("authToken")})
             return this.http.get(url, { headers })
             .toPromise();
+        }
         
     }
     updatePostStatus(groupId:any, postId:any) {

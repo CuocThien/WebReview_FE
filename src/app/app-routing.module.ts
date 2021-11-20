@@ -16,6 +16,7 @@ import { SearchComponent } from './search/search.component';
 import { AdminComponent } from './admin/admin.component';
 import { ReadPostComponent } from './read-post/read-post.component';
 import { UpdatePostComponent } from './update-post/update-post.component';
+import { ManagePostsComponent } from './admin/manage-posts/manage-posts.component';
 
 const routes: Routes = [
 
@@ -32,6 +33,7 @@ const routes: Routes = [
   { path: 'update-post/:GroupId/:PostId', component: UpdatePostComponent, pathMatch: 'full'},
   { path: 'post-detail/:GroupId/:PostId', component: ReadPostComponent},
   { path: 'post-detail/admin/:GroupId/:PostId', component: ReadPostComponent},
+  { path: 'user/manage-posts', component: ManagePostsComponent},
   { path: 'admin', component: AdminComponent, pathMatch: 'full'},
 
   { path: '', redirectTo: '/index', pathMatch: 'full' },
