@@ -20,7 +20,7 @@
     </div>
     <div id="content" [innerHtml]="post.dataPost.Content"></div>
     <h5>Đánh giá bài viết</h5>
-    <app-star id="star-readpost" id="{{post.dataPost.Id}}" rate="5"></app-star>
+    <app-star class="star-readpost" id="{{post.dataPost.Id}}" rate="5"></app-star>
     <app-comment  [countCmt]="post.CommentCount||0" [postId]="post.dataPost.Id" [listCmt]="post.Comment||{}"></app-comment>
   </div>
 </div>

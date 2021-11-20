@@ -44,7 +44,7 @@ p{
     text-align: right;
     padding-right: 40px;
 }
-#star-readpost{
+.star-readpost{
     display: flex;
     margin-left: 50px;
 }

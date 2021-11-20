@@ -31,7 +31,7 @@ export class ManagePostsComponent implements OnInit {
     if(this.url=="admin"){
       this.isAdmin=true;
     }
-    console.log(this.isAdmin)
+    // console.log(this.isAdmin)
     this.getData(true,this.isAdmin)
   }
   getData(approved:any, admin:any){
@@ -40,8 +40,12 @@ export class ManagePostsComponent implements OnInit {
     this.listPostForums=[]
     this.listPostReview=[]
     this.filterString="Experience"
+
+    console.log("apro"+approved)
+    console.log("admin "+admin)
     this.service.getPost(approved,admin).then(res=>{
       this.listPost = res;
+      console.log(res)
       this.listPost = this.listPost.data;
       for(let post of this.listPost){
         if(post.Id==="Review"){

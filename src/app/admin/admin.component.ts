@@ -44,9 +44,15 @@ export class AdminComponent implements OnInit {
     }
   }
   active(event:any){
-    var item=document.getElementsByClassName('active')
-    this.renderer.removeClass(item[0],"active");
-    this.renderer.addClass(document.getElementById(event.target.id),"active")
+    var items=document.getElementsByClassName('items')
+    for(let i=0; i<items.length;i++){
+      console.log(items[i].classList[1])
+      if(items[i].classList[1]=="active"){
+        items[i].classList.remove("active");
+      }
+    }
+    document.getElementById(event.target.id)?.classList.add("active");
+    // this.renderer.addClass(document.getElementById(event.target.id),"active")
   }
 
 }

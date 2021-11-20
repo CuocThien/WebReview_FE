@@ -61,7 +61,7 @@ onSubmit(form:any) {
     this.data["Image"]=this.imageSrc;
     this.createPostService.createPost(this.data).then(res=>{
       this.resultCreate=res
-      this.toastr.success(this.resultCreate.data.msg)
+      this.toastr.success(this.resultCreate.msg)
       console.log(res)
     }).catch(err=>console.log(err));
     console.log( this.data );

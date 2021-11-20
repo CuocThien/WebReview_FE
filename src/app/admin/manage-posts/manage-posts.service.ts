@@ -11,6 +11,7 @@ export class ManagePostsService {
     }
     getPost(approved:boolean,isAdmin:boolean) {
         const url = 'https://oggy-webreview.herokuapp.com/post/manage/getPost/'+approved;
+        console.log("ala:"+isAdmin)
         if(isAdmin==true){
             const headers = new HttpHeaders({ 'Content-Type': 'application/json'})
             return this.http.get(url, { headers })
