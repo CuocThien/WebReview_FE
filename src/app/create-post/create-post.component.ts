@@ -62,6 +62,7 @@ onSubmit(form:any) {
     this.createPostService.createPost(this.data).then(res=>{
       this.resultCreate=res
       this.toastr.success(this.resultCreate.msg)
+      this.router.navigate(['/index'])
       console.log(res)
     }).catch(err=>console.log(err));
     console.log( this.data );
@@ -107,6 +108,7 @@ onChangeGroup(event:any){
   for(let i = 0; i< this.listGroup.length;i++){
     if(this.listGroup[i].id==this.selectedValueGroupId){
       this.listCate=this.listGroup[i].Category;
+      this.selectedValueCateId=this.listCate[0].id;
       // console.log(this.listCate)
     }
   }

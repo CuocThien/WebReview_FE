@@ -1,25 +1,28 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { ManageGroupService } from '../manage-group/manage-group.service';
 import { ManagePostsService } from './manage-posts.service';
 
 @Component({
   selector: 'app-manage-posts',
   templateUrl: './manage-posts.component.html',
   styleUrls: ['./manage-posts.component.css'],
-  providers: [ManagePostsService]
+  providers: [ManagePostsService, ManageGroupService]
 })
 export class ManagePostsComponent implements OnInit {
 
   constructor(private renderer:Renderer2, private service:ManagePostsService,
-    private toastr:ToastrService, private router:ActivatedRoute) { }
+    private toastr:ToastrService, private router:ActivatedRoute,
+    private manageGroupService:ManageGroupService) { }
 
+  listGroup:any;
   listPost:any;
   listPostExperience:any=[]
   listPostReview:any=[]
   listPostForums:any=[]
   another:any=[]
-  filterString:any="Experience";
+  filterString:any;
   isApproved:any=true;
   p:number=1;
   delPostId:any;
@@ -33,13 +36,20 @@ export class ManagePostsComponent implements OnInit {
     }
     // console.log(this.isAdmin)
     this.getData(true,this.isAdmin)
+
+    this.manageGroupService.getGroup().then(res=>{
+      this.listGroup = res;
+      this.listGroup = this.listGroup.data;
+      this.filterString = this.listGroup[0]._id
+      // console.log(this.filterString)
+    }).catch(err=>console.log(err))
   }
   getData(approved:any, admin:any){
     this.listPost={}
     this.listPostExperience=[]
     this.listPostForums=[]
     this.listPostReview=[]
-    this.filterString="Experience"
+    // this.filterString="Experience"
 
     console.log("apro"+approved)
     console.log("admin "+admin)
@@ -52,24 +62,25 @@ export class ManagePostsComponent implements OnInit {
           for(let reviewPost of post.Post){
             this.listPostReview.push(reviewPost)
           }
-          console.log(this.listPostReview)
+          // console.log(this.listPostReview)
         }else if(post.Id === "Experience"){
           for(let expPost of post.Post){
             this.listPostExperience.push(expPost);
           }
-          console.log(this.listPostExperience)
+          // console.log(this.listPostExperience)
         }else if(post.Id=="Forum"){
           for(let forumPost of post.Post){
             this.listPostForums.push(forumPost);
           }
-          console.log(this.listPostForums)
+          // console.log(this.listPostForums)
         }else{
           for(let anotherPost of post.Post){
             this.another.push(anotherPost);
           }
         }
       }
-    }).catch(err=>this.toastr.error(err.error.msg))
+    }).catch(err=>{this.toastr.error(err.error.msg)
+    console.log(err)})
   }
   activeControl(event:any){
     var item=document.getElementsByClassName('active-control')

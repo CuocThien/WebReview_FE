@@ -31,14 +31,16 @@ export class ReadPostComponent implements OnInit {
     this.postId=this.route.snapshot.paramMap.get("PostId");
     this.url=this.route.url
     this.url = this.url._value[1].path;
+   
     if(this.url=="admin"){
       this.isApproved=false;
       this.service.getDetailPostAdmin(this.groupId, this.postId).then(res=>{
         this.post = res;
         // console.log(res)
         this.post = this.post.data
-        // console.log(this.post)
-        if(this.cookieService.get("fullName")==this.post.FullName){
+        
+        console.log(this.post)
+        if(this.cookieService.get("accountId")==this.post.dataPost.AccountId){
           this.isOwner = true
         }else{
           this.isOwner = false;
@@ -55,7 +57,7 @@ export class ReadPostComponent implements OnInit {
         // console.log(res)
         this.post = this.post.data
         // console.log(this.post)
-        if(this.cookieService.get("fullName")==this.post.FullName){
+        if(this.cookieService.get("accountId")==this.post.dataPost.AccountId){
           this.isOwner = true
         }else{
           this.isOwner = false;

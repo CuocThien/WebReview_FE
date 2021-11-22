@@ -14,34 +14,35 @@ button{
     padding: 5px 40px;
     margin-top: 10px;
 }
-.container{
+.container-shareExp{
     margin: auto;
+    width: 90%;
 }
-.navbar{
+.navbar-shareExp{
     display: block;
     background-color: #F6F6F6;
     padding: 0;
 }
-.navbar h5{
+.navbar-shareExp h5{
     margin-top: 10px;
     margin-left: 10px;
     font-weight: 700;
 }
-.navbar ul{
+.navbar-shareExp ul{
     width: 100%;
     list-style: none;
     padding: 0;
     margin-top: 10px;
 }
-.navbar ul li{
+.navbar-shareExp ul li{
     padding: 5px 10px;
     cursor: pointer;
     border-bottom: 1px solid #AFAFAF;
 }
-.navbar ul li:first-child{
+.navbar-shareExp ul li:first-child{
     border-top: 1px solid #AFAFAF;
 }
-.navbar ul li:hover{
+.navbar-shareExp ul li:hover{
     background-color: #87C0F3;
     color: #FFF;
 }
@@ -49,11 +50,11 @@ button{
     background-color: #87C0F3;
     color: #FFF;
 }
-.listPost{
+.listPost-shareExp{
     padding-top: 52px;
     margin: auto;
 }
-.post{
+.post-shareExp{
     position: relative;
     width: 100%;
     height: 152px;
@@ -63,28 +64,29 @@ button{
     cursor: pointer;
     
 }
-.post div img{
+.post-shareExp div img{
     max-width: 100%;
     max-height: 130px;
     width: auto;
     height: auto;
     display: inline;
 }
-.post .col-3{
+.post-shareExp .col-3{
     padding: 0;
     margin: auto;
 }
-.post h5{
+.post-shareExp h5{
     display: inline-block;
 }
-.author{
+.author-shareExp{
     margin: 0;
     position: absolute;
     float: left;
     bottom: 0;
     font-style: italic;
+    font-size: 16px;
 }
-app-star{
+.content-shareExp>app-star{
     position: absolute;
     bottom: 0;
     right: 0;
@@ -93,6 +95,7 @@ app-star{
     max-height: 20px;
     text-align: center;
     color: gold;
+    font-size: 16px;
 }
 .star{
 color: gold;
@@ -100,7 +103,7 @@ color: gold;
 .listHotPost{
     margin-top: 20px;
 }
-.container .col-3{
+.container-shareExp .col-3{
     width: 24%;
 }
 .hotpost{

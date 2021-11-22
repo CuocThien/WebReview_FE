@@ -29,7 +29,8 @@ export class SignInService {
                     .then(resU=>{user=resU;
                         this.cookieService.set("fullName", user.data.FullName);
                         this.cookieService.set("isAdmin", user.data.IsAdmin);
-                        // console.log(user)
+                        this.cookieService.set("accountId", user.data._id);
+                        console.log(user)
                     })
             })
             .catch(err=>this.toastr.error(err.error.msg));

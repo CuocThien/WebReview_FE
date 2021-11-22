@@ -5,11 +5,8 @@
       <li id="unapproved" (click)="activeControl($event)">Bài viết chưa duyệt</li>
     </ul>
   </div>
-
   <select [ngModel]="filterString" class="select-group" (ngModelChange)="filter($event)">
-    <option value="Experience">EXP</option>
-    <option value="Review">Review</option>
-    <option value="Forum">Forum</option>
+    <option *ngFor="let group of listGroup" [value]="group._id">{{group.Name}}</option>
   </select>
   <span class="filter">Lọc bài viết theo nhóm: </span>
   <table class="table table-hover">
@@ -54,7 +51,7 @@
       <tr *ngFor="let post of listPostForums | paginate: {itemsPerPage: 3, currentPage:p}">
         <td>{{post.Title}}</td>
         <td><img class="image-post-table" [src]="post.Image" alt=""></td>
-        <td>{{post.Content}}</td>
+        <td [innerHtml]="post.Content"></td>
         <td>{{post.CreateAt|date:'dd/MM/yyyy'}}</td>
         <td>
           <button class="btn btn-primary" *ngIf="isApproved" routerLink="/post-detail/{{filterString}}/{{post.Id}}">Xem chi tiết</button><br>

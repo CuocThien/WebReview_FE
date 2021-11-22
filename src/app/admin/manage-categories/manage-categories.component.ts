@@ -24,7 +24,7 @@ export class ManageCategoriesComponent implements OnInit {
     this.manageGroupService.getGroup().then(res=>{
       this.listGroup = res;
       this.listGroup = this.listGroup.data;
-      this.selectedValue = this.listGroup[0].id
+      this.selectedValue = this.listGroup[0]._id
       console.log(this.listGroup)
     }).catch(err=>console.log(err))
   }

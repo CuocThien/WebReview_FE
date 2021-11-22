@@ -1,25 +1,25 @@
 <div class="header">
   <h4>KINH NGHIỆM HAY & MẸO VẶT</h4>
-  <button>+ Viết những chia sẻ của bạn</button>
+  <button routerLink="/create-post">+ Viết những chia sẻ của bạn</button>
 </div>
-<div class="container row">
-  <div class="navbar col-2">
+<div class="container-shareExp row">
+  <div class="navbar-shareExp col-2">
     <h5>CHỦ ĐỀ</h5>
-    <ul class="dropdown">
+    <ul class="dropdown-shareExp">
       <li class="item" *ngFor="let category of categories" id="{{category.id}}" (click)="active($event);getPostByCategory($event)"><a>{{category.Name}}</a></li>
     </ul>
   </div>
-  <div class="listPost col-7">
-    <div class="post row" *ngFor="let post of listPost | paginate: {itemsPerPage: 3, currentPage:p}" id="{{post.dataPost.Id}}" routerLink="/post-detail/Experience/{{post.dataPost.Id}}">
+  <div class="listPost-shareExp col-7">
+    <div class="post-shareExp row" *ngFor="let post of listPost | paginate: {itemsPerPage: 3, currentPage:p}" id="{{post.dataPost.Id}}" routerLink="/post-detail/Experience/{{post.dataPost.Id}}">
       <div class="col-3">
         <img [src]="post.dataPost.Image || 'https://4.bp.blogspot.com/-OCutvC4wPps/XfNnRz5PvhI/AAAAAAAAEfo/qJ8P1sqLWesMdOSiEoUH85s3hs_vn97HACLcBGAsYHQ/s1600/no-image-found-360x260.png'"
           alt="">
           <p class="avg-star">{{post.Rating.AvgRate}}<span class="star">★</span> | {{post.Rating.count || 0}} bài đánh giá</p>
       </div>
-      <div class="content col-9">
+      <div class="content-shareExp col-9">
         <h5>{{post.dataPost.Title}}</h5>
         <p>{{post.dataPost.Overview}}</p>
-        <p class="author">{{post.FullName}} - {{post.dataPost.CreateAt|date:'HH:mm dd/MM/yyyy'}}</p>
+        <p class="author-shareExp">{{post.FullName}} - {{post.dataPost.CreateAt|date:'HH:mm dd/MM/yyyy'}}</p>
         <app-star id="{{post.dataPost.Id}}" [rate]="post.RatingbyAcc || 0"></app-star>
       </div>
     </div>

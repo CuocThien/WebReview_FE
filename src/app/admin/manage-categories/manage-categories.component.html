@@ -6,7 +6,7 @@
         <span>Chọn nhóm: </span>
         <form (ngSubmit)="onSubmit(formAddCategory);" #formAddCategory="ngForm">
         <select [ngModel]="selectedValue" (ngModelChange)="onChange($event)" name="GroupId">
-            <option *ngFor="let group of listGroup" [value]="group.id">{{group.Name}}</option>
+            <option *ngFor="let group of listGroup" [value]="group._id">{{group.Name}}</option>
         </select>
         <input type="text" placeholder="Nhập tên danh mục" ngModel name="CateName">
         <button class="btn btn-primary">Thêm</button>

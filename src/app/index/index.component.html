@@ -28,7 +28,7 @@
   </div>
   <div class="review">
     <h5 (click)="reviewHub()">Review Hub</h5>
-    <input type="button" value="+ Viết bài review">
+    <input type="button" value="+ Viết bài review" routerLink="/create-post">
     <div class="review-content row">
       <div class="review-post-background col-3"></div>
       <div class="review-post-background col-3"></div>
@@ -39,7 +39,9 @@
     </div>
     <div class="review-content2 row">
       <div class="review-post meet col-3" *ngFor="let itemR of listReviewPost | paginate: {itemsPerPage: 4, currentPage:p}" id="{{itemR.dataPost.Id}}" routerLink="/post-detail/Review/{{itemR.dataPost.Id}}">
+        <div class="review-post-img">
         <img [src]="itemR.dataPost.Image||'https://4.bp.blogspot.com/-OCutvC4wPps/XfNnRz5PvhI/AAAAAAAAEfo/qJ8P1sqLWesMdOSiEoUH85s3hs_vn97HACLcBGAsYHQ/s1600/no-image-found-360x260.png'" alt="">
+      </div>
         <h6>{{itemR.dataPost.Title}}</h6>
         <!-- <p>{{itemR.dataPost.Overview}}</p> -->
       </div>

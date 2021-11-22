@@ -20,26 +20,27 @@ button{
     padding: 5px 40px;
     margin-top: 10px;
 }
-.container{
+.container-reviewhub{
     margin: 0 auto;
+    width: 90%;
 }
-.navbar{
+.navbar-reviewhub{
     display: block;
     background-color: #F6F6F6;
     padding: 0;
 }
-.navbar h5{
+.navbar-reviewhub h5{
     margin-top: 10px;
     margin-left: 10px;
     font-weight: 700;
 }
-.navbar ul{
+.navbar-reviewhub ul{
     width: 100%;
     list-style: none;
     padding: 0;
     margin-top: 10px;
 }
-.navbar ul li{
+.navbar-reviewhub ul li{
     padding: 5px 10px;
     cursor: pointer;
     border-bottom: 1px solid #AFAFAF;
@@ -47,7 +48,7 @@ button{
 .navbar ul li:first-child{
     border-top: 1px solid #AFAFAF;
 }
-.navbar ul li:hover{
+.navbar-reviewhub ul li:hover{
     background-color: #87C0F3;
     color: #FFF;
 }
@@ -55,10 +56,10 @@ button{
     background-color: #87C0F3;
     color: #FFF;
 }
-.listPost{
+.listPost-reviewhub{
     padding-top: 52px;
 }
-.post{
+.post-reviewhub{
     position: relative;
     width: 95%;
     height: 152px;
@@ -67,7 +68,7 @@ button{
     margin-left: 10px;
     cursor: pointer;
 }
-.post div img{
+.post-reviewhub div img{
     max-width: 100%;
     max-height: 130px;
     width: auto;
@@ -75,29 +76,31 @@ button{
     display: inline;
     border-radius: 10px;
 }
-.post .col-3{
+.post-reviewhub .col-3{
     padding: 0;
     margin: 0 auto;
 }
-.post h5{
+.post-reviewhub h5{
     display: inline-block;
 }
-.author{
+.author-reviewhub{
     margin: 0;
     position: absolute;
     float: left;
     bottom: 0;
     font-style: italic;
+    font-size: 16px;
 }
-app-star{
+.content-reviewhub>app-star{
     position: absolute;
     bottom: 0;
     right: 0;
 }
-.avg-star{
+.avg-star-reviewhub{
     max-height: 20px;
     text-align: center;
     color: gold;
+    font-size: 16px;
 }
 .star{
 color: gold;

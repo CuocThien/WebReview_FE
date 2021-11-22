@@ -24,7 +24,6 @@ h2{
     padding: 0 30px;
     font-size: 26px;
     border: none;
-    border-left: 2px solid black;
 }
 #title:focus{
     border: none;
@@ -40,7 +39,6 @@ h2{
     display: inline;
 }
 img{
-    margin-left: 3px;
     max-width: 580px;
     max-height: 350px;
     width: auto;
@@ -52,7 +50,6 @@ img{
     padding: 0 20px;
     font-size: 16px;
     border: none;
-    border-left: 2px solid black;
 }
 #overview:focus{
     border: none;

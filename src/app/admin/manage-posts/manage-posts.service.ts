@@ -10,15 +10,19 @@ export class ManagePostsService {
 
     }
     getPost(approved:boolean,isAdmin:boolean) {
-        const url = 'https://oggy-webreview.herokuapp.com/post/manage/getPost/'+approved;
-        console.log("ala:"+isAdmin)
+        const urlGetPost = 'https://oggy-webreview.herokuapp.com/post/manage/getPost/'+approved;
+        // console.log(url)
+        // console.log("ala:"+isAdmin)
         if(isAdmin==true){
+            // console.log("alola")
             const headers = new HttpHeaders({ 'Content-Type': 'application/json'})
-            return this.http.get(url, { headers })
+            return this.http.get(urlGetPost, { headers })
             .toPromise();
         }else{
+            // console.log("alalo")
+            // console.log(url)
             const headers = new HttpHeaders({ 'Content-Type': 'application/json','Authorization':'Bearer '+this.cookieService.get("authToken")})
-            return this.http.get(url, { headers })
+            return this.http.get(urlGetPost, { headers })
             .toPromise();
         }
         
