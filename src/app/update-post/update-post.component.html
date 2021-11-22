@@ -11,16 +11,13 @@
         <textarea rows="2" type="text" name="Title" [(ngModel)]="post.Title" id="title" placeholder="Nhập tiêu đề vào đây..."
           maxlength="100" (ngModelChange)="checkLength($event)" required></textarea>
         <p class="error-msg" *ngIf="isOverMaxLength">Tiêu đề không dài quá 100 kí tự...</p>
-        <div class="row">
-          <div class="col-8">
+        <div class="image-control">
+          <p class="annoucement-msg">Chọn ảnh giới thiệu cho bài viết</p>
             <img
               [src]="imageSrc"
               alt="your image" require name="Avatar" />
-          </div>
-          <div class="col-4">
-            <p class="annoucement-msg">Chọn ảnh giới thiệu cho bài viết</p>
+          
             <input type='file' (change)="readURL($event);" accept="image/*" />
-          </div>
         </div>
         <textarea [(ngModel)]="post.Overview" name="Overview" id="overview" rows="4" placeholder="Nhập mô tả ngắn gọn cho bài viết..."
           maxlength="300" (ngModelChange)="checkLengthOverview($event)"></textarea>

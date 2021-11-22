@@ -1,5 +1,7 @@
-.container{
+.container-manage-post{
     margin-top: 3px;
+    min-height: 100vh;
+    height: auto;
 }
 .control-browse-articles{
     width: 100%;

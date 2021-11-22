@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SearchService } from './search.service';
 
 @Component({
@@ -10,13 +10,14 @@ import { SearchService } from './search.service';
 })
 export class SearchComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private service: SearchService) { }
+  constructor(private route: ActivatedRoute, private service: SearchService,private router: Router) { }
   p: number = 1;
   query: any;
   result: any;
   listSearch: any;
   count: number = 0;
   ngOnInit(): void {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.query = this.route.snapshot.queryParamMap.get("q");
     this.service.getResultSearch(this.query).then(res => {
       this.result = res;
@@ -34,5 +35,6 @@ export class SearchComponent implements OnInit {
     }).catch(err => console.log(err))
     console.log(this.query)
   }
-
+  ngAfterViewInit(){
+  }
 }

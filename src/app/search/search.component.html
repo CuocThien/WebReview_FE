@@ -1,18 +1,18 @@
 <div class="container-fluid">
-  <div class="container">
+  <div class="container-search">
     <h4>Tìm thấy {{count}} kết quả cho từ khoá "{{query}}"</h4>
     <hr>
-    <div class="listPost">
-      <div class="post row" *ngFor="let post of listSearch | paginate: {itemsPerPage: 3, currentPage:p}" id="{{post.dataPost.Id}}" routerLink="/post-detail/post.GroupId/{{post.dataPost.Id}}">
+    <div class="listPost-search">
+      <div class="post-search row" *ngFor="let post of listSearch | paginate: {itemsPerPage: 3, currentPage:p}" id="{{post.dataPost.Id}}" routerLink="/post-detail/{{post.PostId}}/{{post.dataPost.Id}}">
         <div class="col-3">
           <img
             [src]="post.dataPost.Image || 'https://4.bp.blogspot.com/-OCutvC4wPps/XfNnRz5PvhI/AAAAAAAAEfo/qJ8P1sqLWesMdOSiEoUH85s3hs_vn97HACLcBGAsYHQ/s1600/no-image-found-360x260.png'"
             alt="">
         </div>
-        <div class="content col-9">
+        <div class="content-search col-9">
           <h5>{{post.dataPost.Title}}</h5>
-          <p>{{post.dataPost.Overview}}</p>
-          <p class="author">{{post.FullName}} - {{post.dataPost.CreateAt|date:'HH:mm dd/MM/yyyy'}}</p>
+          <p style="font-size: 16px!important;">{{post.dataPost.Overview}}</p>
+          <p class="author-search">{{post.FullName}} - {{post.dataPost.CreateAt|date:'HH:mm dd/MM/yyyy'}}</p>
         </div>
       </div>
       <pagination-controls class="pagination"

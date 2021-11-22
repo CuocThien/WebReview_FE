@@ -37,14 +37,14 @@ h2{
 }
 .annoucement-msg{
     font-weight: bold;
-    display: inline;
+    display: block;
 }
 img{
-    margin-left: 3px;
-    max-width: 580px;
-    max-height: 350px;
+    max-width: 100%;
+    max-height: 450px;
     width: auto;
     height: auto;
+    display: block;
 }
 #overview{
     margin-top: 20px;
