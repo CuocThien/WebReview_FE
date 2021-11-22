@@ -33,6 +33,7 @@ export class StarComponent implements OnInit {
   rating(event:any){
     // alert(this.id+": "+event.target.id.split('_')[1])
     this.rate = event.target.id.split('_')[1];
+    // alert(this.rate)
   }
   data:any;
   result:any;

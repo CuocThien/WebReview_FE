@@ -13,7 +13,7 @@
     </ul>
     </div>
     <div class="listPost-reviewhub col-10">
-  <div class="post-reviewhub row" *ngFor="let post of listPost | paginate: {itemsPerPage: 3, currentPage:p}" id="{{post.dataPost.Id}}" routerLink="/post-detail/Review/{{post.dataPost.Id}}">
+  <div class="post-reviewhub row" *ngFor="let post of listPost | paginate: {itemsPerPage: 5, currentPage:p}" id="{{post.dataPost.Id}}" routerLink="/post-detail/Review/{{post.dataPost.Id}}">
     <div class="col-3">
       <img [src]="post.dataPost.Image || 'https://4.bp.blogspot.com/-OCutvC4wPps/XfNnRz5PvhI/AAAAAAAAEfo/qJ8P1sqLWesMdOSiEoUH85s3hs_vn97HACLcBGAsYHQ/s1600/no-image-found-360x260.png'" alt="">
       <p class="avg-star-reviewhub">{{post.Rating.AvgRate||0}}<span class="star">★</span> | {{post.Rating.count || 0}} bài đánh giá</p>

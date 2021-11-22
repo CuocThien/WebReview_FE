@@ -1,19 +1,21 @@
 .container-fluid{
     background-color: #202126;
-    height: 200px;
+    height: 150px;
     width: 100%;
     margin: 0;
     padding: 0;
 }
 .member {
-    padding: 18px 0;
+    padding: 0;
     padding-left: 150px;
+    height: 150px;
 }
 .member h5{
     margin-bottom: 15px;
 }
 .contact{
-    padding: 18px 0;
+    padding: 0;
+    height: 150px;
 }
 h5{
     color: #FFF;
@@ -48,6 +50,7 @@ p{
     margin-right: 5px;
 }
 .avatar{
+    height: 150px;
     padding-left: 75px;
 }
 .avatar img{

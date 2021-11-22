@@ -29,10 +29,10 @@
             <div class="content-forums">
                 <p [innerHtml]="post.dataPost.Content"></p>
             </div>
-            <div class="rating-forums">
+            <!-- <div class="rating-forums">
                 <h6>Đánh giá bài viết</h6>
                 <app-star id="{{post.dataPost.Id}}" rate="{{post.RatingByAcc||0}}"></app-star>
-            </div>
+            </div> -->
             <app-comment [countCmt]="post.CommentCount" [postId]="post.dataPost.Id" [listCmt]="post.Comment||{}"></app-comment>
         </div>
     </div>

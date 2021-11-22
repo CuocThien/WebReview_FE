@@ -20,6 +20,8 @@ export class ManageGroupComponent implements OnInit {
   p:number=1;
   Id:any;
   Name:any;
+  inputId:any;
+  inputName:any;
   onSubmit(formAddGroup:any){
     console.log(formAddGroup.value)
     if(formAddGroup.invalid){
@@ -29,6 +31,10 @@ export class ManageGroupComponent implements OnInit {
         this.result = res;
         this.toastr.success(this.result.msg);
         this.getGroup();
+        this.inputId = document.getElementsByName("Id")
+        this.inputId[0].value=""
+        this.inputName = document.getElementsByName("Name")
+        this.inputName[0].value=""
       }).catch(err=>{
         this.result = err;
         // console.log(err)

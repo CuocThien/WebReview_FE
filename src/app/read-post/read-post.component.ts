@@ -4,6 +4,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { ReadPostService } from './read-post.service';
 import { ManagePostsService} from '../admin/manage-posts/manage-posts.service'
 import { ToastrService } from 'ngx-toastr';
+import { AppRoutingModule } from '../app-routing.module';
 
 
 @Component({
@@ -16,7 +17,7 @@ import { ToastrService } from 'ngx-toastr';
 export class ReadPostComponent implements OnInit {
 
   constructor(private route:ActivatedRoute, private service:ReadPostService,private cookieService:CookieService,
-    private managePostService:ManagePostsService, private toastr:ToastrService) { 
+    private managePostService:ManagePostsService, private toastr:ToastrService, private router:AppRoutingModule) { 
     
   }
   post:any
@@ -38,7 +39,11 @@ export class ReadPostComponent implements OnInit {
         this.post = res;
         // console.log(res)
         this.post = this.post.data
-        
+        this.isAdmin=this.cookieService.get("isAdmin")
+        this.isApproved = !this.isApproved && this.isAdmin;
+        if(this.isApproved=="false")
+          this.isApproved = false
+        console.log(this.isApproved)
         console.log(this.post)
         if(this.cookieService.get("accountId")==this.post.dataPost.AccountId){
           this.isOwner = true
@@ -48,10 +53,11 @@ export class ReadPostComponent implements OnInit {
         // console.log(this.post.dataPost.Content)
       })
       .catch(err=>console.log(err))
-    }else{
+    }else {
       if(this.cookieService.get("isAdmin")=="true"){
         this.isAdmin = true;
       }
+      this.isApproved = false;
       this.service.getDetailPost(this.groupId, this.postId).then(res=>{
         this.post = res;
         // console.log(res)
@@ -77,6 +83,7 @@ export class ReadPostComponent implements OnInit {
     this.managePostService.updatePostStatus(this.groupId,this.postId).then(res=>{
       this.resultUpdateStatus = res;
       this.toastr.success(this.resultUpdateStatus.msg)
+      this.router.index();
     }).catch(err=>{
       console.log(err);
       this.toastr.error(err.error.msg,"Lỗi")
@@ -87,6 +94,7 @@ export class ReadPostComponent implements OnInit {
     this.managePostService.deletePost(this.groupId,this.postId).then(res=>{
       this.resultDelPost = res;
       this.toastr.success(this.resultDelPost.msg)
+
     }).catch(err=>{
       console.log(err);
       this.toastr.error(err.error.msg,"Lỗi")

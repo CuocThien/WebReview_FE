@@ -35,14 +35,18 @@ export class ManageCategoriesComponent implements OnInit {
     }).catch(err=>console.log(err))
   }
   resultAddCate:any;
+  input:any
   onSubmit(formAddCategory:any){
-    console.log(formAddCategory.value)
+    // console.log(formAddCategory.value)
     if(formAddCategory.invalid){
       this.toastr.error("Nhập đầy đủ thông tin để thêm!!", "Lỗi!!!")
     }else{
       this.manageCateService.addCategory(formAddCategory.value).then(res=>{
         this.resultAddCate = res;
         this.toastr.success(this.resultAddCate.msg)
+        this.getData();
+        this.input=document.getElementsByName("CateName");
+        this.input[0].value=""
       }).catch(err=>{
         this.resultAddCate = err;
         this.toastr.error(this.resultAddCate.error.msg)

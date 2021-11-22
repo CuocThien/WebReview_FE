@@ -14,7 +14,7 @@
     </div>
     <div class="forums col-3">
       <h5 routerLink="/forums">Forums</h5>
-      <div class="forum-post" *ngFor="let itemF of listForumPost" id="{{itemF.dataPost.Id}}">
+      <div class="forum-post" *ngFor="let itemF of listForumPost" id="{{itemF.dataPost.Id}}" routerLink="/post-detail/Forum/{{itemF.dataPost.Id}}">
         <img
           [src]="itemF.dataPost.Image || 'https://4.bp.blogspot.com/-OCutvC4wPps/XfNnRz5PvhI/AAAAAAAAEfo/qJ8P1sqLWesMdOSiEoUH85s3hs_vn97HACLcBGAsYHQ/s1600/no-image-found-360x260.png'"
           alt="">

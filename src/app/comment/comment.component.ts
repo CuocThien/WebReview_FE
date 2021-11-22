@@ -51,7 +51,7 @@ export class CommentComponent implements OnInit {
   }
   resPostCmt:any;
   postComment(){
-    this.txtCmt = document.getElementById("postCmt");
+    this.txtCmt = document.getElementById("postCmt-"+this.postId);
     let content = this.txtCmt.value;
     this.dataPostCmt = {}
     this.dataPostCmt["PostId"]=this.postId;
