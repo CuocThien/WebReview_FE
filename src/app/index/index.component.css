@@ -1,278 +1,321 @@
 .container-fluid {
-    width: 100vw;
-    margin: auto;
-    padding: 0 10%;
+  width: 100vw;
+  margin: auto;
+  padding: 0 10%;
 }
 
 /* CSS for share experience */
-.share-experience{
-    padding-top: 20px;
+.share-experience {
+  padding-top: 20px;
 }
-a,h5 { display: inline;cursor: pointer;}
-.share-experience > .intro > a{
-    float: right;
-    color: #198CF6;
-}
-.intro{
-    margin-bottom: 10px;
-}
-.content-share-experience{
-    width: 100%;
-}
-.content-share-experience>div:first-child{
-    display: inline-block;
-    width: 65%;
-    margin-right: 20px;
+
+a,
+h5 {
+  display: inline;
   cursor: pointer;
 }
-.content-share-experience>div:first-child > img{
-    max-width: 100%;
+
+.share-experience>.intro>a {
+  float: right;
+  color: #198CF6;
+}
+
+.intro {
+  margin-bottom: 10px;
+}
+
+.content-share-experience {
+  width: 100%;
+}
+
+.content-share-experience>div:first-child {
+  display: inline-block;
+  width: 65%;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.content-share-experience>div:first-child>img {
+  max-width: 100%;
   max-height: 250px;
   width: 100%;
   height: 250px;
   border-radius: 10px;
 }
 
-.content-share-experience>div:nth-child(2){
-    display: inline-block;
-    float: right;
-    width: 30%;
+.content-share-experience>div:nth-child(2) {
+  display: inline-block;
+  float: right;
+  width: 30%;
   cursor: pointer;
 }
-.content-share-experience>div:nth-child(2) > img{
-    max-width: 100%;
+
+.content-share-experience>div:nth-child(2)>img {
+  max-width: 100%;
   max-height: 170px;
   width: 100%;
   height: 170px;
   border-radius: 10px;
 }
+
 .content-share-experience>div:nth-child(3),
 .content-share-experience>div:nth-child(4),
-.content-share-experience>div:nth-child(5){
-    display: inline-block;
-    width: 30%;
+.content-share-experience>div:nth-child(5) {
+  display: inline-block;
+  width: 30%;
   cursor: pointer;
 }
-.content-share-experience>div:nth-child(4){
-    margin: 0 4%;
+
+.content-share-experience>div:nth-child(4) {
+  margin: 0 4%;
 }
-.content-share-experience>div:nth-child(3)> img,
-.content-share-experience>div:nth-child(4)> img,
-.content-share-experience>div:nth-child(5) > img{
-    max-width: 100%;
+
+.content-share-experience>div:nth-child(3)>img,
+.content-share-experience>div:nth-child(4)>img,
+.content-share-experience>div:nth-child(5)>img {
+  max-width: 100%;
   max-height: 130px;
   width: 100%;
   height: 130px;
   border-radius: 10px;
 }
-.content-share-experience>div:nth-child(3)> p,
-.content-share-experience>div:nth-child(4)> p,
-.content-share-experience>div:nth-child(5) > p{
-    font-size: 10px;
+
+.content-share-experience>div:nth-child(3)>p,
+.content-share-experience>div:nth-child(4)>p,
+.content-share-experience>div:nth-child(5)>p {
+  font-size: 10px;
 }
-.share-post{
-    transition: all 0.4s ease;
+
+.share-post {
+  transition: all 0.4s ease;
 }
-.share-post:hover{
-    cursor: pointer;
-    transform: scale(1.1);
+
+.share-post:hover {
+  cursor: pointer;
+  transform: scale(1.1);
 }
 
 /* CSS for Forums */
-.forums{
-padding-top: 20px!important;
+.forums {
+  padding-top: 20px !important;
 }
-.forums > h5{
-    text-align: center;
-    display: block;
-    background-color: #4DA8F2;
-    color: #fff;
-    border-radius: 3px;
-    width: 100%;
-    height: 30px;
-    padding: 2px 0;
-    margin-bottom: 10px;
-    cursor: pointer;
+
+.forums>h5 {
+  text-align: center;
+  display: block;
+  background-color: #4DA8F2;
+  color: #fff;
+  border-radius: 3px;
+  width: 100%;
+  height: 30px;
+  padding: 2px 0;
+  margin-bottom: 10px;
+  cursor: pointer;
 }
-.forums > input{
-    width: 100%;
-    background-color: #D3ECFD;
-    border: none;
-    border-radius: 5px;
-    color: #198CF6;
-    margin-top: 10px;
+
+.forums>input {
+  width: 100%;
+  background-color: #D3ECFD;
+  border: none;
+  border-radius: 5px;
+  color: #198CF6;
+  margin-top: 10px;
 }
-.forum-post{
-    margin: 5px 0;
-    transition: all 0.4s ease;
+
+.forum-post {
+  margin: 5px 0;
+  transition: all 0.4s ease;
 }
-.forum-post > img{
-    display: inline;
-    max-width: 50%;
-    max-height: 80px;
-    width: 50%;
-    height: auto;
-    border-radius: 10px;
+
+.forum-post>img {
+  display: inline;
+  max-width: 50%;
+  max-height: 80px;
+  width: 50%;
+  height: auto;
+  border-radius: 10px;
 
 }
-.forum-post-content{
-    width: 50%;
-    display: inline-block;
-    padding-left: 5px;
+
+.forum-post-content {
+  width: 50%;
+  display: inline-block;
+  padding-left: 5px;
 }
-.forum-post-content>p{
-    font-size: 12px;
+
+.forum-post-content>p {
+  font-size: 12px;
 }
-.forum-post:hover{
-    cursor: pointer;
-    transform: scale(1.1);
+
+.forum-post:hover {
+  cursor: pointer;
+  transform: scale(1.1);
 }
 
 /* CSS for review */
 
-.review{
-    margin: 50px 0;
-    width: 75%;
-    height: 260px;
-    background-image: linear-gradient(to right, #6EE2F5,#6454F0);
-    border-radius: 5px;
-    position: relative;
+.review {
+  margin: 50px 0;
+  width: 75%;
+  height: 260px;
+  background-image: linear-gradient(to right, #6EE2F5, #6454F0);
+  border-radius: 5px;
+  position: relative;
 }
-.review > h5{
-    position: absolute;
-    color: #FFF;
-    background-image: linear-gradient(to right, #CB9EF6,#0FC6E3);
-    top: -15;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
+
+.review>h5 {
+  position: absolute;
+  color: #FFF;
+  background-image: linear-gradient(to right, #CB9EF6, #0FC6E3);
+  top: -15;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
 }
-.review > input{
-    color: #9B4DFF;
-    position: absolute;
-    right: 0;
-    border: none;
-    background-color: #FFF;
-    border-radius: 5px;
-    margin: 3px 10px;
-    padding: 2px 10px;
+
+.review>input {
+  color: #9B4DFF;
+  position: absolute;
+  right: 0;
+  border: none;
+  background-color: #FFF;
+  border-radius: 5px;
+  margin: 3px 10px;
+  padding: 2px 10px;
 }
-.review-content{
-    text-align: center;
-    margin-left: 1px;
-    top:35;
-    position: relative;
-    margin-top: 35px;
-    width: 100%;
-    height: 78%;
-    padding: 0 20px;
+
+.review-content {
+  text-align: center;
+  margin-left: 1px;
+  top: 35;
+  position: relative;
+  margin-top: 35px;
+  width: 100%;
+  height: 78%;
+  padding: 0 20px;
 }
-.review-content2{
-    margin-left: 1px;
-    top: 0;
-    position: absolute;
-    margin-top: 35px;
-    width: 100%;
-    height: 78%;
-    padding: 0 20px;
+
+.review-content2 {
+  margin-left: 1px;
+  top: 0;
+  position: absolute;
+  margin-top: 35px;
+  width: 100%;
+  height: 78%;
+  padding: 0 20px;
 }
-.review-post-background{
-    background-color: C4C4C4;
-    mix-blend-mode: color-burn;
-    /* position: relative; */
-    border-radius: 10px;
-    height: 100%;
-    transition: all 0.4s ease;
+
+.review-post-background {
+  mix-blend-mode: color-burn;
+  background-color: C4C4C4;
+  border-radius: 10px;
+  height: 100%;
+  transition: all 0.4s ease;
 }
-.review-post-background:hover{
-    transform: scale(1.05);
+
+.review-post-background:hover {
+  transform: scale(1.05);
 }
-.review-post > h6{
-    color: yellow;
-    padding: 0 5px;
-    margin: 0;
+
+.review-post>h6 {
+  color: yellow;
+  padding: 0 5px;
+  margin: 0;
 }
-.review-post > p{
-    padding: 0;
-    margin: 0;
-    font-size: 14px;
+
+.review-post>p {
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
 }
-.review-post{
-    height: 203px;
-    cursor: pointer;
-border: 5px solid transparent;
-transition: all 0.4s ease;
-color: white;
+
+.review-post {
+  height: 203px;
+  cursor: pointer;
+  border: 5px solid transparent;
+  transition: all 0.4s ease;
+  color: white;
 }
-.review-post-img{
-    width: 100%;
-    text-align: center;
-    height: 100px;
+
+.review-post-img {
+  width: 100%;
+  text-align: center;
+  height: 100px;
 }
-.review-post:hover{
-    transform: scale(1.04);
+
+.review-post:hover {
+  transform: scale(1.04);
 }
-.review-post-img > img{
-    margin: 0 auto;
-    display: inline;
-    max-width: 100%;
-    max-height: 100px;
-    width: auto;
-    height: auto;
-    border-radius: 10px;
+
+.review-post-img>img {
+  margin: 0 auto;
+  display: inline;
+  max-width: 100%;
+  max-height: 100px;
+  width: auto;
+  height: auto;
+  border-radius: 10px;
 }
-.col-3{
-    padding: 0;
-    margin: 0 7px;
-    width: 23%;
+
+.col-3 {
+  padding: 0;
+  margin: 0 7px;
+  width: 23%;
 }
-.pagination{
-    display: inline;
-    position: absolute;
-    bottom: -3;
-    height: 25px;
-    text-align:  center;
-    width: 100%;
-    left: -25;
+
+.pagination {
+  display: inline;
+  position: absolute;
+  bottom: -3;
+  height: 25px;
+  text-align: center;
+  width: 100%;
+  left: -25;
 }
+
 .pagination /deep/ .ngx-pagination .current {
-    height: 15px;
-    width: 15px!important;
-    border-radius: 50%;
-    margin: 3px 2px;
-    background: #6454F0;
-    padding: 3px 2px;
-  }
+  height: 15px;
+  width: 15px !important;
+  border-radius: 50%;
+  margin: 3px 2px;
+  background: #6454F0;
+  padding: 3px 2px;
+}
 
-  .pagination /deep/ .ngx-pagination li {
-      height: 15px;
-      width: 15px;
-    border: none;
-    border-radius: 50%;
-    margin: 3px 2px;
-    background: white;
-  }
-  .pagination /deep/ .ngx-pagination span{
-    visibility: hidden;
-  }
-  
-   .pagination /deep/ .ngx-pagination a::after{
-     display: none;
-   }
-   .pagination /deep/ .ngx-pagination a:hover{
-    background: transparent;
-  }
-   .pagination /deep/ .ngx-pagination li::before{
-     display: none;
-   }
+.pagination /deep/ .ngx-pagination li {
+  height: 15px;
+  width: 15px;
+  border: none;
+  border-radius: 50%;
+  margin: 3px 2px;
+  background: white;
+}
 
-    .pagination /deep/ .ngx-pagination li::after{
-     display: none;
-   }
+.pagination /deep/ .ngx-pagination span {
+  visibility: hidden;
+}
 
-    .pagination /deep/ .ngx-pagination a::before{
-     display: none;
-   }
-   .pagination /deep/ .pagination-next, .pagination /deep/.pagination-previous{
-       visibility: hidden;
-   }
+.pagination /deep/ .ngx-pagination a::after {
+  display: none;
+}
+
+.pagination /deep/ .ngx-pagination a:hover {
+  background: transparent;
+}
+
+.pagination /deep/ .ngx-pagination li::before {
+  display: none;
+}
+
+.pagination /deep/ .ngx-pagination li::after {
+  display: none;
+}
+
+.pagination /deep/ .ngx-pagination a::before {
+  display: none;
+}
+
+.pagination /deep/ .pagination-next,
+.pagination /deep/.pagination-previous {
+  visibility: hidden;
+}
