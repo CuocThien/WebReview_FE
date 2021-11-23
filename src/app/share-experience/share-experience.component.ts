@@ -31,6 +31,7 @@ export class ShareExperienceComponent implements OnInit {
     this.indexService.getPost().then(res=>{
       this.listHotPost=res;
       this.listHotPost=this.listHotPost.data.topexp
+      console.log(this.listHotPost)
     })
     .catch(err=>console.log(err))
 

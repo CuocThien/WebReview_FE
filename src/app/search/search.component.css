@@ -53,6 +53,7 @@ h4{
     float: left;
     bottom: 0;
     font-style: italic;
+    font-size: 16px;
 }
 app-star{
     position: absolute;
@@ -72,4 +73,7 @@ color: gold;
     text-align: center;
     width: 100%;
     display: inline;
+}
+.overview-search{
+    font-size: 16px!important;
 }

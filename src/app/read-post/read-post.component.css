@@ -35,7 +35,7 @@ img{
     display: block;
     margin-bottom: 30px;
 }
-p{
+#content > p{
     font-size: 20px;
 }
 .author{

@@ -18,7 +18,7 @@
       </div>
       <div class="content-shareExp col-9">
         <h5>{{post.dataPost.Title}}</h5>
-        <p style="margin-bottom: 25px;">{{post.dataPost.Overview}}</p>
+        <p class="overview-share">{{post.dataPost.Overview}}</p>
         <p class="author-shareExp">{{post.FullName}} - {{post.dataPost.CreateAt|date:'HH:mm dd/MM/yyyy'}}</p>
         <app-star id="{{post.dataPost.Id}}" [rate]="post.RatingbyAcc || 0"></app-star>
       </div>

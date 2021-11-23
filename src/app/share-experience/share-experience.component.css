@@ -129,3 +129,7 @@ color: gold;
     width: 100%;
     display: inline;
 }
+.overview-share{
+    margin-bottom: 25px;
+    font-size: 16px!important;
+}

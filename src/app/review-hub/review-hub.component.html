@@ -20,7 +20,7 @@
     </div>
     <div class="content-reviewhub col-9">
       <h5>{{post.dataPost.Title}}</h5>
-      <p>{{post.dataPost.Overview}}</p>
+      <p class="overview-review">{{post.dataPost.Overview}}</p>
       <p class="author-reviewhub">{{post.FullName}} - {{post.dataPost.CreateAt|date:'HH:mm dd/MM/yyyy'}}</p>
       <app-star id="{{post.dataPost.Id}}" rate="{{post.RatingbyAcc || 0}}"></app-star>
     </div>
