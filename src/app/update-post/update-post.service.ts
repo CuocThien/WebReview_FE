@@ -12,6 +12,7 @@ export class UpdatePostService {
         const url = 'https://oggy-webreview.herokuapp.com/post/updatePost/'+GroupId+'/'+PostId;
         const headers = new HttpHeaders({ 'Content-Type': 'application/json','Authorization':'Bearer '+this.cookieService.get("authToken")})
         const body = JSON.stringify(value)
+        // console.log(body)
         return this.http.post(url, body,{ headers })
         .toPromise();
     }

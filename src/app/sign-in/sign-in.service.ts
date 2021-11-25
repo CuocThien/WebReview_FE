@@ -20,20 +20,7 @@ export class SignInService {
         const body = JSON.stringify(value);
         return this.http.post(urlSignIn, body, { headers })
             .toPromise()
-            .then(res=>{
-                result=res;
-                this.toastr.success(result.msg);
-                this.router.navigate(["/index"]);
-                this.cookieService.set('authToken', result.data.Token);
-                this.getUser(this.cookieService.get("authToken"))
-                    .then(resU=>{user=resU;
-                        this.cookieService.set("fullName", user.data.FullName);
-                        this.cookieService.set("isAdmin", user.data.IsAdmin);
-                        this.cookieService.set("accountId", user.data._id);
-                        console.log(user)
-                    })
-            })
-            .catch(err=>this.toastr.error(err.error.msg));
+            
     }
 
   getUser(value: any) {

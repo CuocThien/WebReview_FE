@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
 import { AppRoutingModule } from '../app-routing.module';
@@ -12,8 +13,8 @@ import { HeaderService } from './header.service';
   providers:[HeaderService,SignInService]
 })
 export class HeaderComponent implements OnInit {
-  constructor(public header:HeaderService,private router:AppRoutingModule,
-    private cookieService: CookieService,private service:SignInService) { }
+  constructor(public header:HeaderService,private routerApp:AppRoutingModule,
+    private cookieService: CookieService,private service:SignInService, private router:Router, private route:ActivatedRoute) { }
     userFullName:any;
     user:any=[];
     isAdmin:boolean=false;
@@ -21,20 +22,20 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
   signIn(){
-    this.router.signin();
+    this.router.navigate(['/signin'],{queryParams:{redirectTo:this.router.url}});
   }
   signUp(){
-    this.router.signup();
+    this.routerApp.signup();
   }
   profile(){
-    this.router.profile();
+    this.routerApp.profile();
   }
   changepassword(){
-    this.router.changepassword();
+    this.routerApp.changepassword();
   }
   signOut(){
     this.cookieService.deleteAll();
-    this.router.index();
+    this.routerApp.index();
   }
   isLogin(){
     if(this.cookieService.get("authToken")==""){
@@ -54,9 +55,10 @@ export class HeaderComponent implements OnInit {
       return true;
   }}
   search(){
-    this.router.search(this.querySearch);
+    this.routerApp.search(this.querySearch);
+    this.querySearch=""
   }
   admin(){
-    this.router.admin();
+    this.routerApp.admin();
   }
 }

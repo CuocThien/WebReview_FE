@@ -45,7 +45,7 @@ export class UpdatePostComponent implements OnInit {
       this.listGroup = this.listGroup.data;
       for (let group of this.listGroup) {
         if (group.id == this.groupId) {
-          console.log(group)
+          // console.log(group)
           for (let cate of group.Category) {
             this.listCate.push(cate)
           }
@@ -63,8 +63,11 @@ export class UpdatePostComponent implements OnInit {
       this.imageSrc = this.post.Image
       // console.log(this.post.dataPost.Content)
       console.log(this.post)
+      this.spinner.hide()
     })
-      .catch(err => console.log(err))
+      .catch(err => {console.log(err)
+        this.spinner.hide();
+      })
   }
   ngAfterViewInit(){
     this.spinner.hide();
@@ -80,14 +83,15 @@ export class UpdatePostComponent implements OnInit {
       this.post["Title"] = form.value.Title;
       this.post["Content"] = form.value.Content;
       this.post["Overview"] = form.value.Overview;
-      this.post["CategoryId"] = this.selectedValueCateId
+      this.post["CategoryId"] = this.selectedValueCateId;
+      this.post["Status"] = false;
       this.updatePostService.updatePost(this.groupId, this.postId, this.post).then(res => {
         this.resultUpdate = res
         this.toastr.success(this.resultUpdate.msg)
-        console.log(res)
-        this.router.navigate(['/post-detail/' + this.groupId + '/' + this.postId])
+        // console.log(res)
+        this.router.navigate(['/post-detail/admin/' + this.groupId + '/' + this.postId])
       }).catch(err => console.log(err));
-      console.log(this.post);
+      // console.log(this.post);
     }
 
   }

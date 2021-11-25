@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Renderer2 } from '@angular/core';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { ToastrService } from 'ngx-toastr';
 import { StarService } from './star.service';
 
@@ -15,8 +17,8 @@ export class StarComponent implements OnInit {
   @Input() rate:any;
   isUpdateRating:boolean=false;
   x:any;
-  constructor(private renderer:Renderer2, private service: StarService,
-    private toastr:ToastrService) { }
+  constructor(private renderer:Renderer2, private service: StarService, private toastr:ToastrService,
+    private cookieService:CookieService,private router:Router) { }
 
   ngOnInit(): void {
     if(this.rate!=0)
@@ -38,24 +40,28 @@ export class StarComponent implements OnInit {
   data:any;
   result:any;
   Rate(){
-    this.data={}
-    this.data["Rate"]=this.rate;
-    if(this.isUpdateRating==false){
-      this.service.rating(this.id,this.data).then(res=>{
-        this.result = res;
-        this.toastr.success(this.result.msg);
-      }).catch(err=>{
-        console.log(err)
-        this.toastr.error(err.error.msg)
-      })
+    if(this.cookieService.get("authToken")==""){
+      this.router.navigate(['/signin'],{queryParams:{redirectTo:this.router.url}});
     }else{
-      this.service.updateRating(this.id,this.data).then(res=>{
-        this.result = res;
-        this.toastr.success(this.result.msg);
-      }).catch(err=>{
-        console.log(err)
-        this.toastr.error(err.error.msg)
-      })
+      this.data={}
+      this.data["Rate"]=this.rate;
+      if(this.isUpdateRating==false){
+        this.service.rating(this.id,this.data).then(res=>{
+          this.result = res;
+          this.toastr.success(this.result.msg);
+        }).catch(err=>{
+          console.log(err)
+          this.toastr.error(err.error.msg)
+        })
+      }else{
+        this.service.updateRating(this.id,this.data).then(res=>{
+          this.result = res;
+          this.toastr.success(this.result.msg);
+        }).catch(err=>{
+          console.log(err)
+          this.toastr.error(err.error.msg)
+        })
+      }
     }
   }
   cancelRating(){

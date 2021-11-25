@@ -1,12 +1,12 @@
 import { Component, OnInit, Input, Renderer2 } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { ToastrService } from 'ngx-toastr';
-import { AppRoutingModule } from '../app-routing.module';
 import { SignInService } from '../sign-in/sign-in.service';
 import { CommentService } from './comment.service';
 
-import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { MyBootstrapModalComponent } from '../modals/my-bootstrap-modal/my-bootstrap-modal.component';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-comment',
@@ -23,8 +23,8 @@ export class CommentComponent implements OnInit {
   user:any;
   dataPostCmt:any;
   myAvatar:any;
-  constructor(private renderer:Renderer2, private signInService:SignInService, 
-    private cookieService:CookieService, private router:AppRoutingModule,
+  constructor(private route: ActivatedRoute, private renderer:Renderer2, private signInService:SignInService, 
+    private cookieService:CookieService, private router:Router,
     private service:CommentService, private toastr:ToastrService,private modalService: NgbModal) { }
 
   ngOnInit(): void {
@@ -40,7 +40,7 @@ export class CommentComponent implements OnInit {
   turnOnReply(event:any){
     const id = event.target.name;
     if(this.cookieService.get("authToken")==""){
-      this.router.signin();
+    this.router.navigate(['/signin'],{queryParams:{redirectTo:this.router.url}});
     }
     if(document.getElementById(id)?.style.display=="none")
     {
@@ -51,19 +51,23 @@ export class CommentComponent implements OnInit {
   }
   resPostCmt:any;
   postComment(){
-    this.txtCmt = document.getElementById("postCmt-"+this.postId);
-    let content = this.txtCmt.value;
-    this.dataPostCmt = {}
-    this.dataPostCmt["PostId"]=this.postId;
-    this.dataPostCmt["Content"]=content;
-    // console.log(this.dataPostCmt)
-    this.service.postCmt(this.dataPostCmt).then(res=>{
-      this.resPostCmt = res;
-      this.toastr.success(this.resPostCmt.msg);
-      this.txtCmt.value = '';
+    if(this.cookieService.get("authToken")==""){
+      this.router.navigate(['/signin'],{queryParams:{redirectTo:this.router.url}});
+    }else{
+      this.txtCmt = document.getElementById("postCmt-"+this.postId);
+      let content = this.txtCmt.value;
+      this.dataPostCmt = {}
+      this.dataPostCmt["PostId"]=this.postId;
+      this.dataPostCmt["Content"]=content;
+      // console.log(this.dataPostCmt)
+      this.service.postCmt(this.dataPostCmt).then(res=>{
+        this.resPostCmt = res;
+        this.toastr.success(this.resPostCmt.msg);
+        this.txtCmt.value = '';
 
-      this.refreshCmt()
-    })
+        this.refreshCmt()
+      })
+    }
   }
 
   resPostReply:any;
