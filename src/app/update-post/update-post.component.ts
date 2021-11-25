@@ -7,6 +7,7 @@ import { UploadImageService } from '../upload-image.service';
 import { UpdatePostService } from './update-post.service';
 import { ActivatedRoute } from '@angular/router';
 import { ReadPostService } from '../read-post/read-post.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 //nhớ load lại groupid và cateid
 
@@ -22,7 +23,7 @@ export class UpdatePostComponent implements OnInit {
   constructor(private uploadImageService: UploadImageService, private route: ActivatedRoute,
     private service: ManageCategoriesService, private toastr: ToastrService,
     private updatePostService: UpdatePostService, private router: Router,
-    private readPostService: ReadPostService) { }
+    private readPostService: ReadPostService, private spinner : NgxSpinnerService) { }
   ckeConfig: any;
   listGroup: any;
   listCate: any = [];
@@ -30,6 +31,7 @@ export class UpdatePostComponent implements OnInit {
   groupId: any;
   post: any;
   ngOnInit(): void {
+    this.spinner.show();
     this.ckeConfig = {
       extraPlugins: ['uploadimage'],
       filebrowserImageUploadUrl:
@@ -63,6 +65,9 @@ export class UpdatePostComponent implements OnInit {
       console.log(this.post)
     })
       .catch(err => console.log(err))
+  }
+  ngAfterViewInit(){
+    this.spinner.hide();
   }
   resultUpdate: any
   onSubmit(form: any) {

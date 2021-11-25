@@ -1,4 +1,6 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 import { IndexService } from '../index/index.service';
 import { ReviewService } from './review-hub.service';
 
@@ -9,11 +11,13 @@ import { ReviewService } from './review-hub.service';
   providers: [ReviewService, IndexService]
 })
 export class ReviewHubComponent implements OnInit {
-  constructor(private service:ReviewService, private renderer:Renderer2) { }
+  constructor(private service:ReviewService, private renderer:Renderer2, private spinner:NgxSpinnerService,
+    private toastr:ToastrService) { }
   categories:any;
   listPost:any;
   p:number = 1;
   ngOnInit(): void {
+    this.spinner.show();
     this.service.getReviewCategory().then(res=>{
       this.categories=res;
       this.categories=this.categories.data.Category;
@@ -24,8 +28,11 @@ export class ReviewHubComponent implements OnInit {
       this.listPost=res;
       this.listPost=this.listPost.data
       // console.log(this.listPost)
+    this.spinner.hide();
     })
-    .catch(err=>console.log(err))
+    .catch(err=>{console.log(err);
+    this.spinner.hide();
+    })
   }
   active(event:any){
     if(document.getElementsByClassName('active').length>0){
@@ -37,9 +44,13 @@ export class ReviewHubComponent implements OnInit {
     this.renderer.addClass(document.getElementById(event.target.id),"active")
   }
   getPostByCategory(event:any){
+    this.p=1;
     this.service.getPostByCategory(event.target.id).then(res=>{
       this.listPost=res;
       this.listPost=this.listPost.data;
+    }).catch(err=>{
+      console.log(err);
+      this.toastr.error(err.error.msg)
     })
   }
 }

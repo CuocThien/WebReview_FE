@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { ManageUsersService } from './manage-users.service';
 
@@ -10,17 +11,24 @@ import { ManageUsersService } from './manage-users.service';
 })
 export class ManageUsersComponent implements OnInit {
 
-  constructor(private service:ManageUsersService, private toastr:ToastrService) { }
+  constructor(private service:ManageUsersService, private toastr:ToastrService, private spinner:NgxSpinnerService) { }
 
+  p:number=1;
   listUsers:any;
   ngOnInit(): void {
+    this.spinner.show();
     this.getData()
   }
   getData(){
     this.service.getAccounts().then(res=>{
       this.listUsers = res;
       this.listUsers = this.listUsers.data.accounts
-      console.log(this.listUsers)
+      // console.log(this.listUsers)
+      this.spinner.hide();
+    }).catch(err=>{
+      console.log(err);
+      this.toastr.error(err.error.msg);
+      this.spinner.hide()
     })
   }
   userName:any;

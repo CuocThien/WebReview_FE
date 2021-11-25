@@ -1,9 +1,12 @@
 <div class="container-fluid">
   <div class="container-search">
+    <ngx-spinner
+  bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Loading... </p>
+</ngx-spinner>
     <h4>Tìm thấy {{count}} kết quả cho từ khoá "{{query}}"</h4>
     <hr>
     <div class="listPost-search">
-      <div class="post-search row" *ngFor="let post of listSearch | paginate: {itemsPerPage: 3, currentPage:p}" id="{{post.dataPost.Id}}" routerLink="/post-detail/{{post.PostId}}/{{post.dataPost.Id}}">
+      <div class="post-search row" *ngFor="let post of listSearch | paginate: {itemsPerPage: 5, currentPage:p}" id="{{post.dataPost.Id}}" routerLink="/post-detail/{{post.PostId}}/{{post.dataPost.Id}}">
         <div class="col-3">
           <img
             [src]="post.dataPost.Image || 'https://4.bp.blogspot.com/-OCutvC4wPps/XfNnRz5PvhI/AAAAAAAAEfo/qJ8P1sqLWesMdOSiEoUH85s3hs_vn97HACLcBGAsYHQ/s1600/no-image-found-360x260.png'"

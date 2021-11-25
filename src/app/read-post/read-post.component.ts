@@ -5,6 +5,7 @@ import { ReadPostService } from './read-post.service';
 import { ManagePostsService} from '../admin/manage-posts/manage-posts.service'
 import { ToastrService } from 'ngx-toastr';
 import { AppRoutingModule } from '../app-routing.module';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -17,7 +18,8 @@ import { AppRoutingModule } from '../app-routing.module';
 export class ReadPostComponent implements OnInit {
 
   constructor(private route:ActivatedRoute, private service:ReadPostService,private cookieService:CookieService,
-    private managePostService:ManagePostsService, private toastr:ToastrService, private router:AppRoutingModule) { 
+    private managePostService:ManagePostsService, private toastr:ToastrService, private router:AppRoutingModule,
+    private spinner: NgxSpinnerService) { 
     
   }
   post:any
@@ -28,6 +30,7 @@ export class ReadPostComponent implements OnInit {
   isApproved:any=true;
   isAdmin:any;
   ngOnInit(): void {
+    this.spinner.show();
     this.groupId=this.route.snapshot.paramMap.get("GroupId");
     this.postId=this.route.snapshot.paramMap.get("PostId");
     this.url=this.route.url
@@ -72,12 +75,13 @@ export class ReadPostComponent implements OnInit {
       })
       .catch(err=>console.log(err))
     }
-    // })
-    // console.log(this.groupId+"/"+this.postId)
-    
-    
-    
   }
+  ngAfterViewInit(){
+    this.spinner.hide()
+  }
+
+
+
   resultUpdateStatus:any;
   updatePostStatus(){
     this.managePostService.updatePostStatus(this.groupId,this.postId).then(res=>{

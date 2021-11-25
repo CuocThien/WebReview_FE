@@ -1,3 +1,6 @@
+<ngx-spinner
+  bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Loading... </p>
+</ngx-spinner>
 <div class="header">
   <h4>KINH NGHIỆM HAY & MẸO VẶT</h4>
   <h5>Các bài review, chia sẻ trải nghiệm sử dụng thực tế từ thành viên,<br>rất hữu ích khi bạn cần tham khảo để chuẩn
@@ -9,7 +12,7 @@
     <div class="navbar-reviewhub col-2">
         <h5>CHỦ ĐỀ</h5>
     <ul class="dropdown">
-      <li class="item" *ngFor="let category of categories" id="{{category.id}}" (click)="active($event);getPostByCategory($event)" ><a>{{category.Name}}</a></li>
+      <li class="item" *ngFor="let category of categories" id="{{category.id}}" (click)="active($event);getPostByCategory($event)" >{{category.Name}}</li>
     </ul>
     </div>
     <div class="listPost-reviewhub col-10">

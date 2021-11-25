@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { ManageGroupService } from '../manage-group/manage-group.service';
 import { ManageCategoriesService } from './manage-categories.service';
@@ -12,7 +13,7 @@ import { ManageCategoriesService } from './manage-categories.service';
 export class ManageCategoriesComponent implements OnInit {
 
   constructor(private manageCateService:ManageCategoriesService, private toastr:ToastrService,
-    private manageGroupService:ManageGroupService) { }
+    private manageGroupService:ManageGroupService, private spinner:NgxSpinnerService) { }
 
   cateId:any;
   groupId:any;
@@ -20,12 +21,15 @@ export class ManageCategoriesComponent implements OnInit {
   listGroup:any;
   listCate:any;selectedValue:any;
   ngOnInit(): void {
+    this.spinner.show()
     this.getData()
     this.manageGroupService.getGroup().then(res=>{
       this.listGroup = res;
       this.listGroup = this.listGroup.data;
       this.selectedValue = this.listGroup[0]._id
       console.log(this.listGroup)
+      
+    this.spinner.hide()
     }).catch(err=>console.log(err))
   }
   getData(){

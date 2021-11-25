@@ -1,5 +1,6 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { ManageCategoriesService } from '../admin/manage-categories/manage-categories.service';
 import { CreatePostService } from '../create-post/create-post.service';
@@ -26,9 +27,10 @@ export class ForumsComponent implements OnInit {
   constructor(private renderer:Renderer2, private service:ForumsService, 
     private signInService:SignInService, private cookieService:CookieService,
     private createPostService:CreatePostService, private toastr:ToastrService,
-    private manageCateService: ManageCategoriesService) { }
+    private manageCateService: ManageCategoriesService, private spinner:NgxSpinnerService) { }
 
   ngOnInit(): void {
+    this.spinner.show();
     this.ckeConfig = {
       extraPlugins: ['uploadimage'],
       filebrowserImageUploadUrl:
@@ -37,15 +39,7 @@ export class ForumsComponent implements OnInit {
         height:'400px',
     };
 
-    //Lấy danh sách bài viết trang Forums
-    this.service.getPost().then(res=>{
-      this.listPost = res;
-      this.listPost = this.listPost.data;
-      this.countPosts = this.listPost.length
-      console.log(this.listPost)
-    })
-    .catch(err=>console.log(err))
-
+    
     //Lấy categories
     this.service.getForumsCategory().then(res=>{
       this.listCategories = res;
@@ -73,6 +67,19 @@ export class ForumsComponent implements OnInit {
         }
       }
     })
+
+    //Lấy danh sách bài viết trang Forums
+    this.service.getPost().then(res=>{
+      this.listPost = res;
+      this.listPost = this.listPost.data;
+      this.countPosts = this.listPost.length
+      // console.log(this.listPost)
+      this.spinner.hide();
+    })
+    .catch(err=>{console.log(err)
+      this.spinner.hide();
+    })
+
   }
 
   active(event:any){

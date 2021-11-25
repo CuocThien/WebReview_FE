@@ -1,6 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { SignInService } from '../sign-in/sign-in.service';
 import { UploadImageService } from '../upload-image.service';
 import { ProfileService } from './profile.service';
@@ -18,7 +19,8 @@ export class ProfileComponent implements OnInit {
   data:any;
   result:any;
   constructor(private service:ProfileService, private signInService:SignInService,
-    private cookieService:CookieService,public datepipe: DatePipe, private uploadImageService:UploadImageService) { }
+    private cookieService:CookieService,public datepipe: DatePipe, private uploadImageService:UploadImageService,
+    private spinner:NgxSpinnerService) { }
 
   ngOnInit(): void {
     this.signInService.getUser(this.cookieService.get("authToken"))
@@ -27,8 +29,11 @@ export class ProfileComponent implements OnInit {
       this.DOB=this.datepipe.transform(this.user.DOB, 'yyyy-MM-dd');
     this.imageSrc=this.user.Avatar;
     });
+    this.spinner.show();
     
-    
+  }
+  ngAfterViewInit(){
+    this.spinner.hide();
   }
   onSubmit(formUpdateProfile:any){
     this.data=formUpdateProfile.value;

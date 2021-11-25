@@ -1,5 +1,6 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { ManageGroupService } from '../manage-group/manage-group.service';
 import { ManagePostsService } from './manage-posts.service';
@@ -14,7 +15,7 @@ export class ManagePostsComponent implements OnInit {
 
   constructor(private renderer:Renderer2, private service:ManagePostsService,
     private toastr:ToastrService, private router:ActivatedRoute,
-    private manageGroupService:ManageGroupService) { }
+    private manageGroupService:ManageGroupService, private spinner:NgxSpinnerService) { }
 
   listGroup:any;
   listPost:any;
@@ -29,20 +30,22 @@ export class ManagePostsComponent implements OnInit {
   isAdmin:boolean=false;
   url:any;
   ngOnInit(): void {
+    this.spinner.show();
     this.url = this.router.url;
     this.url = this.url._value[0].path;
     if(this.url=="admin"){
       this.isAdmin=true;
     }
-    // console.log(this.isAdmin)
-    this.getData(true,this.isAdmin)
-
     this.manageGroupService.getGroup().then(res=>{
       this.listGroup = res;
       this.listGroup = this.listGroup.data;
       this.filterString = this.listGroup[0]._id
       // console.log(this.filterString)
     }).catch(err=>console.log(err))
+    // console.log(this.isAdmin)
+    this.getData(true,this.isAdmin)
+
+    
   }
   getData(approved:any, admin:any){
     this.listPost={}
@@ -51,11 +54,11 @@ export class ManagePostsComponent implements OnInit {
     this.listPostReview=[]
     // this.filterString="Experience"
 
-    console.log("apro"+approved)
-    console.log("admin "+admin)
+    // console.log("apro"+approved)
+    // console.log("admin "+admin)
     this.service.getPost(approved,admin).then(res=>{
       this.listPost = res;
-      console.log(res)
+      // console.log(res)
       this.listPost = this.listPost.data;
       for(let post of this.listPost){
         if(post.Id==="Review"){
@@ -79,10 +82,14 @@ export class ManagePostsComponent implements OnInit {
           }
         }
       }
+      this.spinner.hide();
     }).catch(err=>{this.toastr.error(err.error.msg)
-    console.log(err)})
+    console.log(err);
+      this.spinner.hide()
+  })
   }
   activeControl(event:any){
+    this.p=1;
     var item=document.getElementsByClassName('active-control')
     this.renderer.removeClass(item[0],"active-control");
     this.renderer.addClass(document.getElementById(event.target.id),"active-control")
@@ -95,6 +102,7 @@ export class ManagePostsComponent implements OnInit {
     }
   }
   filter(event:any){
+    this.p=1;
     this.filterString=event;
     // console.log(this.filterString)
   }

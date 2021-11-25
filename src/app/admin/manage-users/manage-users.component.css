@@ -7,3 +7,9 @@
     height: auto;
     width: auto;
 }
+.pagination{
+    margin: auto;
+    text-align: center;
+    width: 100%;
+    display: inline;
+}

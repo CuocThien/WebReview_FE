@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 import { AppComponent } from './app.component';
 import { SignInComponent } from './sign-in/sign-in.component';
@@ -78,7 +79,8 @@ import { UpdatePostComponent } from './update-post/update-post.component';
     HttpClientModule,
     NgxPaginationModule,
     CKEditorModule,
-    NgbModule
+    NgbModule,
+    NgxSpinnerModule
   ],
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]

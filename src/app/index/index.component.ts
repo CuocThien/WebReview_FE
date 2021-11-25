@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxSpinner, NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 import { AppRoutingModule } from '../app-routing.module';
 import { IndexService } from './index.service';
 
@@ -14,9 +16,11 @@ export class IndexComponent implements OnInit {
   listShareExpPost:any;
   listForumPost:any;
   
-  constructor(private service:IndexService, private router:AppRoutingModule) { }
+  constructor(private service:IndexService, private router:AppRoutingModule, private spinner:NgxSpinnerService,
+    private toastr:ToastrService) { }
 
   ngOnInit(): void {
+    this.spinner.show;
     this.service.getPost()
     .then(res=>{
       this.listReviewPost=res;
@@ -25,8 +29,12 @@ export class IndexComponent implements OnInit {
       this.listReviewPost=this.listReviewPost.data.topreview;
       this.listShareExpPost=this.listShareExpPost.data.topexp;
       this.listForumPost=this.listForumPost.data.topfrm;
+
+      this.spinner.hide()
     })
-    .catch(err=>console.log(err))
+    .catch(err=>{console.log(err)
+      this.toastr.error(err.error.msg)
+    })
   }
   shareExp(){
     this.router.shareExp();

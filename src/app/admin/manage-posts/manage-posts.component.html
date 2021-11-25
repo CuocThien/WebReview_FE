@@ -1,4 +1,7 @@
 <div class="container-manage-post">
+  <ngx-spinner
+  bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Loading... </p>
+</ngx-spinner>
   <div class="control-browse-articles">
     <ul>
       <li id="approved" class="active-control" (click)="activeControl($event)">Bài viết đã duyệt</li>
@@ -20,7 +23,7 @@
       </tr>
     </thead>
     <tbody *ngIf="filterString=='Experience'">
-      <tr *ngFor="let post of listPostExperience | paginate: {itemsPerPage: 3, currentPage:p}">
+      <tr *ngFor="let post of listPostExperience | paginate: {itemsPerPage: 5, currentPage:p}">
         <td>{{post.Title}}</td>
         <td><img class="image-post-table" [src]="post.Image" alt=""></td>
         <td>{{post.Overview}}</td>
@@ -57,7 +60,7 @@
       </tr>
     </tbody>
     <tbody *ngIf="filterString=='Review'">
-      <tr *ngFor="let post of listPostReview | paginate: {itemsPerPage: 3, currentPage:p}">
+      <tr *ngFor="let post of listPostReview | paginate: {itemsPerPage: 5, currentPage:p}">
         <td>{{post.Title}}</td>
         <td><img class="image-post-table" [src]="post.Image" alt=""></td>
         <td>{{post.Overview}}</td>
@@ -93,7 +96,7 @@
       </tr>
     </tbody>
     <tbody *ngIf="filterString=='Forum'">
-      <tr *ngFor="let post of listPostForums | paginate: {itemsPerPage: 3, currentPage:p}">
+      <tr *ngFor="let post of listPostForums | paginate: {itemsPerPage: 5, currentPage:p}">
         <td>{{post.Title}}</td>
         <td><img class="image-post-table" [src]="post.Image" alt=""></td>
         <td [innerHtml]="post.Content"></td>

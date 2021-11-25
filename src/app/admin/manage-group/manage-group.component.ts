@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { ManageGroupService } from './manage-group.service';
 
@@ -10,10 +11,11 @@ import { ManageGroupService } from './manage-group.service';
 })
 export class ManageGroupComponent implements OnInit {
 
-  constructor(private service:ManageGroupService,private toastr:ToastrService) { }
+  constructor(private service:ManageGroupService,private toastr:ToastrService, private spinner:NgxSpinnerService) { }
 
   listGroup:any;
   ngOnInit(): void {
+    this.spinner.show()
     this.getGroup();
   }
   result:any;
@@ -46,8 +48,11 @@ export class ManageGroupComponent implements OnInit {
     this.service.getGroup().then(res=>{
       this.listGroup = res;
       this.listGroup = this.listGroup.data;
+      this.spinner.hide();
     })
-    .catch(err=>console.log(err))
+    .catch(err=>{console.log(err)
+      this.spinner.hide();
+    })
   }
   update(event:any){
     this.Id = event.target.id;
