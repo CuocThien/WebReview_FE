@@ -10,7 +10,7 @@ export class ManageGroupService {
 
     }
     getGroup() {
-        const url = 'https://oggy-webreview.herokuapp.com/group/getGroup';
+        const url = 'https://oggy-webreview.herokuapp.com/group/getGroup/true';
             const headers = new HttpHeaders({ 'Content-Type': 'application/json'})
             return this.http.get(url, { headers })
             .toPromise();

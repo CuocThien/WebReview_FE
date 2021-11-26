@@ -29,14 +29,18 @@ export class ManageCategoriesComponent implements OnInit {
       this.selectedValue = this.listGroup[0]._id
       console.log(this.listGroup)
       
-    this.spinner.hide()
     }).catch(err=>console.log(err))
   }
   getData(){
     this.manageCateService.getGroup().then(res=>{
       this.listCate=res;
       this.listCate = this.listCate.data;
-    }).catch(err=>console.log(err))
+
+    this.spinner.hide()
+    }).catch(err=>{console.log(err);
+      
+    this.spinner.hide()
+    })
   }
   resultAddCate:any;
   input:any

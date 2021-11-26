@@ -10,7 +10,7 @@ export class ManageCategoriesService {
 
     }
     getGroup() {
-        const url = 'https://oggy-webreview.herokuapp.com/category/getCategory';
+        const url = 'https://oggy-webreview.herokuapp.com/category/getCategory/true';
             const headers = new HttpHeaders({ 'Content-Type': 'application/json'})
             return this.http.get(url, { headers })
             .toPromise();

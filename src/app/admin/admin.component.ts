@@ -15,7 +15,7 @@ export class AdminComponent implements OnInit {
   toCategories:boolean=false;
   toGroup:boolean=false;
   ngOnInit(): void {
-    if(this.cookieService.get("isAdmin")=="false"){
+    if(this.cookieService.get("isAdmin")=="false"||this.cookieService.get("authToken")==""){
       this.router.pageError()
     }
   }
