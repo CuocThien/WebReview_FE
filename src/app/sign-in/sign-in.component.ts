@@ -19,7 +19,7 @@ export class SignInComponent implements OnInit {
   }
   url:any=""
   ngOnInit(): void {
-    console.log(this.route.snapshot.queryParamMap.get("redirectTo"))
+    // console.log(this.route.snapshot.queryParamMap.get("redirectTo"))
     this.url = this.route.snapshot.queryParamMap.get("redirectTo")
   }
   result:any
@@ -27,11 +27,15 @@ export class SignInComponent implements OnInit {
   onSubmit(formSignIn:any){
     this.service.signIn(formSignIn.value).then(res=>{
       this.result=res;
+      console.log(this.result)
       this.toastr.success(this.result.msg);
       if(this.url == null){
         this.router.navigate(['/index'])
+      }else if(this.result.data.Reset==true){
+        this.router.navigate(['/change-password'])
       }else{
       this.router.navigate([this.url]);}
+
       this.cookieService.set('authToken', this.result.data.Token);
       this.service.getUser(this.cookieService.get("authToken"))
           .then(resU=>{this.user=resU;
