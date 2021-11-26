@@ -48,4 +48,16 @@ table{
 input[type=radio]{
     width: 24px;
     height: 24px;
+    margin: 0!important;
+    margin-right: 10px!important;
+}
+.form-check{
+    display: inline-block;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+.form-check > label{
+    font-size: 18px;
+    font-weight: bold;
+    color: #3f51b5;
 }

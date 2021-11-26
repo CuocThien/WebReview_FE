@@ -16,6 +16,16 @@
       </form>
         <hr>
     </div>
+    <div class="filter">
+      <div class="form-check">
+        <input type="radio" class="form-check-input" id="radio1" name="optradio" value="using" checked (change)="changeFilter($event)">
+        <label class="form-check-label" for="radio1">Đang sử dụng</label>
+      </div>
+      <div class="form-check">
+        <input type="radio" class="form-check-input" id="radio2" name="optradio" value="deleted" (change)="changeFilter($event)">
+        <label class="form-check-label" for="radio2">Đã xoá</label>
+      </div>
+    </div>
     <div class="my-custom-scrollbar table-wrapper-scroll-y">
     <table class="table table-hover">
         <thead class="table-dark">
@@ -32,7 +42,7 @@
             <td>{{cate.id}}</td>
             <td>{{cate.Name}}</td>
             <td>
-              <button type="button" data-bs-toggle="modal" data-bs-target="#updateCategory" class="btn btn-warning" id="{{group.id}}&{{cate.id}}" name="{{cate.Name}}" (click)="setValue($event)">
+              <button *ngIf="!isDel" type="button" data-bs-toggle="modal" data-bs-target="#updateCategory" class="btn btn-warning" id="{{group.id}}&{{cate.id}}" name="{{cate.Name}}" (click)="setValue($event)">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square"
                   viewBox="0 0 16 16">
                   <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z">
@@ -41,12 +51,19 @@
                   </path>
                 </svg>
               </button>&nbsp;
-              <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteCategory"  id="{{group.id}}&{{cate.id}}"  name="{{cate.Name}}" (click)="setValue($event)">
+              <button *ngIf="!isDel" type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteCategory"  id="{{group.id}}&{{cate.id}}"  name="{{cate.Name}}" (click)="setValue($event)">
                 <svg (click)="setValue($event)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                 <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path>
                 <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"></path>
                 </svg>
               </button>
+              &nbsp;
+            <button *ngIf="isDel" type="button" class="btn btn-primary" id="{{group.id}}&{{cate.id}}" name="{{cate.Name}}" data-bs-toggle="modal" data-bs-target="#restoreCate" (click)="setValue($event)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bootstrap-reboot" viewBox="0 0 16 16">
+                <path d="M1.161 8a6.84 6.84 0 1 0 6.842-6.84.58.58 0 1 1 0-1.16 8 8 0 1 1-6.556 3.412l-.663-.577a.58.58 0 0 1 .227-.997l2.52-.69a.58.58 0 0 1 .728.633l-.332 2.592a.58.58 0 0 1-.956.364l-.643-.56A6.812 6.812 0 0 0 1.16 8z"></path>
+                <path d="M6.641 11.671V8.843h1.57l1.498 2.828h1.314L9.377 8.665c.897-.3 1.427-1.106 1.427-2.1 0-1.37-.943-2.246-2.456-2.246H5.5v7.352h1.141zm0-3.75V5.277h1.57c.881 0 1.416.499 1.416 1.32 0 .84-.504 1.324-1.386 1.324h-1.6z"></path>
+                </svg>
+            </button>
               <!-- <button data-bs-toggle="modal" data-bs-target="#updateCategory" class="btn btn-warning" id="{{group.id}}&{{cate.id}}" name="{{cate.Name}}" (click)="setValue($event)">Chỉnh sửa</button>
               <button data-bs-toggle="modal" data-bs-target="#deleteCategory" class="btn btn-danger" id="{{group.id}}&{{cate.id}}"  name="{{cate.Name}}" (click)="setValue($event)">Xoá</button></td> -->
           </tr>
@@ -95,6 +112,27 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ bỏ</button>
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="deleteCategory()">Xoá</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Restore Group -->
+<div class="modal fade" id="restoreCate" tabindex="-1" aria-labelledby="restoreCateLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="restoreCateLabel">Khôi phục danh mục</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          Bạn có chắc chắn muốn khôi phục Danh mục này không?<br>
+          <span>ID:</span> <input type="text" [(ngModel)]="cateId" disabled><br>
+          <span>Tên:</span> <input type="text" [(ngModel)]="cateName" disabled>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ bỏ</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="restoreCate()">Khôi phục</button>
       </div>
     </div>
   </div>

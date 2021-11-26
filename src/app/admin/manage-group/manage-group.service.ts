@@ -16,6 +16,13 @@ export class ManageGroupService {
             .toPromise();
         
     }
+    getGroupDeleted() {
+        const url = 'https://oggy-webreview.herokuapp.com/group/getGroup/false';
+            const headers = new HttpHeaders({ 'Content-Type': 'application/json'})
+            return this.http.get(url, { headers })
+            .toPromise();
+        
+    }
     addGroup(value: any) {
         const urlAddGroup = 'https://oggy-webreview.herokuapp.com/group/createGroup';
         const headers = new HttpHeaders({ 'Content-Type': 'application/json'})
@@ -30,10 +37,11 @@ export class ManageGroupService {
         return this.http.post(urlUpdateGroup, body, { headers })
             .toPromise()
     }
-    deleteGroup(id:any) {
+    changeStatusGroup(id:any, value:any) {
         const urlDeleteGroup = 'https://oggy-webreview.herokuapp.com/group/getGroup/'+id;
         const headers = new HttpHeaders({ 'Content-Type': 'application/json'})
-        return this.http.put(urlDeleteGroup, { headers })
+        const body = JSON.stringify(value)
+        return this.http.put(urlDeleteGroup, body, { headers })
             .toPromise()
     }
 }

@@ -14,6 +14,7 @@ export class ManageGroupComponent implements OnInit {
   constructor(private service:ManageGroupService,private toastr:ToastrService, private spinner:NgxSpinnerService) { }
 
   listGroup:any;
+  isDel:any=false;
   ngOnInit(): void {
     this.spinner.show()
     this.getGroup();
@@ -45,6 +46,7 @@ export class ManageGroupComponent implements OnInit {
     }
   }
   getGroup(){
+    this.spinner.show();
     this.service.getGroup().then(res=>{
       this.listGroup = res;
       this.listGroup = this.listGroup.data;
@@ -52,6 +54,17 @@ export class ManageGroupComponent implements OnInit {
     })
     .catch(err=>{console.log(err)
       this.spinner.hide();
+    })
+  }
+  getGroupDeleted(){
+    this.spinner.show();
+    this.service.getGroupDeleted().then(res=>{
+      this.listGroup = res;
+      this.listGroup = this.listGroup.data;
+      this.spinner.hide();
+    })
+    .catch(err=>{console.log(err);
+      this.spinner.hide()
     })
   }
   update(event:any){
@@ -73,8 +86,10 @@ export class ManageGroupComponent implements OnInit {
     })
   }
   resultDelete:any
+  dataDel:any={}
   deleteGroup(){
-    this.service.deleteGroup(this.Id).then(res=>{
+    this.dataDel["Status"]=false;
+    this.service.changeStatusGroup(this.Id,this.dataDel).then(res=>{
       this.resultDelete = res;
       this.toastr.success(this.resultDelete.msg);
       this.getGroup()
@@ -82,5 +97,29 @@ export class ManageGroupComponent implements OnInit {
       this.resultDelete = err;
       this.toastr.error(this.resultDelete.error.msg,"Lỗi!!!")
     })
+  }
+  resultRestore:any
+  dataRes:any={}
+  restoreGroup(){
+    this.dataRes["Status"]=true;
+    this.service.changeStatusGroup(this.Id,this.dataRes).then(res=>{
+      this.resultRestore = res;
+      this.toastr.success(this.resultRestore.msg);
+      this.getGroupDeleted()
+    }).catch(err=>{
+      this.resultRestore = err;
+      this.toastr.error(this.resultRestore.error.msg,"Lỗi!!!")
+    })
+  }
+  changeFilter(event:any){
+    console.log(event.target.value)
+    const filter=event.target.value;
+    if(filter == "using"){
+      this.getGroup();
+      this.isDel = false;
+    }else{
+      this.getGroupDeleted();
+      this.isDel = true;
+    }
   }
 }

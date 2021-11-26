@@ -20,6 +20,7 @@ export class ManageCategoriesComponent implements OnInit {
   cateName:any;
   listGroup:any;
   listCate:any;selectedValue:any;
+  isDel:any=false;
   ngOnInit(): void {
     this.spinner.show()
     this.getData()
@@ -32,7 +33,20 @@ export class ManageCategoriesComponent implements OnInit {
     }).catch(err=>console.log(err))
   }
   getData(){
+    this.spinner.show();
     this.manageCateService.getGroup().then(res=>{
+      this.listCate=res;
+      this.listCate = this.listCate.data;
+
+      this.spinner.hide()
+    }).catch(err=>{console.log(err);
+      
+      this.spinner.hide()
+    })
+  }
+  getDataDel(){
+    this.spinner.show()
+    this.manageCateService.getCateDeleted().then(res=>{
       this.listCate=res;
       this.listCate = this.listCate.data;
 
@@ -90,7 +104,8 @@ export class ManageCategoriesComponent implements OnInit {
   deleteCategory(){
     this.dataDelete={}
     this.dataDelete["GroupId"]=this.groupId;
-    this.manageCateService.deleteCategory(this.cateId,this.dataDelete).then(res=>{
+    this.dataDelete["Status"]=false;
+    this.manageCateService.changeStatusCategory(this.cateId,this.dataDelete).then(res=>{
       this.resultDelete = res;
       this.toastr.success(this.resultDelete.msg);
       this.getData()
@@ -99,5 +114,32 @@ export class ManageCategoriesComponent implements OnInit {
       this.toastr.error(this.resultDelete.error.msg)
       console.log(err)
     })
+  }
+  dataRes:any
+  resultRes:any
+  restoreCate(){
+    this.dataRes={}
+    this.dataRes["GroupId"]=this.groupId;
+    this.dataRes["Status"]=true;
+    this.manageCateService.changeStatusCategory(this.cateId,this.dataRes).then(res=>{
+      this.resultRes = res;
+      this.toastr.success(this.resultRes.msg);
+      this.getDataDel()
+    }).catch(err=>{
+      this.resultRes = err;
+      this.toastr.error(this.resultRes.error.msg)
+      console.log(err)
+    })
+  }
+  changeFilter(event:any){
+    // console.log(event.target.value) 
+    const filter = event.target.value
+    if(filter=="using"){
+      this.getData();
+      this.isDel=false;
+    }else{
+      this.getDataDel();
+      this.isDel=true;
+    }
   }
 }
