@@ -22,10 +22,10 @@
         <h6>{{comment.FullName}}</h6>
         <span>{{comment.Content}}</span><br>
         <a name="reply_{{comment._id}}" (click)="turnOnReply($event)" >Trả lời</a>
-        <span aria-hidden="true" class="_6cok">&nbsp;·&nbsp;</span>
-        <a id="{{comment._id}}" class="updateCmt" name="{{comment.Content}}" (click)="openModal($event);">Chỉnh sửa</a>
-        <span aria-hidden="true" class="_6cok">&nbsp;·&nbsp;</span>
-        <a data-bs-toggle="modal" data-bs-target="#delCmt" id="{{comment._id}}" (click)="setIdDelCmt($event)">Xoá</a>
+        <span *ngIf="comment.Email==userEmail" aria-hidden="true" class="_6cok">&nbsp;·&nbsp;</span>
+        <a *ngIf="comment.Email==userEmail" id="{{comment._id}}" class="updateCmt" name="{{comment.Content}}" (click)="openModal($event);">Chỉnh sửa</a>
+        <span *ngIf="comment.Email==userEmail||isAdmin" aria-hidden="true" class="_6cok">&nbsp;·&nbsp;</span>
+        <a *ngIf="comment.Email==userEmail||isAdmin" data-bs-toggle="modal" data-bs-target="#delCmt" id="{{comment._id}}" (click)="setIdDelCmt($event)">Xoá</a>
       </div>
       <div class="create-reply row" id="reply_{{comment._id}}">
         <div class="line col-1"></div>
@@ -48,8 +48,9 @@
           <div class="user-reply-cmt-content col-11">
             <h6>{{reply.FullName}}</h6>
             <span>{{reply.Content}}</span><br>
-            <a id="{{reply._id}}&{{comment._id}}" class="updateReply" name="{{reply.Content}}" (click)="openModal($event);">Chỉnh sửa</a><span aria-hidden="true" class="_6cok">&nbsp;·&nbsp;</span>
-            <a id="{{reply._id}}&{{comment._id}}" data-bs-toggle="modal" data-bs-target="#delReply" (click)="setIdDelReply($event)">Xoá</a>
+            <a *ngIf="reply.Email==userEmail" id="{{reply._id}}&{{comment._id}}" class="updateReply" name="{{reply.Content}}" (click)="openModal($event);">Chỉnh sửa</a>
+            <span *ngIf="reply.Email==userEmail" aria-hidden="true" class="_6cok">&nbsp;·&nbsp;</span>
+            <a *ngIf="reply.Email==userEmail||isAdmin" id="{{reply._id}}&{{comment._id}}" data-bs-toggle="modal" data-bs-target="#delReply" (click)="setIdDelReply($event)">Xoá</a>
           </div>
         </div>
       </div>

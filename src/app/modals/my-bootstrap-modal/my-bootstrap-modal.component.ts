@@ -45,7 +45,9 @@ export class MyBootstrapModalComponent implements OnInit {
         this.result=res;
         this.toastr.success(this.result.msg)
       })
-      .catch(err=>this.toastr.error(err.error.msg))
+      .catch(err=>{this.toastr.error(err.error.msg)
+        console.log(err)
+      })
     }
     // console.log(this.isReply);
     // console.log(this._id);

@@ -21,6 +21,8 @@ export class CommentComponent implements OnInit {
   @Input() countCmt:any;
   txtCmt:any;
   user:any;
+  userEmail:any="";
+  isAdmin:boolean=false;
   dataPostCmt:any;
   myAvatar:any;
   constructor(private route: ActivatedRoute, private renderer:Renderer2, private signInService:SignInService, 
@@ -34,8 +36,13 @@ export class CommentComponent implements OnInit {
         this.user = res;
         this.user = this.user.data;
         this.myAvatar = this.user.Avatar;
+        this.userEmail = this.user.Email;
+          this.isAdmin=this.user.IsAdmin;
+        
+        console.log(this.isAdmin)
       })
     }
+    // console.log(this.user)
   }
   turnOnReply(event:any){
     const id = event.target.name;
@@ -139,9 +146,10 @@ export class CommentComponent implements OnInit {
     let data = content;
 
     modalRef.componentInstance.fromParent = data;
-    if(event.target.className=="updateCmt"){
+    if(event.target.className.split(' ')[0]=="updateCmt"){
       modalRef.componentInstance.isReply = false;
       modalRef.componentInstance._id = event.target.id;
+      console.log(1)
     }else{
       modalRef.componentInstance.isReply = true;
       var id=event.target.id.split('&')
