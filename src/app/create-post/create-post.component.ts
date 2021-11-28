@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { ToastrService } from 'ngx-toastr';
 import { ManageCategoriesService } from '../admin/manage-categories/manage-categories.service';
 import { SignInService } from '../sign-in/sign-in.service';
@@ -11,17 +12,22 @@ import { CreatePostService } from './create-post.service';
   selector: 'app-create-post',
   templateUrl: './create-post.component.html',
   styleUrls: ['./create-post.component.css'],
-  providers: [SignInService,UploadImageService,ManageCategoriesService,CreatePostService]
+  providers: [UploadImageService,ManageCategoriesService,CreatePostService]
 })
 export class CreatePostComponent implements OnInit {
 
-  constructor(private signInService:SignInService,private uploadImageService:UploadImageService,
+  constructor(private cookieService:CookieService,private uploadImageService:UploadImageService,
     private service:ManageCategoriesService, private toastr:ToastrService,
     private createPostService:CreatePostService, private router:Router) { }
   ckeConfig: any;
   listGroup:any;
   listCate:any;
   ngOnInit(): void {
+
+    if(this.cookieService.get("authToken")==""){
+      this.router.navigate(['/signin'])
+    }
+
     this.ckeConfig = {
       extraPlugins: ['uploadimage'],
       // uploadUrl:
