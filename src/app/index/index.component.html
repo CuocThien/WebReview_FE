@@ -1,7 +1,7 @@
 <div class="container-fluid">
-  <ngx-spinner
-  bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Loading... </p>
-</ngx-spinner>
+  <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="true">
+    <p style="color: white"> Loading... </p>
+  </ngx-spinner>
   <div class="row">
     <div class="share-experience col-9">
       <div class="intro">
@@ -9,15 +9,19 @@
         <a (click)="shareExp()">Xem tất cả</a>
       </div>
       <div class="content-share-experience">
-        <div class="share-post" *ngFor="let itemS of listShareExpPost" id="{{itemS.dataPost.Id}}" routerLink="/post-detail/Experience/{{itemS.dataPost.Id}}">
-          <img [src]="itemS.dataPost.Image || 'https://4.bp.blogspot.com/-OCutvC4wPps/XfNnRz5PvhI/AAAAAAAAEfo/qJ8P1sqLWesMdOSiEoUH85s3hs_vn97HACLcBGAsYHQ/s1600/no-image-found-360x260.png'" alt="">
+        <div class="share-post" *ngFor="let itemS of listShareExpPost" id="{{itemS.dataPost.Id}}"
+          routerLink="/post-detail/Experience/{{itemS.dataPost.Id}}">
+          <img
+            [src]="itemS.dataPost.Image || 'https://4.bp.blogspot.com/-OCutvC4wPps/XfNnRz5PvhI/AAAAAAAAEfo/qJ8P1sqLWesMdOSiEoUH85s3hs_vn97HACLcBGAsYHQ/s1600/no-image-found-360x260.png'"
+            alt="">
           <p>{{itemS.dataPost.Title}}</p>
         </div>
       </div>
     </div>
     <div class="forums col-3">
       <h5 routerLink="/forums">Forums</h5>
-      <div class="forum-post" *ngFor="let itemF of listForumPost" id="{{itemF.dataPost.Id}}" routerLink="/post-detail/Forum/{{itemF.dataPost.Id}}">
+      <div class="forum-post" *ngFor="let itemF of listForumPost" id="{{itemF.dataPost.Id}}"
+        routerLink="/post-detail/Forum/{{itemF.dataPost.Id}}">
         <img
           [src]="itemF.dataPost.Image || 'https://4.bp.blogspot.com/-OCutvC4wPps/XfNnRz5PvhI/AAAAAAAAEfo/qJ8P1sqLWesMdOSiEoUH85s3hs_vn97HACLcBGAsYHQ/s1600/no-image-found-360x260.png'"
           alt="">
@@ -41,17 +45,19 @@
 
     </div>
     <div class="review-content2 row">
-      <div class="review-post meet col-3" *ngFor="let itemR of listReviewPost | paginate: {itemsPerPage: 4, currentPage:p}" id="{{itemR.dataPost.Id}}" routerLink="/post-detail/Review/{{itemR.dataPost.Id}}">
+      <div class="review-post meet col-3"
+        *ngFor="let itemR of listReviewPost | paginate: {itemsPerPage: 4, currentPage:p}" id="{{itemR.dataPost.Id}}"
+        routerLink="/post-detail/Review/{{itemR.dataPost.Id}}">
         <div class="review-post-img">
-        <img [src]="itemR.dataPost.Image||'https://4.bp.blogspot.com/-OCutvC4wPps/XfNnRz5PvhI/AAAAAAAAEfo/qJ8P1sqLWesMdOSiEoUH85s3hs_vn97HACLcBGAsYHQ/s1600/no-image-found-360x260.png'" alt="">
-      </div>
+          <img
+            [src]="itemR.dataPost.Image||'https://4.bp.blogspot.com/-OCutvC4wPps/XfNnRz5PvhI/AAAAAAAAEfo/qJ8P1sqLWesMdOSiEoUH85s3hs_vn97HACLcBGAsYHQ/s1600/no-image-found-360x260.png'"
+            alt="">
+        </div>
         <h6>{{itemR.dataPost.Title}}</h6>
         <!-- <p>{{itemR.dataPost.Overview}}</p> -->
       </div>
 
     </div>
-    <pagination-controls class="pagination"
-    previousLabel="" 
-    nextLabel="" (pageChange)="p=$event"></pagination-controls>
+    <pagination-controls class="pagination" previousLabel="" nextLabel="" (pageChange)="p=$event"></pagination-controls>
   </div>
 </div>

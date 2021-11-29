@@ -1,19 +1,19 @@
 <body>
-    <ngx-spinner
-  bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Loading... </p>
-</ngx-spinner>
-    <div class="container">
-        <h3>Thông tin cá nhân</h3>
-        <button id="btn-cancel" routerLink="/index"><img src="https://img.icons8.com/ios/30/000000/cancel.png" /></button>
-        <hr>
-        <form class="form" (ngSubmit)="onSubmit(formUpdateProfile)" #formUpdateProfile="ngForm">
-            <img [src]="imageSrc || 'http://placehold.it/180'" alt="your image" require name="Avatar"/>
-            <input type='file' (change)="readURL($event);" accept="image/*"/>
-            <input type="text" placeholder="Họ và Tên" ngModel name="FullName" [(ngModel)]="user.FullName" required>
-            <input type="date" [(ngModel)]="DOB" name="DOB" required>
-            <input type="text" placeholder="Địa chỉ"  [(ngModel)]="user.Address" name="Address" required>
-            <input type="text" [(ngModel)]="user.Email" name="Email" required>
-            <button class="btn-update">CẬP NHẬT</button>
-        </form>
-    </div>
+  <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="true">
+    <p style="color: white"> Loading... </p>
+  </ngx-spinner>
+  <div class="container">
+    <h3>Thông tin cá nhân</h3>
+    <button id="btn-cancel" routerLink="/index"><img src="https://img.icons8.com/ios/30/000000/cancel.png" /></button>
+    <hr>
+    <form class="form" (ngSubmit)="onSubmit(formUpdateProfile)" #formUpdateProfile="ngForm">
+      <img [src]="imageSrc || 'http://placehold.it/180'" alt="your image" require name="Avatar" />
+      <input type='file' (change)="readURL($event);" accept="image/*" />
+      <input type="text" placeholder="Họ và Tên" ngModel name="FullName" [(ngModel)]="user.FullName" required>
+      <input type="date" [(ngModel)]="DOB" name="DOB" required>
+      <input type="text" placeholder="Địa chỉ" [(ngModel)]="user.Address" name="Address" required>
+      <input type="text" [(ngModel)]="user.Email" name="Email" required>
+      <button class="btn-update">CẬP NHẬT</button>
+    </form>
+  </div>
 </body>

@@ -12,10 +12,12 @@ export class SignUpComponent implements OnInit {
 
   constructor(private toastr:ToastrService,private renderer: Renderer2, private service: SignUpService,
     private router:AppRoutingModule) { }
+    date:any;
   ngOnInit(): void {
-    
+    this.date = new Date().toJSON().split('T')[0];
   }
   result:any
+
   onSubmit(formSignUp:any){
 
     if(formSignUp.value.PassWord != formSignUp.value.Confirm){
@@ -28,7 +30,8 @@ export class SignUpComponent implements OnInit {
     else{
       this.renderer.addClass(document.getElementById("confirm"),"ng-valid");
       this.service.signUp(formSignUp.value)
-      .then(res=>{console.log(res)
+      .then(res=>{
+        // console.log(res)
         this.result = res;
         this.toastr.success(this.result.msg)
         this.router.signin();

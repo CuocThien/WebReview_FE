@@ -26,7 +26,7 @@ export class ManageGroupComponent implements OnInit {
   inputId:any;
   inputName:any;
   onSubmit(formAddGroup:any){
-    console.log(formAddGroup.value)
+    // console.log(formAddGroup.value)
     if(formAddGroup.invalid){
       this.toastr.error("Nhập đầy đủ thông tin!!!","Lỗi")
     }else{
@@ -52,7 +52,9 @@ export class ManageGroupComponent implements OnInit {
       this.listGroup = this.listGroup.data;
       this.spinner.hide();
     })
-    .catch(err=>{console.log(err)
+    .catch(err=>{
+      // console.log(err)
+      this.toastr.error(err.error.msg)
       this.spinner.hide();
     })
   }
@@ -63,7 +65,9 @@ export class ManageGroupComponent implements OnInit {
       this.listGroup = this.listGroup.data;
       this.spinner.hide();
     })
-    .catch(err=>{console.log(err);
+    .catch(err=>{
+      this.toastr.error(err.error.msg)
+      // console.log(err);
       this.spinner.hide()
     })
   }
@@ -112,7 +116,7 @@ export class ManageGroupComponent implements OnInit {
     })
   }
   changeFilter(event:any){
-    console.log(event.target.value)
+    //console.log(event.target.value)
     const filter=event.target.value;
     if(filter == "using"){
       this.getGroup();

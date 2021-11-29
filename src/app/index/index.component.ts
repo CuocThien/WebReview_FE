@@ -32,7 +32,8 @@ export class IndexComponent implements OnInit {
 
       this.spinner.hide()
     })
-    .catch(err=>{console.log(err)
+    .catch(err=>{
+      // console.log(err)
       this.toastr.error(err.error.msg)
     })
   }

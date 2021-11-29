@@ -1,5 +1,5 @@
-<ngx-spinner
-  bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Loading... </p>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="true">
+  <p style="color: white"> Loading... </p>
 </ngx-spinner>
 <div class="header">
   <h4>KINH NGHIỆM HAY & MẸO VẶT</h4>
@@ -9,31 +9,40 @@
   <button routerLink="/create-post">+ Viết những chia sẻ của bạn</button>
 </div>
 <div class="container-reviewhub row">
-    <div class="navbar-reviewhub col-2">
-        <h5>CHỦ ĐỀ</h5>
+  <div class="navbar-reviewhub col-2">
+    <h5>CHỦ ĐỀ</h5>
     <ul class="dropdown">
-      <li class="item" *ngFor="let category of categories" id="{{category.id}}" (click)="active($event);getPostByCategory($event)" >{{category.Name}}</li>
+      <li class="item" *ngFor="let category of categories" id="{{category.id}}"
+        (click)="active($event);getPostByCategory($event)">{{category.Name}}</li>
     </ul>
-    </div>
-    <div class="listPost-reviewhub col-10">
-  <div class="post-reviewhub row" *ngFor="let post of listPost | paginate: {itemsPerPage: 5, currentPage:p}" id="{{post.dataPost.Id}}" routerLink="/post-detail/Review/{{post.dataPost.Id}}">
-    <div class="col-3">
-      <img [src]="post.dataPost.Image || 'https://4.bp.blogspot.com/-OCutvC4wPps/XfNnRz5PvhI/AAAAAAAAEfo/qJ8P1sqLWesMdOSiEoUH85s3hs_vn97HACLcBGAsYHQ/s1600/no-image-found-360x260.png'" alt="">
-      <p class="avg-star-reviewhub">{{post.Rating.AvgRate||0}}<span class="star">★</span> | {{post.Rating.count || 0}} bài đánh giá</p>
-    </div>
-    <div class="content-reviewhub col-9">
-      <h5>{{post.dataPost.Title}}</h5>
-      <p class="overview-review">{{post.dataPost.Overview}}</p>
-      <p class="author-reviewhub">{{post.FullName}} - {{post.dataPost.CreateAt|date:'HH:mm dd/MM/yyyy'}}</p>
-      <app-star id="{{post.dataPost.Id}}" rate="{{post.RatingbyAcc || 0}}"></app-star>
+  </div>
+  <h2 *ngIf="isEmpty" style="margin-top: 50px;" class="empty-list col-10">Không có bài viết nào</h2>
+
+  <div *ngIf="!isEmpty" class=" col-10">
+    <div class="listPost-reviewhub">
+      <div class="post-reviewhub row" *ngFor="let post of listPost | paginate: {itemsPerPage: 5, currentPage:p}"
+        id="{{post.dataPost.Id}}" routerLink="/post-detail/Review/{{post.dataPost.Id}}">
+        <div class="col-3">
+          <img
+            [src]="post.dataPost.Image || 'https://4.bp.blogspot.com/-OCutvC4wPps/XfNnRz5PvhI/AAAAAAAAEfo/qJ8P1sqLWesMdOSiEoUH85s3hs_vn97HACLcBGAsYHQ/s1600/no-image-found-360x260.png'"
+            alt="">
+          <p class="avg-star-reviewhub">{{post.Rating.AvgRate||0}}<span class="star">★</span> |
+            {{post.Rating.count || 0}}
+            bài đánh giá</p>
+        </div>
+        <div class="content-reviewhub col-9">
+          <h5>{{post.dataPost.Title}}</h5>
+          <p class="overview-review">{{post.dataPost.Overview}}</p>
+          <p class="author-reviewhub">{{post.FullName}} - {{post.dataPost.CreateAt|date:'HH:mm dd/MM/yyyy'}}</p>
+          <app-star id="{{post.dataPost.Id}}" rate="{{post.RatingbyAcc || 0}}"></app-star>
+        </div>
+      </div>
+      <pagination-controls class="pagination" previousLabel="" nextLabel="" (pageChange)="p=$event">
+      </pagination-controls>
     </div>
   </div>
-  <pagination-controls class="pagination"
-    previousLabel="" 
-    nextLabel="" (pageChange)="p=$event"></pagination-controls>
-</div>
 </div>
 <script>
+  $('.dropdown li:first').addClass('active');
 
-$('.dropdown li:first').addClass('active');
 </script>

@@ -1,21 +1,21 @@
 <body>
-    <div class="container">
-        <h3>Đăng ký tài khoản</h3>
-        <button id="btn-cancel" routerLink="/index"><img src="https://img.icons8.com/ios/30/000000/cancel.png" /></button>
-        <hr>
-        <form class="form" (ngSubmit)="onSubmit(formSignIn)" #formSignIn="ngForm">
-            <input type="text" placeholder="Tên tài khoản" ngModel name="UserName" required>
-            <input type="text" placeholder="Họ và Tên" ngModel name="FullName" required>
-            <input type="text" placeholder="Ngày sinh" onfocus="(this.type='date')" ngModel name="DOB" required>
-            <input type="text" placeholder="Địa chỉ" ngModel name="Address" required>
-            <input type="text" placeholder="Email" ngModel name="Email" required email>
-            <input type="password" placeholder="Mật khẩu" ngModel name="PassWord" required minlength="6">
-            <input type="password" placeholder="Xác nhận mật khẩu" ngModel name="Confirm" id="confirm" required minlength="6">
-            <button class="btn-sign" id="btn-signUp" >ĐĂNG KÝ</button>
-        </form>
-        
-        <div class="sign-in">
-            <span>Đã có tài khoản?</span> <a routerLink="/signin">Đăng nhập</a>
-        </div>
+  <div class="container">
+    <h3>Đăng ký tài khoản</h3>
+    <button id="btn-cancel" routerLink="/index"><img src="https://img.icons8.com/ios/30/000000/cancel.png" /></button>
+    <hr>
+    <form class="form" (ngSubmit)="onSubmit(formSignIn)" #formSignIn="ngForm">
+      <input type="text" placeholder="Tên tài khoản" ngModel name="UserName" required>
+      <input type="text" placeholder="Họ và Tên" ngModel name="FullName" required>
+      <input type="text" placeholder="Ngày sinh" onfocus="(this.type='date')" ngModel name="DOB" [max]="date" required>
+      <input type="text" placeholder="Địa chỉ" ngModel name="Address" required>
+      <input type="text" placeholder="Email" ngModel name="Email" required email>
+      <input type="password" placeholder="Mật khẩu" ngModel name="PassWord" required minlength="6">
+      <input type="password" placeholder="Xác nhận mật khẩu" ngModel name="Confirm" id="confirm" required minlength="6">
+      <button class="btn-sign" id="btn-signUp">ĐĂNG KÝ</button>
+    </form>
+
+    <div class="sign-in">
+      <span>Đã có tài khoản?</span> <a routerLink="/signin">Đăng nhập</a>
     </div>
+  </div>
 </body>

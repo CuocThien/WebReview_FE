@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 import { SearchService } from './search.service';
 
 @Component({
@@ -11,8 +12,8 @@ import { SearchService } from './search.service';
 })
 export class SearchComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private service: SearchService,private router: Router,
-    private spinner:NgxSpinnerService) { }
+  constructor(private route: ActivatedRoute, private service: SearchService, private router: Router,
+    private spinner: NgxSpinnerService, private toastr: ToastrService) { }
   p: number = 1;
   query: any;
   result: any;
@@ -28,7 +29,7 @@ export class SearchComponent implements OnInit {
       this.listSearch = []
       for (let i = 0; i < this.result.length; i++) {
         for (let j = 0; j < this.result[i].post.length; j++) {
-          this.result[i].post[j]["PostId"]=this.result[i].GroupId
+          this.result[i].post[j]["PostId"] = this.result[i].GroupId
           this.listSearch.push(this.result[i].post[j])
         }
       }
@@ -36,7 +37,9 @@ export class SearchComponent implements OnInit {
       // console.log(this.listSearch)
       this.count = this.listSearch.length;
       this.spinner.hide();
-    }).catch(err => {console.log(err)
+    }).catch(err => {
+      // console.log(err)
+      this.toastr.error(err.error.msg)
       this.spinner.hide()
     })
     // console.log(this.query)

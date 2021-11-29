@@ -12,14 +12,14 @@ import { CommentService } from 'src/app/comment/comment.service';
 })
 export class MyBootstrapModalComponent implements OnInit {
 
-  @Input() fromParent:any;
-  @Input() _id:any;
-  @Input() idComment:any;
-  @Input() isReply:any;
+  @Input() fromParent: any;
+  @Input() _id: any;
+  @Input() idComment: any;
+  @Input() isReply: any;
 
 
-  constructor(public activeModal: NgbActiveModal, private commentService:CommentService,
-              private toastr:ToastrService) { }
+  constructor(public activeModal: NgbActiveModal, private commentService: CommentService,
+    private toastr: ToastrService) { }
 
   ngOnInit() {
   }
@@ -27,27 +27,28 @@ export class MyBootstrapModalComponent implements OnInit {
   closeModal() {
     this.activeModal.close();
   }
-  dataUpdateCmt:any;
-  result:any;
-  updateCmt(){
-    this.dataUpdateCmt={}
-    this.dataUpdateCmt["_id"]=this._id;
-    this.dataUpdateCmt["Content"]=this.fromParent;
-    if(this.isReply==false){
-      this.commentService.updateCmt(this.dataUpdateCmt).then(res=>{
-        this.result=res;
+  dataUpdateCmt: any;
+  result: any;
+  updateCmt() {
+    this.dataUpdateCmt = {}
+    this.dataUpdateCmt["_id"] = this._id;
+    this.dataUpdateCmt["Content"] = this.fromParent;
+    if (this.isReply == false) {
+      this.commentService.updateCmt(this.dataUpdateCmt).then(res => {
+        this.result = res;
         this.toastr.success(this.result.msg)
       })
-      .catch(err=>this.toastr.error(err.error.msg))
-    }else{
-      this.dataUpdateCmt["idComment"]=this.idComment;
-      this.commentService.updateReply(this.dataUpdateCmt).then(res=>{
-        this.result=res;
+        .catch(err => this.toastr.error(err.error.msg))
+    } else {
+      this.dataUpdateCmt["idComment"] = this.idComment;
+      this.commentService.updateReply(this.dataUpdateCmt).then(res => {
+        this.result = res;
         this.toastr.success(this.result.msg)
       })
-      .catch(err=>{this.toastr.error(err.error.msg)
-        console.log(err)
-      })
+        .catch(err => {
+          this.toastr.error(err.error.msg)
+          // console.log(err)
+        })
     }
     // console.log(this.isReply);
     // console.log(this._id);

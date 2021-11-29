@@ -22,6 +22,7 @@ button{
     display: block;
     background-color: #F6F6F6;
     padding: 0;
+    min-height: 100vh;
 }
 .navbar-shareExp h5{
     margin-top: 10px;
@@ -52,7 +53,7 @@ button{
 }
 .listPost-shareExp{
     padding-top: 52px;
-    margin: auto;
+    margin: 0 auto;
 }
 .post-shareExp{
     position: relative;
@@ -132,4 +133,10 @@ color: gold;
 .overview-share{
     margin-bottom: 25px;
     font-size: 16px!important;
+}
+.empty-list{
+    font-style: italic;
+    font-family: fantasy;
+    text-align: center;
+    text-decoration: underline;
 }

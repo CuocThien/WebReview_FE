@@ -7,6 +7,7 @@
 .navbar-forums{
     display: block;
     background-color: #F4F3F3;
+    min-height: 100vh;
     padding: 0;
 }
 .navbar-forums h5{
@@ -171,4 +172,10 @@ height: 40px;
     width: 24px;
     height: 24px;
     cursor: pointer;
+}
+.empty-list{
+    font-style: italic;
+    font-family: fantasy;
+    text-align: center;
+    text-decoration: underline;
 }

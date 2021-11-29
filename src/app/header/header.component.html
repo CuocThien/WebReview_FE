@@ -18,7 +18,7 @@
         <li>
           <button class="animated-border-button">{{userFullName}}</button>
           <ul class="dropdown">
-            <li *ngIf="isAdmin"><a *ngIf="isAdmin"  (click)="admin()">Quản lý chung</a></li>
+            <li *ngIf="isAdmin"><a *ngIf="isAdmin" (click)="admin()">Quản lý chung</a></li>
             <li><a (click)="profile()">Thông tin cá nhân</a></li>
             <li><a routerLink="/user/manage-posts">Quản lý bài viết</a></li>
             <li><a (click)="changepassword()">Đổi mật khẩu</a></li>

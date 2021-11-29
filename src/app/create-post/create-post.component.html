@@ -17,11 +17,9 @@
       <p class="error-msg" *ngIf="isOverMaxLength">Tiêu đề không dài quá 100 kí tự...</p>
       <div class="image-control">
         <p class="annoucement-msg">Chọn ảnh giới thiệu cho bài viết</p>
-          <img
-            [src]="imageSrc"
-            alt="your image" require name="Avatar" />
-        
-          <input type='file' (change)="readURL($event);" accept="image/*" />
+        <img [src]="imageSrc" alt="your image" require name="Avatar" />
+
+        <input type='file' (change)="readURL($event);" accept="image/*" />
       </div>
       <textarea ngModel name="Overview" id="overview" rows="4" placeholder="Nhập mô tả ngắn gọn cho bài viết..."
         maxlength="300" (ngModelChange)="checkLengthOverview($event)"></textarea>

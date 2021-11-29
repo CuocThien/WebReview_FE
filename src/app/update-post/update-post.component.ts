@@ -23,7 +23,7 @@ export class UpdatePostComponent implements OnInit {
   constructor(private uploadImageService: UploadImageService, private route: ActivatedRoute,
     private service: ManageCategoriesService, private toastr: ToastrService,
     private updatePostService: UpdatePostService, private router: Router,
-    private readPostService: ReadPostService, private spinner : NgxSpinnerService) { }
+    private readPostService: ReadPostService, private spinner: NgxSpinnerService) { }
   ckeConfig: any;
   listGroup: any;
   listCate: any = [];
@@ -56,20 +56,22 @@ export class UpdatePostComponent implements OnInit {
     this.groupId = this.route.snapshot.paramMap.get("GroupId");
     this.postId = this.route.snapshot.paramMap.get("PostId");
 
-    this.readPostService.getDetailPost(this.groupId, this.postId).then(res => {
+    this.readPostService.getDetailPostAdmin(this.groupId, this.postId).then(res => {
       this.post = res;
       this.post = this.post.data.dataPost
       this.selectedValueCateId = this.post.CategoryId;
       this.imageSrc = this.post.Image
       // console.log(this.post.dataPost.Content)
-      console.log(this.post)
+      // console.log(this.post)
       this.spinner.hide()
     })
-      .catch(err => {console.log(err)
+      .catch(err => {
+        // console.log(err)
+        this.toastr.error(err.error.msg)
         this.spinner.hide();
       })
   }
-  ngAfterViewInit(){
+  ngAfterViewInit() {
     this.spinner.hide();
   }
   resultUpdate: any
@@ -90,7 +92,7 @@ export class UpdatePostComponent implements OnInit {
         this.toastr.success(this.resultUpdate.msg)
         // console.log(res)
         this.router.navigate(['/post-detail/admin/' + this.groupId + '/' + this.postId])
-      }).catch(err => console.log(err));
+      }).catch(err => this.toastr.error(err.error.msg));
       // console.log(this.post);
     }
 
@@ -125,7 +127,7 @@ export class UpdatePostComponent implements OnInit {
           this.result = res;
           this.imageSrc = this.result.url;
         })
-        .catch(err => console.log(err))
+        .catch(err => this.toastr.error(err.error.msg))
     }
   }
 

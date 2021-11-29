@@ -6,20 +6,20 @@ import { ToastrService } from "ngx-toastr";
 @Injectable()
 
 export class IndexService {
-    constructor(private http: HttpClient, private toastr:ToastrService, private cookieService:CookieService) {
+    constructor(private http: HttpClient, private toastr: ToastrService, private cookieService: CookieService) {
 
     }
-    result:any;
+    result: any;
     getPost() {
-            const url = 'https://oggy-webreview.herokuapp.com/post/getPost';
-            if(this.cookieService.get("authToken")==""){
-                const headers = new HttpHeaders({ 'Content-Type': 'application/json'})
-                return this.http.get(url, { headers })
+        const url = 'https://oggy-webreview.herokuapp.com/post/getPost';
+        if (this.cookieService.get("authToken") == "") {
+            const headers = new HttpHeaders({ 'Content-Type': 'application/json' })
+            return this.http.get(url, { headers })
                 .toPromise();
-            }else{
-                const headers = new HttpHeaders({ 'Content-Type': 'application/json','Authorization':'Bearer '+this.cookieService.get("authToken")})
-                return this.http.get(url, { headers })
+        } else {
+            const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.cookieService.get("authToken") })
+            return this.http.get(url, { headers })
                 .toPromise();
-            }
         }
+    }
 }

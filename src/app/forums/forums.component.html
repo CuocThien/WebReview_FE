@@ -1,78 +1,51 @@
 <div class="container-fluid row">
-    <ngx-spinner
-  bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Loading... </p>
-</ngx-spinner>
-    <div class="navbar-forums col-3">
-        <h5>CHỦ ĐỀ</h5>
-        <ul class="dropdown">
-          <li class="item" *ngFor="let category of listCategories" id="{{category.id}}" (click)="active($event);getPostByCategory($event)" >{{category.Name}}</li>
-        </ul>
+  <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="true">
+    <p style="color: white"> Loading... </p>
+  </ngx-spinner>
+  <div class="navbar-forums col-3">
+    <h5>CHỦ ĐỀ</h5>
+    <ul class="dropdown">
+      <li class="item" *ngFor="let category of listCategories" id="{{category.id}}"
+        (click)="active($event);getPostByCategory($event)">{{category.Name}}</li>
+    </ul>
+  </div>
+  <div class="body-forums col-6">
+    <div class="create-post-forums">
+      <h4>Tạo thảo luận</h4>
+      <hr>
+      <form>
+        <img class="img-forums"
+          [src]="myAvatar||'https://thelifetank.com/wp-content/uploads/2018/08/avatar-default-icon.png'" alt="">
+        <input type="text" placeholder="Viết những gì bạn muốn hỏi hoặc chia sẻ..." routerLink="/create-post">
+      </form>
     </div>
-    <div class="body-forums col-6">
-        <div class="create-post-forums">
-            <h4>Tạo thảo luận</h4><hr>
-            <form>
-                <img class="img-forums" [src]="myAvatar||'https://thelifetank.com/wp-content/uploads/2018/08/avatar-default-icon.png'" alt="">
-                <input type="text" placeholder="Viết những gì bạn muốn hỏi hoặc chia sẻ..." routerLink="/create-post">
-            </form>
-        </div>
-        <div class="post-forums" *ngFor="let post of listPost">
-            <img class="btn-view-forums" src="https://img.icons8.com/external-tulpahn-basic-outline-tulpahn/48/000000/external-view-healthcare-tulpahn-basic-outline-tulpahn.png"
-            routerLink="/post-detail/Forum/{{post.dataPost.Id}}"/>
-                        <div class="author-forums row">
-                <div class="col-1">
-                    <img class="img-forums" [src]="post.avatar" alt="">
-                </div>
-                
-                <div class="col-10">
-                    <h6>{{post.FullName}}</h6><br>
-                    <span><i>{{post.dataPost.CreateAt|date:'HH:mm dd/MM/yyyy'}}</i></span>
-                </div>
-            </div>
-            <div class="content-forums">
-                <p [innerHtml]="post.dataPost.Content"></p>
-            </div>
-            <!-- <div class="rating-forums">
-                <h6>Đánh giá bài viết</h6>
-                <app-star id="{{post.dataPost.Id}}" rate="{{post.RatingByAcc||0}}"></app-star>
-            </div> -->
-            <app-comment [countCmt]="post.CommentCount" [postId]="post.dataPost.Id" [listCmt]="post.Comment||{}"></app-comment>
-        </div>
-    </div>
-    <div class="category-forums col-3">
-        <img src="https://cdn.spark.app/media/whitefuse/image/blog_forums_cropped.png" alt="">
-        <h5>{{cateName}}</h5>
-        <p>{{countPosts}} bài viết</p>
-    </div>
-</div>
+    <h2 *ngIf="isEmpty" class="empty-list">Không có bài viết nào</h2>
+    <div *ngIf="!isEmpty">
+      <div class="post-forums" *ngFor="let post of listPost">
+        <img class="btn-view-forums"
+          src="https://img.icons8.com/external-tulpahn-basic-outline-tulpahn/48/000000/external-view-healthcare-tulpahn-basic-outline-tulpahn.png"
+          routerLink="/post-detail/Forum/{{post.dataPost.Id}}" />
+        <div class="author-forums row">
+          <div class="col-1">
+            <img class="img-forums" [src]="post.avatar" alt="">
+          </div>
 
-<!-- Create Post -->
-<!-- 
-<div class="modal fade" id="createPostForum" tabindex="-1" aria-labelledby="createPostForumLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <div class="col-10">
+            <h6>{{post.FullName}}</h6><br>
+            <span><i>{{post.dataPost.CreateAt|date:'HH:mm dd/MM/yyyy'}}</i></span>
+          </div>
         </div>
-        <div class="modal-body">
-            <app-create-post></app-create-post>
-            <form #formCreatePostForum="ngForm">
-            <div class="forums-option">
-            <select [ngModel]="selectedValueCateId" (ngModelChange)="onChangeCate($event)" name="CategoryId">
-                <option *ngFor="let cate of listCate" [value]="cate.id">{{cate.Name}}</option>
-              </select>
-
-              <span class="forums-direction">Chọn danh mục cho bài viết</span>
-              <input type="text" class="forums-title" ngModel name="Title" placeholder="Nhập tiêu đề cho bài thảo luận..." 
-              maxlength="100" (ngModelChange)="checkLength($event)" required>
-            </div>
-            
-      <p class="error-msg" *ngIf="isOverMaxLength">Tiêu đề không dài quá 50 kí tự...</p>
-                <ckeditor #editor [config]="ckeConfig" ngModel name="Content">
-                </ckeditor>
-            </form>
+        <div class="content-forums">
+          <p [innerHtml]="post.dataPost.Content"></p>
         </div>
+        <app-comment [countCmt]="post.CommentCount" [postId]="post.dataPost.Id" [listCmt]="post.Comment||{}">
+        </app-comment>
       </div>
     </div>
-  </div> 
-data-bs-toggle="modal" data-bs-target="#createPostForum"-->
+  </div>
+  <div class="category-forums col-3">
+    <img src="https://cdn.spark.app/media/whitefuse/image/blog_forums_cropped.png" alt="">
+    <h5>{{cateName}}</h5>
+    <p>{{countPosts}} bài viết</p>
+  </div>
+</div>
