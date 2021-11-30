@@ -3,10 +3,13 @@
   margin: auto;
   padding: 0 10%;
 }
-
+.share-and-forum-posts{
+  display: flex;
+}
 /* CSS for share experience */
 .share-experience {
   padding-top: 20px;
+  width: 75%;
 }
 
 a,
@@ -98,6 +101,8 @@ h5 {
 /* CSS for Forums */
 .forums {
   padding-top: 20px !important;
+  width: 25%;
+  margin-left: 20px;
 }
 
 .forums>h5 {
@@ -193,6 +198,7 @@ h5 {
   width: 100%;
   height: 78%;
   padding: 0 20px;
+  display: flex;
 }
 
 .review-content2 {
@@ -203,6 +209,7 @@ h5 {
   width: 100%;
   height: 78%;
   padding: 0 20px;
+  display: flex;
 }
 
 .review-post-background {
@@ -211,6 +218,8 @@ h5 {
   border-radius: 10px;
   height: 100%;
   transition: all 0.4s ease;
+  width: 33.33%;
+  margin: 0 4px;
 }
 
 .review-post-background:hover {
@@ -235,6 +244,8 @@ h5 {
   border: 5px solid transparent;
   transition: all 0.4s ease;
   color: white;
+  width: 33.33%;
+  margin: 0 4px;
 }
 
 .review-post-img {
@@ -318,4 +329,103 @@ h5 {
 .pagination /deep/ .pagination-next,
 .pagination /deep/.pagination-previous {
   visibility: hidden;
+}
+@media only screen and (max-width: 63.9375em) {
+  .share-and-forum-posts{
+    flex-direction: column;
+  }
+  .share-experience{
+    width: 100%;
+  }
+
+  .review{
+    width: 100%;
+    height: 700px;
+  }
+  .review-content{
+    flex-direction: column;
+    height: auto;
+  }
+  .review-content2{
+    flex-direction: column;
+    height: auto;
+  }
+  .review-post-background{
+    width: 100%;
+    height: 150px;
+    margin-bottom: 10px;
+  }
+  .review-post{
+    width: 100%;
+    height: 150px;
+    display: flex;
+    margin: 0;
+    margin-bottom: 10px;
+  }
+  .review-post > h6{
+    width: 60%;
+  }
+  .review-post-img{
+    height: 100%;
+    width: 40%;
+  }
+  .review-post-img>img{
+    max-height: 140px;
+  }
+}
+
+/* tablet */
+@media only screen and (min-width: 46.24em) and (max-width: 63.9375em) {
+  
+  .forums{
+    width: 50%;
+    margin: 0 auto;
+  }
+}
+/* mobile */
+@media only screen and (max-width: 46.1875em) {
+  h3{
+      font-size: 20px;
+  }
+  .review-post-background{
+    height: 100px;
+  }
+  .review-post{
+    height: 100px;
+  }
+  .review-post-img>img{
+    max-height: 90px;
+  }
+  .review{
+    height: 500px;
+  }
+  .forums{
+    width: 100%;
+    margin-left: 0;
+  }
+  .content-share-experience>div:nth-child(1),
+  .content-share-experience>div:nth-child(2),
+  .content-share-experience>div:nth-child(3),
+  .content-share-experience>div:nth-child(4),
+  .content-share-experience>div:nth-child(5){
+    width: 100%;
+    display: flex;
+    margin: 5px 0;
+  }
+  .content-share-experience>div:nth-child(1)>img,
+  .content-share-experience>div:nth-child(2)>img,
+  .content-share-experience>div:nth-child(3)>img,
+  .content-share-experience>div:nth-child(4)>img,
+  .content-share-experience>div:nth-child(5)>img {
+    height: 100px;
+    width: 40%;
+    margin-right: 10px;
+  }
+  .content-share-experience>div:nth-child(1)>p,
+  .content-share-experience>div:nth-child(2)>p,
+  .content-share-experience>div:nth-child(3)>p,
+  .content-share-experience>div:nth-child(4)>p,
+  .content-share-experience>div:nth-child(5)>p {
+    font-size: 12px;
+  }
 }

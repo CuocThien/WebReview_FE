@@ -23,9 +23,10 @@ button{
 .container-reviewhub{
     margin: 0 auto;
     width: 90%;
+    display: flex;
 }
 .navbar-reviewhub{
-    display: block;
+    width: 16.67%;
     background-color: #F6F6F6;
     padding: 0;
     min-height: 100vh;
@@ -57,6 +58,11 @@ button{
     background-color: #87C0F3;
     color: #FFF;
 }
+.listPost-reviewhub-container{
+
+    width: 83.33%;
+    padding-left: 15px;
+}
 .listPost-reviewhub{
     padding-top: 52px;
 }
@@ -69,7 +75,10 @@ button{
     margin-left: 10px;
     cursor: pointer;
 }
-.post-reviewhub div img{
+.content-reviewhub-image {
+    width: 25%;
+}
+.content-reviewhub-image img{
     max-width: 100%;
     max-height: 130px;
     width: auto;
@@ -77,9 +86,8 @@ button{
     display: inline;
     border-radius: 10px;
 }
-.post-reviewhub .col-3{
-    padding: 0;
-    margin: 0 auto;
+.content-reviewhub{
+    width: 75%;
 }
 .post-reviewhub h5{
     display: inline-block;
@@ -92,6 +100,7 @@ button{
     font-style: italic;
     font-size: 16px;
 }
+
 .content-reviewhub>app-star{
     position: absolute;
     bottom: 0;
@@ -120,4 +129,106 @@ color: gold;
     font-family: fantasy;
     text-align: center;
     text-decoration: underline;
+
+    width: 83.33%;
 }
+.menu-cate{
+    position: relative;
+    display: none;
+    list-style: none;
+  }
+  .menu-cate > li > button{
+    margin: 6px 0;
+    height: 34px;
+    width: 34px;
+    padding: 0;
+    background-color: #FFF;
+    border: 1px solid #76E2FB;
+    border-radius: 10px;
+  }
+  .menu-cate-dropdown li{
+    display: block;
+    text-align: left;
+    padding: 8px 5px;
+    font-size: 14px;
+    color: #FFF;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .menu-cate-dropdown{
+    display: none;
+    width: 30%;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    min-width: 160px; /* Set width of the dropdown */
+    background-image: linear-gradient(to right, #6EE2F5,#6454F0);
+    position: absolute;
+    z-index: 999;
+    left: 20px;
+    padding: 0;
+  }
+  .menu-cate-dropdown li:hover{
+    background-image: linear-gradient(to right, #65d0e0,#5d4edd);
+
+  }
+  .menu-cate:hover .menu-cate-dropdown{
+  display: block;
+  }
+@media only screen and (max-width: 63.9375em) {
+    .menu-cate{
+        display: block;
+        float: left;
+        top:10px;
+        left: -15px;
+    }
+    .navbar-reviewhub{
+        display: none;
+    }
+    .listPost-reviewhub-container{
+        width: 90%;
+    }
+    .listPost-shareExp{
+        width: 100%;
+    }
+}
+/* tablet */
+@media only screen and (min-width: 46.24em) and (max-width: 63.9375em) {
+  
+    
+  }
+  /* mobile */
+  @media only screen and (max-width: 46.1875em) {
+    .overview-review{
+        display: none;
+    }
+    .post-reviewhub{
+        height: 170px;
+    }
+    .author-reviewhub{
+        display: none;
+    }
+    .avg-star-reviewhub{
+        display: none;
+    }
+    .container-reviewhub{
+        width: 90%;
+    }
+    .content-reviewhub-image{
+        width: 40%;
+    }
+    .content-reviewhub{
+        width: 60%;
+    }
+    .content-reviewhub h5{
+        font-size: 15px;
+    }
+    .header h5{
+        display: none;
+    }
+    .header{
+        height: 120px;
+    }
+    .header button{
+        padding: 8px 10px;
+    }
+  }

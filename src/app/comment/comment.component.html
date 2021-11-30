@@ -3,7 +3,7 @@
 <hr>
 <div class="comment">
   <div class="create-comment row">
-    <div class="col-1">
+    <div class="create-comment-avatar col-1">
       <img [src]="myAvatar||'https://thelifetank.com/wp-content/uploads/2018/08/avatar-default-icon.png'" alt="">
     </div>
     <div class="txtCmt col-11">
@@ -17,7 +17,7 @@
   </div>
   <div class="list-comment" *ngIf="countCmt!=0">
     <div class="user-comment row" *ngFor="let comment of listCmt">
-      <div class="col-1">
+      <div class="user-comment-avatar col-1">
         <img [src]="comment.Avatar" alt="">
       </div>
       <div class="user-cmt-content col-11">
@@ -33,7 +33,7 @@
       </div>
       <div class="create-reply row" id="reply_{{comment._id}}">
         <div class="line col-1"></div>
-        <div class="col-1">
+        <div class="create-reply-avatar col-1">
           <img [src]="myAvatar||'https://thelifetank.com/wp-content/uploads/2018/08/avatar-default-icon.png'" alt="">
         </div>
         <div class="txtReplyCmt col-10">
@@ -50,7 +50,7 @@
       <div class="reply row" *ngFor="let reply of comment.Reply">
         <div class="line col-1"></div>
         <div class="user-comment-reply col-11 row">
-          <div class="col-1">
+          <div class="user-comment-reply-avatar col-1">
             <img [src]="reply.Avatar" alt="">
           </div>
           <div class="user-reply-cmt-content col-11">

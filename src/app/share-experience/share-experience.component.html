@@ -4,27 +4,40 @@
 <div class="header">
   <h4>KINH NGHIỆM HAY & MẸO VẶT</h4>
   <button routerLink="/create-post">+ Viết những chia sẻ của bạn</button>
+  <ul class="menu-cate"> 
+    <li><button>
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list-stars" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5z"/>
+        <path d="M2.242 2.194a.27.27 0 0 1 .516 0l.162.53c.035.115.14.194.258.194h.551c.259 0 .37.333.164.493l-.468.363a.277.277 0 0 0-.094.3l.173.569c.078.256-.213.462-.423.3l-.417-.324a.267.267 0 0 0-.328 0l-.417.323c-.21.163-.5-.043-.423-.299l.173-.57a.277.277 0 0 0-.094-.299l-.468-.363c-.206-.16-.095-.493.164-.493h.55a.271.271 0 0 0 .259-.194l.162-.53zm0 4a.27.27 0 0 1 .516 0l.162.53c.035.115.14.194.258.194h.551c.259 0 .37.333.164.493l-.468.363a.277.277 0 0 0-.094.3l.173.569c.078.255-.213.462-.423.3l-.417-.324a.267.267 0 0 0-.328 0l-.417.323c-.21.163-.5-.043-.423-.299l.173-.57a.277.277 0 0 0-.094-.299l-.468-.363c-.206-.16-.095-.493.164-.493h.55a.271.271 0 0 0 .259-.194l.162-.53zm0 4a.27.27 0 0 1 .516 0l.162.53c.035.115.14.194.258.194h.551c.259 0 .37.333.164.493l-.468.363a.277.277 0 0 0-.094.3l.173.569c.078.255-.213.462-.423.3l-.417-.324a.267.267 0 0 0-.328 0l-.417.323c-.21.163-.5-.043-.423-.299l.173-.57a.277.277 0 0 0-.094-.299l-.468-.363c-.206-.16-.095-.493.164-.493h.55a.271.271 0 0 0 .259-.194l.162-.53z"/>
+      </svg>
+    </button>
+    <ul class="menu-cate-dropdown">
+      <li class="item" *ngFor="let category of categories" id="{{category.id}}"
+        (click)="active($event);getPostByCategory($event)">{{category.Name}}</li>
+    </ul>
+  </li>
+  </ul>
 </div>
-<div class="container-shareExp row">
-  <div class="navbar-shareExp col-2">
+<div class="container-shareExp">
+  <div class="navbar-shareExp">
     <h5>CHỦ ĐỀ</h5>
     <ul class="dropdown-shareExp">
       <li class="item" *ngFor="let category of categories" id="{{category.id}}"
         (click)="active($event);getPostByCategory($event)">{{category.Name}}</li>
     </ul>
   </div>
-  <h2 *ngIf="isEmpty" style="margin-top: 50px;" class="empty-list col-7">Không có bài viết nào</h2>
-  <div *ngIf="!isEmpty" class="listPost-shareExp col-7">
-    <div class="post-shareExp row" *ngFor="let post of listPost | paginate: {itemsPerPage: 5, currentPage:p}"
+  <h2 *ngIf="isEmpty" style="margin-top: 50px;" class="empty-list">Không có bài viết nào</h2>
+  <div *ngIf="!isEmpty" class="listPost-shareExp">
+    <div class="post-shareExp" *ngFor="let post of listPost | paginate: {itemsPerPage: 5, currentPage:p}"
       id="{{post.dataPost.Id}}" routerLink="/post-detail/Experience/{{post.dataPost.Id}}">
-      <div class="col-3">
+      <div class="content-shareExp-image">
         <img
           [src]="post.dataPost.Image || 'https://4.bp.blogspot.com/-OCutvC4wPps/XfNnRz5PvhI/AAAAAAAAEfo/qJ8P1sqLWesMdOSiEoUH85s3hs_vn97HACLcBGAsYHQ/s1600/no-image-found-360x260.png'"
           alt="">
         <p class="avg-star">{{post.Rating.AvgRate}}<span class="star">★</span> | {{post.Rating.count || 0}} bài đánh giá
         </p>
       </div>
-      <div class="content-shareExp col-9">
+      <div class="content-shareExp">
         <h5>{{post.dataPost.Title}}</h5>
         <p class="overview-share">{{post.dataPost.Overview}}</p>
         <p class="author-shareExp">{{post.FullName}} - {{post.dataPost.CreateAt|date:'HH:mm dd/MM/yyyy'}}</p>
@@ -33,7 +46,7 @@
     </div>
     <pagination-controls class="pagination" previousLabel="" nextLabel="" (pageChange)="p=$event"></pagination-controls>
   </div>
-  <div class="listHotPost col-3">
+  <div class="listHotPost">
     <h5>Top bài viết hay nhất</h5>
     <div class="hotpost row" *ngFor="let hotpost of listHotPost" id="{{hotpost.dataPost.Id}}"
       routerLink="/post-detail/Experience/{{hotpost.dataPost.Id}}">

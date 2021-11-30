@@ -83,3 +83,46 @@ a{
     border: none;
     background-color: transparent;
 }
+/* tablet */
+/* mobile */
+@media only screen and (max-width: 900px) {
+    .user-reply-cmt-content, .user-cmt-content {
+        width: 80%;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .user-reply-cmt-content, .user-cmt-content {
+        width: 80%;
+        margin-left: 10px;
+    }
+    .user-comment-avatar, .create-comment-avatar,.create-reply-avatar{
+        width: 10%;
+    }
+    .user-comment-reply-avatar{
+        width: 15%;
+    }
+    .txtCmt{
+        width: 85%;
+    }
+    .txtReplyCmt{
+        width: 80%;
+    }
+}
+@media only screen and (max-width: 500px) {
+    .user-reply-cmt-content, .user-cmt-content {
+        width: 70%;
+        margin-left: 10px;
+    }
+    .user-comment-avatar, .create-comment-avatar,.create-reply-avatar{
+        width: 15%;
+    }
+    .user-comment-reply-avatar{
+        width: 18%;
+    }
+    .txtCmt{
+        width: 85%;
+    }
+    .txtReplyCmt{
+        width: 70%;
+    }
+}

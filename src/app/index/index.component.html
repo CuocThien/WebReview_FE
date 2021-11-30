@@ -2,8 +2,8 @@
   <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="true">
     <p style="color: white"> Loading... </p>
   </ngx-spinner>
-  <div class="row">
-    <div class="share-experience col-9">
+  <div class="share-and-forum-posts">
+    <div class="share-experience">
       <div class="intro">
         <h5 (click)="shareExp()">Chia sẻ kinh nghiệm</h5>
         <a (click)="shareExp()">Xem tất cả</a>
@@ -18,7 +18,7 @@
         </div>
       </div>
     </div>
-    <div class="forums col-3">
+    <div class="forums">
       <h5 routerLink="/forums">Forums</h5>
       <div class="forum-post" *ngFor="let itemF of listForumPost" id="{{itemF.dataPost.Id}}"
         routerLink="/post-detail/Forum/{{itemF.dataPost.Id}}">
@@ -36,16 +36,14 @@
   <div class="review">
     <h5 (click)="reviewHub()">Review Hub</h5>
     <input type="button" value="+ Viết bài review" routerLink="/create-post">
-    <div class="review-content row">
-      <div class="review-post-background col-3"></div>
-      <div class="review-post-background col-3"></div>
-      <div class="review-post-background col-3"></div>
-      <div class="review-post-background col-3"></div>
-
-
+    <div class="review-content">
+      <div class="review-post-background"></div>
+      <div class="review-post-background"></div>
+      <div class="review-post-background"></div>
+      <div class="review-post-background"></div>
     </div>
-    <div class="review-content2 row">
-      <div class="review-post meet col-3"
+    <div class="review-content2">
+      <div class="review-post meet"
         *ngFor="let itemR of listReviewPost | paginate: {itemsPerPage: 4, currentPage:p}" id="{{itemR.dataPost.Id}}"
         routerLink="/post-detail/Review/{{itemR.dataPost.Id}}">
         <div class="review-post-img">
