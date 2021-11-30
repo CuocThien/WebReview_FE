@@ -77,3 +77,34 @@ color: gold;
 .overview-search{
     font-size: 16px!important;
 }
+/* tablet */
+@media only screen and (max-width: 63.9375em) {
+    .post-search{
+        height: auto;
+    }
+    
+   }
+   /* mobile */
+   @media only screen and (max-width: 46.1875em) {
+    .container-search{
+        width: 90%;
+    }
+    .overview-search{
+        display: none;
+    }
+    .post-search-image{
+        width: 40%;
+    }
+    .content-search{
+        width: 60%;
+        padding-left: 10px;
+    }
+    .content-search h5{
+        font-size: 16px;
+    }
+   }
+   @media only screen and (max-width: 500px){
+       .author-search{
+           display: none;
+       }
+   }
