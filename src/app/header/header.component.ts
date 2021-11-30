@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
   constructor(public header:HeaderService,private routerApp:AppRoutingModule,
     private cookieService: CookieService,private service:SignInService, private router:Router, private route:ActivatedRoute) { }
     userFullName:any;
+    avatar:any;
     user:any=[];
     isAdmin:boolean=false;
     querySearch:string="";
@@ -45,6 +46,7 @@ export class HeaderComponent implements OnInit {
       // console.log(this.cookieService.get("User"))
       // this.user=JSON.parse(this.cookieService.get("User"));
       this.userFullName=this.cookieService.get("fullName");
+      this.avatar=this.cookieService.get("avatar");
       if(this.cookieService.get("isAdmin")=="true"){
         this.isAdmin = true;
       }else{

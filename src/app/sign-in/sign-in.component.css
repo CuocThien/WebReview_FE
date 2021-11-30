@@ -149,49 +149,26 @@ input.ng-invalid.ng-touched{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 18px;
 }
-
-@media only screen and (max-width: 1400px) {
-    .container{
-        width: 35%;
-    }
-}
-@media only screen and (max-width: 1200px) {
+/* tablet */
+@media only screen and (min-width: 46.24em) and (max-width: 63.9375em) {
     .container{
         width: 40%;
     }
-    #logo-btn{
-        left:40px;
+    h3{
+        font-size: 23px;
     }
 }
-@media only screen and (max-width: 1000px) {
-    .container{
-        width: 45%;
-    }
-    #logo-btn{
-        left:30px;
-    }
-}
-@media only screen and (max-width: 900px) {
-    .container{
-        width: 50%;
-    }
-    #logo-btn{
-        left:20px;
-    }
-}
-@media only screen and (max-width: 750px) {
+/* mobile */
+@media only screen and (max-width: 46.1875em) {
     .container{
         width: 60%;
     }
-    #logo-btn{
-        left:10px;
+    h3{
+        font-size: 20px;
     }
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 550px) {
     .container{
         width: 80%;
-    }
-    #logo-btn{
-        left:10px;
     }
 }

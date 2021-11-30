@@ -4,6 +4,7 @@
   box-shadow: 0 2px 6px -3px black;
   margin: auto;
   padding: 0 10%;
+  display: flex;
 }
 
 form {
@@ -12,6 +13,7 @@ form {
 
 .page-control {
   margin: auto;
+  width: 66.67%;
 }
 
 .page-control>img {
@@ -48,12 +50,13 @@ form {
 }
 
 .account-control {
+  width: 33.33%;
   text-align: right;
   padding: auto;
   margin: auto;
 }
 
-.account-control>div>input {
+.tablet-log-control>input {
   background-color: #fff;
   height: 35px;
   width: 100px;
@@ -63,7 +66,7 @@ form {
   color: #76E2FB;
 }
 
-.account-control>div>input:hover {
+.tablet-log-control>input:hover {
   border: 2px solid #62c1d6;
   color: #62c1d6;
 }
@@ -148,4 +151,108 @@ ul li:hover ul.dropdown{
 }
 ul li ul.dropdown li{
   display: block;
+}
+
+.log-btn{
+  position: relative;
+  display: none;
+}
+.log-btn > li > button{
+  margin: 6px 0;
+  height: 34px;
+  width: 34px;
+  background-color: #FFF;
+  border: 1px solid #76E2FB;
+  border-radius: 10px;
+}
+.log-btn-dropdown li{
+  display: block;
+  padding: 8px 20px;
+  font-size: 14px;
+  color: #FFF;
+  text-decoration: none;
+  cursor: pointer;
+}
+.log-btn-dropdown{
+  display: none;
+  width: 30%;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  min-width: 160px; /* Set width of the dropdown */
+  background-image: linear-gradient(to right, #6EE2F5,#6454F0);
+  position: absolute;
+  z-index: 999;
+  right: 0;
+}
+.log-btn:hover .log-btn-dropdown{
+display: block;
+}
+.user-tablet{
+  display: none;
+}
+.user-tablet li img{
+  margin-top: 3px;
+  border-radius: 50%;
+  max-height: 40px;
+  max-width: 40px;
+  width: auto;
+  height: auto;
+}
+/* both */
+@media only screen and (max-width: 63.9375em) {
+  .container-fluid{
+    padding: 0;
+  }
+  .user-pc{
+    display: none;
+  }
+  .user-tablet{
+    display: block;
+    padding-right: 20px;
+  }
+  .user-tablet li ul.dropdown{
+    right: 0!important;
+    left: auto;
+  }
+}
+/* tablet */
+@media only screen and (min-width: 46.24em) and (max-width: 63.9375em) {
+  
+  .tablet-log-control>input{
+    margin-right: 2px;
+  }
+}
+/* mobile */
+@media only screen and (max-width: 46.1875em) {
+  .tablet-log-control{
+    display: none;
+  }
+  .log-btn{
+    display: flex;
+  }
+  .page-control{
+    width: 90%;
+  }
+  .account-control{
+    width: 10%;
+  }
+  .page-control>form>input{
+    margin-left: 0;
+  }
+  .user-tablet{
+    margin-right: 20px;
+  }
+  .user-tablet li ul.dropdown{
+    right: 0!important;
+    left: auto;
+  }
+}
+
+@media only screen and (max-width: 560px) {
+  .page-control{
+    width: 85%;
+  }
+  .account-control{
+    width: 15%;
+  }
 }

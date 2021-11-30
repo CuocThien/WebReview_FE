@@ -42,6 +42,7 @@ export class SignInComponent implements OnInit {
         .then(resU => {
           this.user = resU;
           this.cookieService.set("fullName", this.user.data.FullName);
+          this.cookieService.set("avatar", this.user.data.Avatar);
           this.cookieService.set("isAdmin", this.user.data.IsAdmin);
           this.cookieService.set("accountId", this.user.data._id);
           // console.log(this.user)
