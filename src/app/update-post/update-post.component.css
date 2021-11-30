@@ -77,3 +77,16 @@ select{
 .option{
     text-align: center;
 }
+/* tablet */
+@media only screen and (max-width: 63.9375em) {
+  
+    .container{
+        width:80%
+    }
+   }
+   /* mobile */
+   @media only screen and (max-width: 46.1875em) {
+    .container{
+        width: 90%;
+    }
+   }
