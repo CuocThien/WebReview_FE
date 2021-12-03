@@ -244,8 +244,8 @@ h5 {
   border: 5px solid transparent;
   transition: all 0.4s ease;
   color: white;
-  width: 33.33%;
-  margin: 0 4px;
+  width: 25%;
+  /* margin: 0 4px; */
 }
 
 .review-post-img {
