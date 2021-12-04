@@ -55,12 +55,12 @@ export class SignInComponent implements OnInit {
     // console.log(JSON.stringify(formForgotPassword.value))
     this.service.forgotPassword(formForgotPassword.value)
       .then(result => {
-        // console.log(result)
+        console.log(result)
         this.resultForgotPass = result;
-        this.toastr.success(this.resultForgotPass.data.msg)
+        this.toastr.success(this.resultForgotPass.msg)
       })
       .catch(err => {
-        // console.log(err)
+        console.log(err)
         this.toastr.error(err.error.msg)
       });
   }
