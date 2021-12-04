@@ -67,3 +67,6 @@
     width: 100%;
     display: inline;
 }
+svg{
+    pointer-events: none;
+}

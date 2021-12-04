@@ -61,3 +61,6 @@ input[type=radio]{
     font-weight: bold;
     color: #3f51b5;
 }
+svg{
+    pointer-events: none;
+}
