@@ -61,6 +61,8 @@ export class CreatePostComponent implements OnInit {
     this.data = form.value;
     if (form.value.Title == "") {
       this.toastr.error("Nhập thông tin tiêu đề cho bài viết")
+    } else if (form.value.Overview == "") {
+      this.toastr.error("Nhập thông tin mô tả cho bài viết")
     } else if (form.value.Content == "") {
       this.toastr.error("Nhập thông tin nội dung cho bài viết")
     } else {

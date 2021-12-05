@@ -85,8 +85,12 @@ export class UpdatePostComponent implements OnInit {
       this.post["Title"] = form.value.Title;
       this.post["Content"] = form.value.Content;
       this.post["Overview"] = form.value.Overview;
+      if(this.post["Overview"]==""){
+        this.post["Overview"] = "Empty"
+      }
       this.post["CategoryId"] = this.selectedValueCateId;
       this.post["Status"] = false;
+      console.log(this.post)
       this.updatePostService.updatePost(this.groupId, this.postId, this.post).then(res => {
         this.resultUpdate = res
         this.toastr.success(this.resultUpdate.msg)
