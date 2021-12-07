@@ -15,8 +15,8 @@
       </svg>
     </button>
     <ul class="menu-cate-dropdown">
-      <li class="item" *ngFor="let category of categories" id="{{category.id}}"
-        (click)="active($event);getPostByCategory($event)">{{category.Name}}</li>
+      <li *ngFor="let category of categories" id="{{category.id}}"
+        (click)="getPostByCategory($event)">{{category.Name}}</li>
     </ul>
   </li>
   </ul>

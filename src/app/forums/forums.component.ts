@@ -98,7 +98,7 @@ LoadMore() {
      this.btn_loadMore = document.getElementById("loadMore")
      this.btn_loadMore.style.display="none"
    }
-   if(this.currentIndex > this.countPosts){
+   if(this.currentIndex >= this.countPosts){
      for(let i = currentTmp+1;i<this.countPosts;i++)
       this.listPost.push(this.listPostStorage[i]);
    }else{
@@ -107,20 +107,24 @@ LoadMore() {
   }
    this.crd.detectChanges();
 }
-
+  navbar_active:any;
   active(event: any) {
+    // console.log(event.target.id)
     if (document.getElementsByClassName('active').length > 0) {
       var items = document.getElementsByClassName("item");
       for (let i = 0; i < items.length; i++) {
         items[i].classList.remove("active")
       }
     }
-    this.renderer.addClass(document.getElementById(event.target.id), "active")
+    var itemsA = document.getElementsByClassName("item");
+      for (let i = 0; i < itemsA.length; i++) {
+        if(itemsA[i].id == event.target.id){
+          this.renderer.addClass(itemsA[i], "active")
+        }
+      }
   }
   getPostByCategory(event: any) {
     this.currentIndex = 2;
-    this.btn_loadMore = document.getElementById("loadMore")
-    this.btn_loadMore.style.display = "block"
     this.listPost = []
     this.service.getPostByCategory(event.target.id).then(res => {
       this.listPostStorage = res;
@@ -136,6 +140,8 @@ LoadMore() {
         }
       }
       this.cateName = event.target.innerText;
+        this.btn_loadMore = document.getElementById("loadMore")
+        this.btn_loadMore.style.display = "inline"
       this.isEmpty = false
     }).catch(err => {
 
@@ -143,7 +149,10 @@ LoadMore() {
       this.cateName = event.target.innerText;
       this.toastr.error(err.error.msg);
       this.isEmpty = true;
+      this.btn_loadMore = document.getElementById("loadMore")
+        this.btn_loadMore.style.display = "none"
     })
+    
   }
   resultCreate: any
   dataCreate: any

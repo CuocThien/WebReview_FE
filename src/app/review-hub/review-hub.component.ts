@@ -44,7 +44,12 @@ export class ReviewHubComponent implements OnInit {
         items[i].classList.remove("active")
       }
     }
-    this.renderer.addClass(document.getElementById(event.target.id), "active")
+    var itemsA = document.getElementsByClassName("item");
+      for (let i = 0; i < itemsA.length; i++) {
+        if(itemsA[i].id == event.target.id){
+          this.renderer.addClass(itemsA[i], "active")
+        }
+      }
   }
   getPostByCategory(event: any) {
     this.p = 1;
