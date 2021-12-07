@@ -75,8 +75,13 @@ export class ForumsComponent implements OnInit {
       for (let i = 0; i<= this.currentIndex; i ++){
         this.listPost.push(this.listPostStorage[i])
       }
-      // console.log(this.listPost)
-      // console.log(this.listPost(this.currentIndex).keys())
+      if(this.listPost.length <3){
+        this.btn_loadMore = document.getElementById("loadMore")
+        this.btn_loadMore.style.display = "none"
+      }else{
+        this.btn_loadMore = document.getElementById("loadMore")
+        this.btn_loadMore.style.display = "inline"
+      }
       this.spinner.hide();
     })
       .catch(err => {
@@ -140,8 +145,13 @@ LoadMore() {
         }
       }
       this.cateName = event.target.innerText;
+      if(this.listPost.length <3){
+        this.btn_loadMore = document.getElementById("loadMore")
+        this.btn_loadMore.style.display = "none"
+      }else{
         this.btn_loadMore = document.getElementById("loadMore")
         this.btn_loadMore.style.display = "inline"
+      }
       this.isEmpty = false
     }).catch(err => {
 
