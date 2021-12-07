@@ -44,10 +44,10 @@
         <app-star id="{{post.dataPost.Id}}" [rate]="post.RatingbyAcc || 0"></app-star>
       </div>
     </div>
-    <pagination-controls class="pagination" previousLabel="" nextLabel="" (pageChange)="p=$event"></pagination-controls>
+    <pagination-controls class="pagination" previousLabel="" nextLabel="" (click)="backToTop()" (pageChange)="p=$event"></pagination-controls>
   </div>
   <div class="listHotPost">
-    <h5>Top bài viết hay nhất</h5>
+    <h5>Bài viết mới nhất</h5>
     <div class="hotpost row" *ngFor="let hotpost of listHotPost" id="{{hotpost.dataPost.Id}}"
       routerLink="/post-detail/Experience/{{hotpost.dataPost.Id}}">
       <div class="col-5">

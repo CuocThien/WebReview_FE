@@ -78,4 +78,7 @@ export class ShareExperienceComponent implements OnInit {
       this.isEmpty = true;
     })
   }
+  backToTop(){
+    window.scrollTo(0,170)
+  }
 }

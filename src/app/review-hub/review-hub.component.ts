@@ -58,4 +58,7 @@ export class ReviewHubComponent implements OnInit {
       this.isEmpty = true
     })
   }
+  backToTop(){
+    window.scrollTo(0,270)
+  }
 }

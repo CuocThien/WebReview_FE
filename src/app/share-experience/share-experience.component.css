@@ -77,10 +77,9 @@ button{
     display: inline;
 }
 .content-shareExp-image{
-    width: 40%;
+    width: 30%;
     padding: 0;
     margin: auto;
-    margin-right: 5px;
 }
 .content-shareExp{
     width: 60%;

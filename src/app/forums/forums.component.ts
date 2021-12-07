@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, Renderer2 } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
@@ -17,17 +17,20 @@ export class ForumsComponent implements OnInit {
 
   listGroup: any;
   listCate: any = [];
-  listPost: any;
+  listPost: any=[];
   listCategories: any;
   user: any;
   myAvatar: any;
   cateName: any;
   countPosts: any;
   isEmpty: boolean = false;
+  currentIndex:number = 2;
+  listPostStorage:any;
   constructor(private renderer: Renderer2, private service: ForumsService,
     private signInService: SignInService, private cookieService: CookieService,
     private createPostService: CreatePostService, private toastr: ToastrService,
-    private manageCateService: ManageCategoriesService, private spinner: NgxSpinnerService) { }
+    private manageCateService: ManageCategoriesService, private spinner: NgxSpinnerService,
+    private crd: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.spinner.show();
@@ -66,10 +69,14 @@ export class ForumsComponent implements OnInit {
 
     //Lấy danh sách bài viết trang Forums
     this.service.getPost().then(res => {
-      this.listPost = res;
-      this.listPost = this.listPost.data;
-      this.countPosts = this.listPost.length
+      this.listPostStorage = res;
+      this.listPostStorage = this.listPostStorage.data;
+      this.countPosts = this.listPostStorage.length;
+      for (let i = 0; i<= this.currentIndex; i ++){
+        this.listPost.push(this.listPostStorage[i])
+      }
       // console.log(this.listPost)
+      // console.log(this.listPost(this.currentIndex).keys())
       this.spinner.hide();
     })
       .catch(err => {
@@ -79,6 +86,27 @@ export class ForumsComponent implements OnInit {
       })
 
   }
+  
+  
+btn_loadMore:any;
+LoadMore() {
+  const currentTmp = this.currentIndex;
+  console.log(currentTmp)
+   this.currentIndex += 3;
+   console.log(this.currentIndex)
+   if(this.currentIndex >= this.countPosts - 1 ){
+     this.btn_loadMore = document.getElementById("loadMore")
+     this.btn_loadMore.style.display="none"
+   }
+   if(this.currentIndex > this.countPosts){
+     for(let i = currentTmp+1;i<this.countPosts;i++)
+      this.listPost.push(this.listPostStorage[i]);
+   }else{
+     for(let i = currentTmp+1; i<=this.currentIndex;i++)
+      this.listPost.push(this.listPostStorage[i]);
+  }
+   this.crd.detectChanges();
+}
 
   active(event: any) {
     if (document.getElementsByClassName('active').length > 0) {
@@ -90,10 +118,23 @@ export class ForumsComponent implements OnInit {
     this.renderer.addClass(document.getElementById(event.target.id), "active")
   }
   getPostByCategory(event: any) {
+    this.currentIndex = 2;
+    this.btn_loadMore = document.getElementById("loadMore")
+    this.btn_loadMore.style.display = "block"
+    this.listPost = []
     this.service.getPostByCategory(event.target.id).then(res => {
-      this.listPost = res;
-      this.listPost = this.listPost.data;
-      this.countPosts = this.listPost.length;
+      this.listPostStorage = res;
+      this.listPostStorage = this.listPostStorage.data;
+      this.countPosts = this.listPostStorage.length;
+      if(this.countPosts <= this.currentIndex){
+        for (let i = 0; i< this.countPosts; i ++){
+          this.listPost.push(this.listPostStorage[i])
+        }
+      }else{
+        for (let i = 0; i<= this.currentIndex; i ++){
+          this.listPost.push(this.listPostStorage[i])
+        }
+      }
       this.cateName = event.target.innerText;
       this.isEmpty = false
     }).catch(err => {
@@ -136,5 +177,8 @@ export class ForumsComponent implements OnInit {
     } else {
       this.isOverMaxLength = false;
     }
+  }
+  backToTop(){
+    window.scrollTo(0,0)
   }
 }
