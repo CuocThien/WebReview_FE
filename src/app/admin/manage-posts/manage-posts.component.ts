@@ -127,7 +127,7 @@ export class ManagePostsComponent implements OnInit {
     this.service.deletePost(this.filterString, this.delPostId).then(res => {
       this.resultDelPost = res;
       this.toastr.success(this.resultDelPost.msg)
-      this.getData(true, this.isAdmin)
+      this.getData(this.isApproved, this.isAdmin)
       this.p = 1;
     }).catch(err => {
       // console.log(err);
