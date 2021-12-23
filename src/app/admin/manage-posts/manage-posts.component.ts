@@ -19,6 +19,7 @@ export class ManagePostsComponent implements OnInit {
 
   listGroup: any;
   listPost: any;
+  listAllPost:any = [];
   listPostExperience: any = []
   listPostReview: any = []
   listPostForums: any = []
@@ -36,10 +37,11 @@ export class ManagePostsComponent implements OnInit {
     if (this.url == "admin") {
       this.isAdmin = true;
     }
+
+    this.filterString = "Default"
     this.manageGroupService.getGroup().then(res => {
       this.listGroup = res;
       this.listGroup = this.listGroup.data;
-      this.filterString = this.listGroup[0]._id
       // console.log(this.filterString)
     }).catch(err => console.log(err))
     // console.log(this.isAdmin)
@@ -52,6 +54,7 @@ export class ManagePostsComponent implements OnInit {
     this.listPostExperience = []
     this.listPostForums = []
     this.listPostReview = []
+    this.listAllPost = []
     // this.filterString="Experience"
 
     // console.log("apro"+approved)
@@ -64,16 +67,19 @@ export class ManagePostsComponent implements OnInit {
         if (post.Id === "Review") {
           for (let reviewPost of post.Post) {
             this.listPostReview.push(reviewPost)
+            this.listAllPost.push(reviewPost)
           }
           // console.log(this.listPostReview)
         } else if (post.Id == "Experience") {
           for (let expPost of post.Post) {
             this.listPostExperience.push(expPost);
+            this.listAllPost.push(expPost);
           }
           // console.log(this.listPostExperience)
         } else if (post.Id == "Forum") {
           for (let forumPost of post.Post) {
             this.listPostForums.push(forumPost);
+            this.listAllPost.push(forumPost);
           }
           // console.log(this.listPostForums)
         } else {

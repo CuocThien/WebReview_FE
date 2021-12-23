@@ -5,6 +5,7 @@
     <ul>
 
       <li class="items active" id="posts" (click)="active($event);redirect($event)">Bài viết</li>
+      <li class="items" id="comments" (click)="active($event);redirect($event)">Bình luận</li>
       <li class="items" id="categories" (click)="active($event);redirect($event)">Danh mục</li>
       <li class="items" id="users" (click)="active($event);redirect($event)">Người dùng</li>
       <li class="items" id="group" (click)="active($event);redirect($event)">Nhóm</li>
@@ -16,5 +17,6 @@
     <app-manage-posts *ngIf="toPosts"></app-manage-posts>
     <app-manage-categories *ngIf="toCategories"></app-manage-categories>
     <app-manage-group *ngIf="toGroup"></app-manage-group>
+    <app-manage-comments *ngIf="toComments"></app-manage-comments>
   </div>
 </div>

@@ -35,6 +35,7 @@ import { ManageCategoriesComponent } from './admin/manage-categories/manage-cate
 import { ManageGroupComponent } from './admin/manage-group/manage-group.component';
 import { ReadPostComponent } from './read-post/read-post.component';
 import { UpdatePostComponent } from './update-post/update-post.component';
+import { ManageCommentsComponent } from './admin/manage-comments/manage-comments.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { UpdatePostComponent } from './update-post/update-post.component';
     ManageCategoriesComponent,
     ManageGroupComponent,
     ReadPostComponent,
-    UpdatePostComponent
+    UpdatePostComponent,
+    ManageCommentsComponent
   ],
   imports: [
     BrowserModule,

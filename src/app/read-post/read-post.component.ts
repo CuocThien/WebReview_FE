@@ -22,9 +22,10 @@ export class ReadPostComponent implements OnInit {
     private spinner: NgxSpinnerService) {
 
   }
-  post: any
+  post: any=[];
   postId: any;
   groupId: any;
+  postData:any=[];
   isOwner: any;
   url: any;
   isApproved: any = true;
@@ -42,6 +43,7 @@ export class ReadPostComponent implements OnInit {
         this.post = res;
         // console.log(res)
         this.post = this.post.data
+        this.postData = this.post.dataPost;
         this.isAdmin = this.cookieService.get("isAdmin")
         this.isApproved = !this.isApproved && this.isAdmin;
         if (this.isApproved == "false")
@@ -68,6 +70,7 @@ export class ReadPostComponent implements OnInit {
         this.post = res;
         // console.log(res)
         this.post = this.post.data
+        this.postData = this.post.dataPost;
         // console.log(this.post)
         if (this.cookieService.get("accountId") == this.post.dataPost.AccountId) {
           this.isOwner = true

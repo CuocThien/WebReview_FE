@@ -20,7 +20,14 @@ export class ManageCategoriesComponent implements OnInit {
   cateName: any;
   listGroup: any;
   listCate: any; selectedValue: any;
+  listCateReview:any = []
+  listCateExp:any = []
+  listCateForum:any = []
+  another:any = []
+
+  p: number = 1;
   isDel: any = false;
+  filterString: any;
   ngOnInit(): void {
     this.spinner.show()
     this.getData()
@@ -28,6 +35,7 @@ export class ManageCategoriesComponent implements OnInit {
       this.listGroup = res;
       this.listGroup = this.listGroup.data;
       this.selectedValue = this.listGroup[0]._id
+      this.filterString = this.listGroup[0]._id
       // console.log(this.listGroup)
 
     }).catch(err => {
@@ -37,9 +45,36 @@ export class ManageCategoriesComponent implements OnInit {
   }
   getData() {
     this.spinner.show();
+    this.listCateExp = [];
+    this.listCateForum = [];
+    this.listCateReview = [];
+    this.another = [];
     this.manageCateService.getGroup().then(res => {
       this.listCate = res;
       this.listCate = this.listCate.data;
+      // console.log(this.listCate)
+      for (let cate of this.listCate) {
+        if (cate.id === "Review") {
+          for (let reviewCate of cate.Category) {
+            this.listCateReview.push(reviewCate)
+          }
+          // console.log(this.listCateReview)
+        } else if (cate.id == "Experience") {
+          for (let expCate of cate.Category) {
+            this.listCateExp.push(expCate);
+          }
+          // console.log(this.listPostExperience)
+        } else if (cate.id == "Forum") {
+          for (let forumCate of cate.Category) {
+            this.listCateForum.push(forumCate);
+          }
+          // console.log(this.listPostForums)
+        } else {
+          for (let anotherPost of cate.Category) {
+            this.another.push(anotherPost);
+          }
+        }
+      }
 
       this.spinner.hide()
     }).catch(err => {
@@ -48,12 +83,42 @@ export class ManageCategoriesComponent implements OnInit {
       this.spinner.hide()
     })
   }
+  filter(event: any) {
+    this.p = 1;
+    this.filterString = event;
+    // console.log(this.filterString)
+  }
   getDataDel() {
     this.spinner.show()
+    this.listCateExp = [];
+    this.listCateForum = [];
+    this.listCateReview = [];
+    this.another = [];
     this.manageCateService.getCateDeleted().then(res => {
       this.listCate = res;
       this.listCate = this.listCate.data;
-
+      for (let cate of this.listCate) {
+        if (cate.id === "Review") {
+          for (let reviewCate of cate.Category) {
+            this.listCateReview.push(reviewCate)
+          }
+          // console.log(this.listCateReview)
+        } else if (cate.id == "Experience") {
+          for (let expCate of cate.Category) {
+            this.listCateExp.push(expCate);
+          }
+          // console.log(this.listPostExperience)
+        } else if (cate.id == "Forum") {
+          for (let forumCate of cate.Category) {
+            this.listCateForum.push(forumCate);
+          }
+          // console.log(this.listPostForums)
+        } else {
+          for (let anotherPost of cate.Category) {
+            this.another.push(anotherPost);
+          }
+        }
+      }
       this.spinner.hide()
     }).catch(err => {
       // console.log(err);

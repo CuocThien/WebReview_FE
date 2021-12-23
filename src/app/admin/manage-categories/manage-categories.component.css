@@ -77,3 +77,30 @@ select{
     svg{
         pointer-events: none;
     }
+    
+.select-group{
+    height: 30px;
+    border: 2px solid #6454F0;
+    text-align: center;
+    color: #6454F0;
+    font-weight: bolder;
+    cursor: pointer;
+    margin: 2px 0;
+}
+.select-group:focus{
+    outline: #6454F0;
+}
+.filterCate{
+    font-weight: bold;
+    color: #6454F0;
+    margin: 2px 0 ;
+
+    margin-left: 25%;
+}
+
+.emptyList{
+    width: 100%;
+    text-align: center;
+    color: red;
+    font-size: 25px;
+}

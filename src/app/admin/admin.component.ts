@@ -14,6 +14,7 @@ export class AdminComponent implements OnInit {
   toPosts: boolean = true;
   toCategories: boolean = false;
   toGroup: boolean = false;
+  toComments: boolean = false;
   ngOnInit(): void {
     if (this.cookieService.get("isAdmin") == "false" || this.cookieService.get("authToken") == "") {
       this.router.pageError()
@@ -26,21 +27,31 @@ export class AdminComponent implements OnInit {
       this.toPosts = false;
       this.toCategories = false;
       this.toGroup = false;
+      this.toComments = false;
     } else if (id === "posts") {
       this.toUsers = false;
       this.toPosts = true;
       this.toCategories = false;
       this.toGroup = false;
+      this.toComments = false;
     } else if (id === "group") {
       this.toUsers = false;
       this.toPosts = false;
       this.toCategories = false;
       this.toGroup = true;
-    } else {
+      this.toComments = false;
+    } else if (id === "comments") {
+      this.toUsers = false;
+      this.toPosts = false;
+      this.toCategories = false;
+      this.toGroup = false;
+      this.toComments = true;
+    }else {
       this.toUsers = false;
       this.toPosts = false;
       this.toCategories = true;
       this.toGroup = false;
+      this.toComments = false;
     }
   }
   active(event: any) {

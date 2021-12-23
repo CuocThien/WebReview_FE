@@ -1,4 +1,5 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { AppRoutingModule } from '../app-routing.module';
 import { SignUpService } from './sign-up.service';
@@ -11,7 +12,7 @@ import { SignUpService } from './sign-up.service';
 export class SignUpComponent implements OnInit {
 
   constructor(private toastr:ToastrService,private renderer: Renderer2, private service: SignUpService,
-    private router:AppRoutingModule) { }
+    private router:AppRoutingModule, private spinner:NgxSpinnerService) { }
     date:any;
   ngOnInit(): void {
     this.date = new Date().toJSON().split('T')[0];
@@ -28,6 +29,7 @@ export class SignUpComponent implements OnInit {
       this.toastr.error("Vui lòng điền đầy đủ thông tin đăng ký!", "Lỗi!!!")
     }
     else{
+      this.spinner.show();
       this.renderer.addClass(document.getElementById("confirm"),"ng-valid");
       this.service.signUp(formSignUp.value)
       .then(res=>{
@@ -35,8 +37,12 @@ export class SignUpComponent implements OnInit {
         this.result = res;
         this.toastr.success(this.result.msg)
         this.router.signin();
+        this.spinner.hide();
       })
-      .catch(err=>this.toastr.error(err.error.msg));
+      .catch(err=>{
+        this.toastr.error(err.error.msg)
+        this.spinner.hide();
+      });
   }
   }
 }

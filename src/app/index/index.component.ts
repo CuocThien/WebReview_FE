@@ -15,12 +15,13 @@ export class IndexComponent implements OnInit {
   listReviewPost:any;
   listShareExpPost:any;
   listForumPost:any;
+  lengthReview:any;
   
   constructor(private service:IndexService, private router:AppRoutingModule, private spinner:NgxSpinnerService,
     private toastr:ToastrService) { }
 
   ngOnInit(): void {
-    this.spinner.show;
+    this.spinner.show();
     this.service.getPost()
     .then(res=>{
       this.listReviewPost=res;
@@ -29,8 +30,7 @@ export class IndexComponent implements OnInit {
       this.listReviewPost=this.listReviewPost.data.topreview;
       this.listShareExpPost=this.listShareExpPost.data.topexp;
       this.listForumPost=this.listForumPost.data.topfrm;
-
-      this.spinner.hide()
+      this.lengthReview=this.listReviewPost.length;
     })
     .catch(err=>{
       // console.log(err)
@@ -42,5 +42,9 @@ export class IndexComponent implements OnInit {
   }
   reviewHub(){
     this.router.reviewHub();
+  }
+  checkStopSpinner(check:any){
+    if(check===true)
+      this.spinner.hide();
   }
 }

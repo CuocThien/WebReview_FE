@@ -44,7 +44,7 @@
     </div>
     <div class="review-content2">
       <div class="review-post meet"
-        *ngFor="let itemR of listReviewPost | paginate: {itemsPerPage: 4, currentPage:p}" id="{{itemR.dataPost.Id}}"
+        *ngFor="let itemR of listReviewPost | paginate: {itemsPerPage: 4, currentPage:p}; let i = index" id="{{itemR.dataPost.Id}}"
         routerLink="/post-detail/Review/{{itemR.dataPost.Id}}">
         <div class="review-post-img">
           <img
@@ -53,6 +53,7 @@
         </div>
         <h6>{{itemR.dataPost.Title}}</h6>
         <!-- <p>{{itemR.dataPost.Overview}}</p> -->
+        <div style="display: none;" *ngIf="i===3?checkStopSpinner(true):checkStopSpinner(false)" ></div>
       </div>
 
     </div>

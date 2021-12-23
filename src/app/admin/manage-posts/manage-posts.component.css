@@ -70,3 +70,9 @@
 svg{
     pointer-events: none;
 }
+.emptyList{
+    width: 100%;
+    text-align: center;
+    color: red;
+    font-size: 25px;
+}
