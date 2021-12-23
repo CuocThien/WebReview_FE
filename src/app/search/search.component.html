@@ -19,7 +19,7 @@
           <p class="author-search">{{post.FullName}} - {{post.dataPost.CreateAt|date:'HH:mm dd/MM/yyyy'}}</p>
         </div>
       </div>
-      <pagination-controls class="pagination" previousLabel="" nextLabel="" (pageChange)="p=$event">
+      <pagination-controls class="pagination" previousLabel="" nextLabel="" (pageChange)="p=$event" (click)="goToPage()">
       </pagination-controls>
     </div>
 

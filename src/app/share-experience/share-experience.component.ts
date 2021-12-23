@@ -1,4 +1,5 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { IndexService } from '../index/index.service';
@@ -13,7 +14,7 @@ import { ShareExperienceService } from './share-experience.service';
 export class ShareExperienceComponent implements OnInit {
 
   constructor(private service: ShareExperienceService, private renderer: Renderer2, private indexService: IndexService,
-    private spinner: NgxSpinnerService, private toastr: ToastrService) { }
+    private spinner: NgxSpinnerService, private toastr: ToastrService, private router:Router,private route: ActivatedRoute) { }
   categories: any;
   listPost: any;
   listHotPost: any;
@@ -21,6 +22,9 @@ export class ShareExperienceComponent implements OnInit {
   p: number = 1;
   ngOnInit(): void {
     this.spinner.show();
+    const page = this.route.snapshot.queryParamMap.get("page")
+    if(page!=null){
+    this.p = parseInt(page);}
     this.service.getShareExpCategory().then(res => {
       this.categories = res;
       this.categories = this.categories.data.Category;
@@ -85,5 +89,8 @@ export class ShareExperienceComponent implements OnInit {
   }
   backToTop(){
     window.scrollTo(0,170)
+  }
+  goToPage(){
+    this.router.navigate(['/share-experience'], { queryParams: { page: this.p }})
   }
 }

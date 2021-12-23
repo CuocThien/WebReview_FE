@@ -50,7 +50,7 @@
           <app-star id="{{post.dataPost.Id}}" rate="{{post.RatingbyAcc || 0}}"></app-star>
         </div>
       </div>
-      <pagination-controls class="pagination" previousLabel="" nextLabel="" (click)="backToTop()" (pageChange)="p=$event">
+      <pagination-controls class="pagination" previousLabel="" nextLabel="" (click)="backToTop();goToPage();" (pageChange)="p=$event">
       </pagination-controls>
     </div>
   </div>

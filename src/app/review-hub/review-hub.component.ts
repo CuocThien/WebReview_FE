@@ -1,4 +1,5 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { IndexService } from '../index/index.service';
@@ -12,13 +13,16 @@ import { ReviewService } from './review-hub.service';
 })
 export class ReviewHubComponent implements OnInit {
   constructor(private service: ReviewService, private renderer: Renderer2, private spinner: NgxSpinnerService,
-    private toastr: ToastrService) { }
+    private toastr: ToastrService, private router:Router,private route: ActivatedRoute) { }
   categories: any;
   listPost: any;
   isEmpty: boolean = false;
   p: number = 1;
   ngOnInit(): void {
     this.spinner.show();
+    const page = this.route.snapshot.queryParamMap.get("page")
+    if(page!=null){
+    this.p = parseInt(page);}
     this.service.getReviewCategory().then(res => {
       this.categories = res;
       this.categories = this.categories.data.Category;
@@ -65,5 +69,8 @@ export class ReviewHubComponent implements OnInit {
   }
   backToTop(){
     window.scrollTo(0,270)
+  }
+  goToPage(){
+    this.router.navigate(['/review-hub'], { queryParams: { page: this.p }})
   }
 }

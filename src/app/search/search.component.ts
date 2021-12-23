@@ -23,6 +23,9 @@ export class SearchComponent implements OnInit {
     this.spinner.show();
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.query = this.route.snapshot.queryParamMap.get("q");
+    const page = this.route.snapshot.queryParamMap.get("page")
+    if(page!=null){
+    this.p = parseInt(page);}
     this.service.getResultSearch(this.query).then(res => {
       this.result = res;
       this.result = this.result.data.search;
@@ -43,5 +46,9 @@ export class SearchComponent implements OnInit {
       this.spinner.hide()
     })
     // console.log(this.query)
+  }
+
+  goToPage(){
+    this.router.navigate(['/search'], { queryParams: {q: this.query, page: this.p }})
   }
 }
