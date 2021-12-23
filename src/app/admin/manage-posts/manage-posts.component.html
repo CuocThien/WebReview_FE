@@ -31,8 +31,7 @@
         <td>{{post.Overview | slice:0:100}}...</td>
         <td>{{post.CreateAt|date:'dd/MM/yyyy'}}</td>
         <td>
-          <button type="button" class="btn btn-primary" *ngIf="isApproved"
-            routerLink="/post-detail/{{filterString}}/{{post.Id}}">
+          <button type="button" class="btn btn-primary" *ngIf="isApproved" name="{{post.Id}}" (click)="getDetailPost(false,$event)">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye"
               viewBox="0 0 16 16">
               <path
@@ -43,7 +42,7 @@
           </button>&nbsp;
 
           <button type="button" class="btn btn-primary" *ngIf="!isApproved"
-            routerLink="/post-detail/admin/{{filterString}}/{{post.Id}}">
+            name="{{post.Id}}" (click)="getDetailPost(true,$event)">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye"
               viewBox="0 0 16 16">
               <path
@@ -52,8 +51,8 @@
               <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"></path>
             </svg>
           </button>&nbsp;
-          <button type="button" class="btn btn-success" *ngIf="!isApproved&&isAdmin" id="{{filterString}}&{{post.Id}}"
-            (click)="updatePostStatus($event)">
+          <button type="button" class="btn btn-success" *ngIf="!isApproved&&isAdmin" name="{{post.Id}}"
+            (click)="updatePostStatusDefault($event)">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
               class="bi bi-check2-square" viewBox="0 0 16 16">
               <path

@@ -1,5 +1,5 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { ManageGroupService } from '../manage-group/manage-group.service';
@@ -14,7 +14,7 @@ import { ManagePostsService } from './manage-posts.service';
 export class ManagePostsComponent implements OnInit {
 
   constructor(private renderer: Renderer2, private service: ManagePostsService,
-    private toastr: ToastrService, private router: ActivatedRoute,
+    private toastr: ToastrService, private router: ActivatedRoute, private routerLink : Router,
     private manageGroupService: ManageGroupService, private spinner: NgxSpinnerService) { }
 
   listGroup: any;
@@ -88,6 +88,7 @@ export class ManagePostsComponent implements OnInit {
           }
         }
       }
+      // console.log(this.listAllPost)
       this.spinner.hide();
     }).catch(err => {
       this.toastr.error(err.error.msg)
@@ -130,11 +131,58 @@ export class ManagePostsComponent implements OnInit {
   }
   resultDelPost: any
   deletePost() {
-    this.service.deletePost(this.filterString, this.delPostId).then(res => {
+    const postId=this.delPostId;
+    var groupId;
+    if(postId.includes("Review")){
+      groupId = "Review"
+    }else if(postId.includes("Experience")){
+      groupId = "Experience"
+    }else{
+      groupId = "Forum"
+    }
+    this.service.deletePost(groupId, this.delPostId).then(res => {
       this.resultDelPost = res;
       this.toastr.success(this.resultDelPost.msg)
       this.getData(this.isApproved, this.isAdmin)
       this.p = 1;
+    }).catch(err => {
+      // console.log(err);
+      this.toastr.error(err.error.msg, "Lỗi")
+    })
+  }
+
+  getDetailPost(isAdmin:boolean, event:any){
+    const postId=event.target.name;
+    var groupId;
+    if(postId.includes("Review")){
+      groupId = "Review"
+    }else if(postId.includes("Experience")){
+      groupId = "Experience"
+    }else{
+      groupId = "Forum"
+    }
+    const url = '/'+groupId+'/'+postId
+    if(isAdmin === false){
+      this.routerLink.navigate(['/post-detail'+url])
+    }else{
+      this.routerLink.navigate(['/post-detail/admin'+url])
+    }
+  }
+
+  updatePostStatusDefault(event: any) {
+    const postId=event.target.name;
+    var groupId;
+    if(postId.includes("Review")){
+      groupId = "Review"
+    }else if(postId.includes("Experience")){
+      groupId = "Experience"
+    }else{
+      groupId = "Forum"
+    }
+    this.service.updatePostStatus(groupId, postId).then(res => {
+      this.resultUpdateStatus = res;
+      this.toastr.success(this.resultUpdateStatus.msg)
+      this.getData(false, this.isAdmin)
     }).catch(err => {
       // console.log(err);
       this.toastr.error(err.error.msg, "Lỗi")
