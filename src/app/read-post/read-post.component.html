@@ -59,7 +59,7 @@
       <h6>{{postData.Overview}}</h6>
 
     </div>
-    <div id="content" [innerHtml]="postData.Content"></div>
+    <div id="content" [innerHtml]="postData.Content">{{check()}}</div>
     <h5>Đánh giá bài viết</h5>
     <app-star class="star-readpost" id="{{postData.Id}}" rate="{{post.RatingbyAcc}}"></app-star>
     <app-comment [countCmt]="post.CommentCount||0" [postId]="postData.Id" [listCmt]="post.Comment||{}">

@@ -32,6 +32,7 @@ export class ReadPostComponent implements OnInit {
   isAdmin: any;
   ngOnInit(): void {
     this.spinner.show();
+    window.scrollTo(0,0);
     this.groupId = this.route.snapshot.paramMap.get("GroupId");
     this.postId = this.route.snapshot.paramMap.get("PostId");
     this.url = this.route.url
@@ -85,8 +86,11 @@ export class ReadPostComponent implements OnInit {
         })
     }
   }
-  ngAfterViewInit() {
-    this.spinner.hide()
+  check() {
+    var content = document.getElementById("content")?.innerHTML
+    if(content?.length != 0){
+      setTimeout(()=>this.spinner.hide(),500)
+    }
   }
 
 
