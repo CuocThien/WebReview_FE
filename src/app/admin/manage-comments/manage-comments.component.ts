@@ -27,6 +27,7 @@ export class ManageCommentsComponent implements OnInit {
   cmtContent:any;
   p:number=1;
   ngOnInit(): void {
+    this.spinner.show();
     this.manageGroupService.getGroup().then(res => {
       this.listGroup = res;
       this.listGroup = this.listGroup.data;
@@ -67,8 +68,11 @@ this.getData()
           }
         }
       }
-
+      this.spinner.hide();
+    }).catch(err=>{console.log(err);
+      this.spinner.hide();
     })
+    
   }
   filter(event: any) {
     this.p=1;

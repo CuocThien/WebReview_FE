@@ -1,4 +1,5 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { AppRoutingModule } from '../app-routing.module';
 
@@ -9,19 +10,42 @@ import { AppRoutingModule } from '../app-routing.module';
 })
 export class AdminComponent implements OnInit {
 
-  constructor(private renderer: Renderer2, private router: AppRoutingModule, private cookieService: CookieService) { }
+  constructor(private route: ActivatedRoute, private router: AppRoutingModule, private cookieService: CookieService,
+    private routerLink:Router) { }
   toUsers: boolean = false;
   toPosts: boolean = true;
   toCategories: boolean = false;
   toGroup: boolean = false;
   toComments: boolean = false;
+  menu:any;
   ngOnInit(): void {
+
+    this.menu = this.route.snapshot.paramMap.get("Menu");
+    if(this.menu!=null){
+      this.menuSelected(this.menu)
+    }else{
+      this.menuSelected("posts")
+    }
     if (this.cookieService.get("isAdmin") == "false" || this.cookieService.get("authToken") == "") {
       this.router.pageError()
     }
   }
   redirect(event: any) {
     let id = event.target.id;
+    this.menuSelected(id);
+  }
+  active(event: any) {
+    var items = document.getElementsByClassName('items')
+    for (let i = 0; i < items.length; i++) {
+      // console.log(items[i].classList[1])
+      if (items[i].classList[1] == "active") {
+        items[i].classList.remove("active");
+      }
+    }
+    document.getElementById(event.target.id)?.classList.add("active");
+    // this.renderer.addClass(document.getElementById(event.target.id),"active")
+  }
+  menuSelected(id:any){
     if (id === "users") {
       this.toUsers = true;
       this.toPosts = false;
@@ -53,17 +77,6 @@ export class AdminComponent implements OnInit {
       this.toGroup = false;
       this.toComments = false;
     }
+    this.routerLink.navigate(['/admin/'+id])
   }
-  active(event: any) {
-    var items = document.getElementsByClassName('items')
-    for (let i = 0; i < items.length; i++) {
-      // console.log(items[i].classList[1])
-      if (items[i].classList[1] == "active") {
-        items[i].classList.remove("active");
-      }
-    }
-    document.getElementById(event.target.id)?.classList.add("active");
-    // this.renderer.addClass(document.getElementById(event.target.id),"active")
-  }
-
 }

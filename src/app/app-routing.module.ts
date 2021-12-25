@@ -35,6 +35,7 @@ const routes: Routes = [
   { path: 'post-detail/admin/:GroupId/:PostId', component: ReadPostComponent},
   { path: 'user/manage-posts', component: ManagePostsComponent},
   { path: 'admin', component: AdminComponent, pathMatch: 'full'},
+  { path: 'admin/:Menu', component: AdminComponent, pathMatch: 'full'},
 
   { path: '', redirectTo: '/index', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent},
@@ -77,7 +78,7 @@ export class AppRoutingModule {
     this.router.navigate(['/search'], { queryParams: { q: query }})
   }
   admin(){
-    this.router.navigate(['/admin'])
+    this.router.navigate(['/admin/posts'], {queryParams: {approved: true, group: "Default", page: 1}})
   }
   pageError(){
     this.router.navigate(['/**'])

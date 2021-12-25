@@ -63,4 +63,7 @@ export class HeaderComponent implements OnInit {
   admin(){
     this.routerApp.admin();
   }
+  managePosts(){
+    this.router.navigate(['/user/manage-posts'], {queryParams: {approved: true, group: "Default", page: 1}})
+  }
 }

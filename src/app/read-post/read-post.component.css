@@ -54,14 +54,28 @@ img{
     position: absolute;
     right: 0;
 }
+#backToTop{
+    position: fixed;
+    z-index: 9999;
+    bottom: 0;
+    right: 50;
+    height: 45px;
+    width: 60px;
+  }
 /* tablet */
 @media only screen and (max-width: 63.9375em) {
   
    .container-readpost{
        width: 90%;
    }
+   #backToTop{
+    right: 30;
+}
   }
   /* mobile */
   @media only screen and (max-width: 46.1875em) {
-
+    #backToTop{
+        right: 0;
+        width: 50px;
+    }
   }

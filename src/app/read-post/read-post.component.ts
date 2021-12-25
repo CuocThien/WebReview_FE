@@ -117,4 +117,8 @@ export class ReadPostComponent implements OnInit {
       this.toastr.error(err.error.msg, "Lỗi")
     })
   }
+
+  backToTop(){
+    window.scrollTo(0,0)
+  }
 }

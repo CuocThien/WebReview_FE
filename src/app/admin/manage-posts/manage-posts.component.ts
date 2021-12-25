@@ -26,7 +26,7 @@ export class ManagePostsComponent implements OnInit {
   another: any = []
   filterString: any;
   isApproved: any = true;
-  p: number = 1;
+  p: any;
   delPostId: any;
   isAdmin: boolean = false;
   url: any;
@@ -34,19 +34,29 @@ export class ManagePostsComponent implements OnInit {
     this.spinner.show();
     this.url = this.router.url;
     this.url = this.url._value[0].path;
+
+    this.filterString = this.router.snapshot.queryParamMap.get("group");
+    this.isApproved = ( this.router.snapshot.queryParamMap.get("approved")==='true');
+    const page=this.router.snapshot.queryParamMap.get("page")
+    if(page!=null){this.p = parseInt(page)}
     if (this.url == "admin") {
       this.isAdmin = true;
     }
 
-    this.filterString = "Default"
     this.manageGroupService.getGroup().then(res => {
       this.listGroup = res;
       this.listGroup = this.listGroup.data;
       // console.log(this.filterString)
     }).catch(err => console.log(err))
     // console.log(this.isAdmin)
-    this.getData(true, this.isAdmin)
+    // this.getData(this.isApproved, this.isAdmin)
 
+    if(this.isApproved === true){
+      this.activeControl("approved")
+    }else{
+      this.activeControl("unapproved")
+    }
+    this.goToPage();
 
   }
   getData(approved: any, admin: any) {
@@ -55,10 +65,7 @@ export class ManagePostsComponent implements OnInit {
     this.listPostForums = []
     this.listPostReview = []
     this.listAllPost = []
-    // this.filterString="Experience"
 
-    // console.log("apro"+approved)
-    // console.log("admin "+admin)
     this.service.getPost(approved, admin).then(res => {
       this.listPost = res;
       // console.log(res)
@@ -97,22 +104,36 @@ export class ManagePostsComponent implements OnInit {
     })
   }
   activeControl(event: any) {
-    this.p = 1;
     var item = document.getElementsByClassName('active-control')
     this.renderer.removeClass(item[0], "active-control");
-    this.renderer.addClass(document.getElementById(event.target.id), "active-control")
-    if (event.target.id == "approved") {
-      this.getData(true, this.isAdmin);
-      this.isApproved = true;
-    } else {
-      this.getData(false, this.isAdmin);
-      this.isApproved = false;
+    if(typeof event === 'string'){
+      this.renderer.addClass(document.getElementById(event),"active-control")
+      if (event === "approved") {
+        this.getData(true, this.isAdmin);
+        this.isApproved = true;
+      } else {
+        this.getData(false, this.isAdmin);
+        this.isApproved = false;
+      }
+    }else{
+      this.p = 1;
+      this.renderer.addClass(document.getElementById(event.target.id), "active-control")
+      if (event.target.id == "approved") {
+        this.getData(true, this.isAdmin);
+        this.isApproved = true;
+      } else {
+        this.getData(false, this.isAdmin);
+        this.isApproved = false;
+      }
     }
+    
+    this.goToPage()
   }
   filter(event: any) {
     this.p = 1;
     this.filterString = event;
     // console.log(this.filterString)
+    this.goToPage()
   }
   resultUpdateStatus: any;
   updatePostStatus(event: any) {
@@ -187,5 +208,13 @@ export class ManagePostsComponent implements OnInit {
       // console.log(err);
       this.toastr.error(err.error.msg, "Lỗi")
     })
+  }
+
+  goToPage(){
+    if(this.isAdmin===true){
+      this.routerLink.navigate(['/admin/posts'], {queryParams: {approved: this.isApproved, group: this.filterString, page: this.p }})
+  }else{
+    this.routerLink.navigate(['/user/manage-posts'], {queryParams: {approved: this.isApproved, group: this.filterString, page: this.p }})
+  }
   }
 }
