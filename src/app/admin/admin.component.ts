@@ -77,6 +77,9 @@ export class AdminComponent implements OnInit {
       this.toGroup = false;
       this.toComments = false;
     }
-    this.routerLink.navigate(['/admin/'+id])
+    if(id==="posts"){
+      this.routerLink.navigate(['/admin/'+id], {queryParams: {approved: true, group: "Default", page: 1 }})
+    }else{
+    this.routerLink.navigate(['/admin/'+id])}
   }
 }
