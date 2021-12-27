@@ -71,7 +71,7 @@ import { ManageCommentsComponent } from './admin/manage-comments/manage-comments
     FormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
-      timeOut:1500,
+      timeOut:500,
       preventDuplicates:true,
       progressBar:true,
       progressAnimation:"decreasing",
