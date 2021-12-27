@@ -7,6 +7,7 @@ import { CommentService } from './comment.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MyBootstrapModalComponent } from '../modals/my-bootstrap-modal/my-bootstrap-modal.component';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-comment',
@@ -26,7 +27,7 @@ export class CommentComponent implements OnInit {
   dataPostCmt: any;
   myAvatar: any;
   constructor(private route: ActivatedRoute, private renderer: Renderer2, private signInService: SignInService,
-    private cookieService: CookieService, private router: Router,
+    private cookieService: CookieService, private router: Router, private spinner: NgxSpinnerService,
     private service: CommentService, private toastr: ToastrService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
@@ -60,6 +61,7 @@ export class CommentComponent implements OnInit {
     if (this.cookieService.get("authToken") == "") {
       this.router.navigate(['/signin'], { queryParams: { redirectTo: this.router.url } });
     } else {
+      this.spinner.show();
       this.txtCmt = document.getElementById("postCmt-" + this.postId);
       let content = this.txtCmt.value;
       this.dataPostCmt = {}
@@ -72,7 +74,10 @@ export class CommentComponent implements OnInit {
         this.txtCmt.value = '';
 
         this.refreshCmt()
-      }).catch(err => this.toastr.error(err.error.msg))
+        this.spinner.hide()
+      }).catch(err => {this.toastr.error(err.error.msg);
+        this.spinner.hide()
+      })
     }
   }
 
@@ -80,6 +85,7 @@ export class CommentComponent implements OnInit {
   dataPostReply: any;
   txtReply: any;
   postReply(event: any) {
+    this.spinner.show()
     const id = event.target.id;
     this.txtReply = document.getElementById("contentReply_" + id);
     let content = this.txtReply.value;
@@ -94,7 +100,11 @@ export class CommentComponent implements OnInit {
       this.txtReply.value = '';
 
       this.refreshCmt();
-    }).catch(err => this.toastr.error(err.error.msg))
+      this.spinner.hide();
+    }).catch(err => {
+      this.toastr.error(err.error.msg)
+      this.spinner.hide();
+    })
   }
   setIdDelCmt(event: any) {
     var el = document.getElementsByClassName("delCmt");
@@ -102,6 +112,7 @@ export class CommentComponent implements OnInit {
   }
   resultDelCmt: any;
   deleteCmt(event: any) {
+    this.spinner.show();
     this.service.deleteCmt(event.target.id).then(res => {
       this.resultDelCmt = res;
       this.toastr.success(this.resultDelCmt.msg);
@@ -112,8 +123,10 @@ export class CommentComponent implements OnInit {
       } else {
         this.refreshCmt()
       }
+      this.spinner.hide();
     })
-      .catch(err => { this.toastr.error(err.error.msg) })
+      .catch(err => { this.toastr.error(err.error.msg) 
+        this.spinner.hide()})
   }
 
   setIdDelReply(event: any) {
@@ -123,6 +136,7 @@ export class CommentComponent implements OnInit {
   dataDeleteReply: any;
   resultDelReply: any;
   deleteReply(event: any) {
+    this.spinner.show();
     var id = event.target.id.split('&');
     this.dataDeleteReply = {}
     this.dataDeleteReply["_id"] = id[0];
@@ -133,7 +147,9 @@ export class CommentComponent implements OnInit {
 
       this.refreshCmt()
     })
-      .catch(err => this.toastr.error(err.error.msg))
+      .catch(err => {this.toastr.error(err.error.msg)
+        this.spinner.hide();
+      })
   }
   closeModal: any;
   openModal(event: any) {
