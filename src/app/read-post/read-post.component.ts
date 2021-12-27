@@ -90,13 +90,6 @@ export class ReadPostComponent implements OnInit {
         })
     }
   }
-  check() {
-    var content = document.getElementById("content")?.innerHTML
-    if(content?.length != 0){
-      setTimeout(()=>this.spinner.hide(),500)
-    }
-  }
-
 
 
   resultUpdateStatus: any;

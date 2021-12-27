@@ -216,5 +216,6 @@ export class ManagePostsComponent implements OnInit {
   }else{
     this.routerLink.navigate(['/user/manage-posts'], {queryParams: {approved: this.isApproved, group: this.filterString, page: this.p }})
   }
+  window.scrollTo(0,0)
   }
 }

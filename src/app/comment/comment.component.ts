@@ -89,8 +89,10 @@ export class CommentComponent implements OnInit {
     this.spinner.show()
     const id = event.target.id;
     this.txtReply = document.getElementById("contentReply_" + id);
-    let content = this.txtReply.value;
 
+    let content = this.txtReply?.value;
+
+    if(content != null){
     this.dataPostReply = {}
     this.dataPostReply["_id"] = id;
     this.dataPostReply["Content"] = content;
@@ -107,6 +109,9 @@ export class CommentComponent implements OnInit {
       this.toastr.error(err.error.msg)
       this.spinner.hide();
     })
+  }else{
+    this.spinner.hide();
+  }
   }
   setIdDelCmt(event: any) {
     var el = document.getElementsByClassName("delCmt");

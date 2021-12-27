@@ -63,4 +63,7 @@ export class ManageUsersComponent implements OnInit {
       this.p = page;
     }
   }
+  goToTop(){
+    window.scrollTo(0,0)
+  }
 }
