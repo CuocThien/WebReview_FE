@@ -15,6 +15,7 @@ export class ManageUsersComponent implements OnInit {
 
   p: number = 1;
   listUsers: any;
+  countUser:any;
   ngOnInit(): void {
     this.spinner.show();
     this.getData()
@@ -42,12 +43,24 @@ export class ManageUsersComponent implements OnInit {
     this.service.deleteAccounts(this.accountId).then(res => {
       this.resultDel = res;
       this.toastr.success(this.resultDel.msg);
-      // console.log(res);
+      this.service.getAccounts().then(res=>{
+        this.countUser = res;
+        this.countUser = this.countUser.data.accounts.length;
+        this.checkAmountUser(this.countUser);
+      })
       this.getData();
     }).catch(err => {
       // console.log(err);
       this.toastr.error(err.error.msg)
     })
   }
-
+  checkAmountUser(amountU:any){
+    const page = Math.floor(amountU / 5);
+    const maxPage = amountU % 5;
+    if(maxPage != 0){
+      this.p = page + 1;
+    }else{
+      this.p = page;
+    }
+  }
 }

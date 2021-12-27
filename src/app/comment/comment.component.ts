@@ -70,7 +70,7 @@ export class CommentComponent implements OnInit {
       // console.log(this.dataPostCmt)
       this.service.postCmt(this.dataPostCmt).then(res => {
         this.resPostCmt = res;
-        console.log(this.resPostCmt)
+        // console.log(this.resPostCmt)
         this.toastr.success(this.resPostCmt.msg);
         this.txtCmt.value = '';
 
@@ -97,7 +97,7 @@ export class CommentComponent implements OnInit {
     // console.log(this.dataPostCmt)
     this.service.postReply(this.dataPostReply).then(res => {
       this.resPostReply = res;
-      console.log(this.resPostReply)
+      // console.log(this.resPostReply)
       this.toastr.success(this.resPostReply.msg);
       this.txtReply.value = '';
 
@@ -117,7 +117,7 @@ export class CommentComponent implements OnInit {
     this.spinner.show();
     this.service.deleteCmt(event.target.id).then(res => {
       this.resultDelCmt = res;
-      console.log(this.resultDelCmt);
+      // console.log(this.resultDelCmt);
       this.toastr.success(this.resultDelCmt.msg);
 
       if (this.countCmt == 1) {
@@ -146,10 +146,11 @@ export class CommentComponent implements OnInit {
     this.dataDeleteReply["idComment"] = id[1];
     this.service.deleteReply(this.dataDeleteReply).then(res => {
       this.resultDelReply = res;
-      console.log(this.resultDelReply);
+      // console.log(this.resultDelReply);
       this.toastr.success(this.resultDelReply.msg);
 
       this.refreshCmt()
+      this.spinner.hide()
     })
       .catch(err => {this.toastr.error(err.error.msg)
         this.spinner.hide();

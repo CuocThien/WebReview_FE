@@ -23,6 +23,7 @@ export class AdminComponent implements OnInit {
     this.menu = this.route.snapshot.paramMap.get("Menu");
     if(this.menu!=null){
       this.menuSelected(this.menu)
+      this.active(this.menu)
     }else{
       this.menuSelected("posts")
     }
@@ -42,7 +43,10 @@ export class AdminComponent implements OnInit {
         items[i].classList.remove("active");
       }
     }
-    document.getElementById(event.target.id)?.classList.add("active");
+    if(typeof event === 'string'){
+      document.getElementById(event)?.classList.add("active");
+    }else{
+      document.getElementById(event.target.id)?.classList.add("active");}
     // this.renderer.addClass(document.getElementById(event.target.id),"active")
   }
   menuSelected(id:any){

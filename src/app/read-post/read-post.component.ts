@@ -56,10 +56,12 @@ export class ReadPostComponent implements OnInit {
         } else {
           this.isOwner = false;
         }
+        this.spinner.hide()
         // console.log(this.post.dataPost.Content)
       })
         .catch(err => {
           this.toastr.error(err.error.msg)
+          this.spinner.hide()
           // console.log(err)
         })
     } else {
@@ -78,10 +80,12 @@ export class ReadPostComponent implements OnInit {
         } else {
           this.isOwner = false;
         }
+        this.spinner.hide()
         // console.log(this.post.dataPost.Content)
       })
         .catch(err => {
           this.toastr.error(err.error.msg)
+          this.spinner.hide()
           // console.log(err)
         })
     }
